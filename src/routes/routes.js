@@ -1,4 +1,4 @@
-const routes = {
+export const routes = {
   auth: '/authorization',
   income: '/income',
   expences: '/expences',
