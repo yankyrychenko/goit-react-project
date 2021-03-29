@@ -1,7 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,8 +8,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import logger from 'redux-logger';
+import rootReducer from './root';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -18,11 +16,10 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
 ];
 
 const store = configureStore({
-  reducer: {},
+  reducer: rootReducer,
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });

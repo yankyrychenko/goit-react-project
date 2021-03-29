@@ -1,7 +1,10 @@
-import React, { useEffect, Suspense, lazy } from 'react';
-import { Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import Container from './components/Container';
 
 export default function App() {
-  return <></>;
+  return (
+    <>
+      <Container></Container>
+    </>
+  );
 }
