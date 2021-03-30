@@ -1,0 +1,154 @@
+@import '../../styles/_mixins.scss';
+@import '../../styles/_variables.scss';
+
+.AuthorizationForm {
+  background-color: $white-color;
+  margin: 50px 0 0 0;
+  padding: 40px 20px;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+
+  @include for-size(tablet) {
+    margin: 50px auto 0 auto;
+    padding: 50px 77px;
+    width: 436px;
+  }
+
+  @include for-size(desktop) {
+    margin: 117px 0 0 auto;
+  }
+}
+
+.googleAuthBlock {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 0 10px;
+
+  @include for-size(tablet) {
+    text-align: left;
+  }
+}
+
+.googleAuthText {
+  color: $primary-text-color;
+  margin-bottom: 24px;
+  font-size: 10px;
+
+  @include for-size(tablet) {
+    font-size: 12px;
+  }
+}
+
+.googleAuthButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $secondary-gray-color;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 122px;
+  min-height: 40px;
+  border-radius: 26px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 3px 3px rgba(170, 178, 197, 0.4);
+  text-decoration: none;
+  color: black;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background-color: #f1f2f7;
+  }
+
+  & svg {
+    margin-right: 10px;
+  }
+}
+
+.authBlock {
+  padding: 0 10px;
+}
+
+.authText {
+  color: $primary-text-color;
+  margin-bottom: 24px;
+  font-size: 10px;
+
+  @include for-size(tablet) {
+    font-size: 12px;
+  }
+}
+
+.emailBlock,
+.passwordBlock {
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    padding-bottom: 12px;
+    font-size: 10px;
+
+    @include for-size(tablet) {
+      font-size: 12px;
+    }
+  }
+
+  & input {
+    font-size: 14px;
+    min-height: 52px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: $secondary-gray-color;
+
+    &::placeholder {
+      color: #a6abb9;
+    }
+  }
+}
+
+.emailBlock {
+  margin-bottom: 30px;
+}
+
+.passwordBlock {
+  margin-bottom: 40px;
+}
+
+.buttonsBlock {
+  display: flex;
+  justify-content: center;
+}
+
+.loginButton,
+.registrationButton {
+  width: 125px;
+  min-height: 44px;
+  border: none;
+  border-radius: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  box-shadow: 0 3px 3px rgba(170, 178, 197, 0.4);
+}
+
+.loginButton {
+  margin-right: 15px;
+  background-color: $primary-orange-color;
+  color: $white-color;
+
+  &:hover,
+  &:focus {
+    background-color: #ff873c;
+  }
+}
+
+.registrationButton {
+  color: $primary-text-color;
+  background-color: $primary-gray-color;
+
+  &:hover,
+  &:focus {
+    background-color: #f1f2f7;
+  }
+}
