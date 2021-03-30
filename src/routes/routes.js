@@ -2,6 +2,6 @@ export const routes = {
   home: '/',
   auth: '/authorization',
   income: '/income',
-  expences: '/expences',
+  expense: '/expense',
   stats: '/statistics',
 };
