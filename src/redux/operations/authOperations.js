@@ -30,7 +30,8 @@ const handleLogIn = credentials => dispatch => {
 const handleLogOut = () => dispatch => {
   dispatch(authActions.logOutRequest());
 
-  api.logOut
+  api
+    .logOut()
     .then(() => {
       api.token.unset();
       dispatch(authActions.logOutSuccess());
