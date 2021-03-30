@@ -1,11 +1,14 @@
 import React from 'react';
+// Components
 import Container from './components/Container';
-import Summary from './components/Summary/Summary';
+import Header from './components/Header/Header';
+import AuthorizationForm from './components/AuthorizationForm/AuthorizationForm';
 
 export default function App() {
   return (
     <>
-      <Summary></Summary>
+      <Header />
+      <AuthorizationForm />
     </>
   );
 }
