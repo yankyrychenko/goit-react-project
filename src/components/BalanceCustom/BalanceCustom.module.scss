@@ -17,7 +17,8 @@ color: $primary-text-color;
 }
 
 .balanceInput {
-  color: $primary-text-color;
+  color: $black-color;
+  font-weight: 800;
   width: 115px;
   padding: 12px ;
   border: 2px solid white;
@@ -33,6 +34,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 .balanceInput::placeholder {
+  font-weight: 400;
   color: $primary-text-color;
   text-align: center;
 }
