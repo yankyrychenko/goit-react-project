@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 // Components
 import Container from '../Container/Container';
 // Styles
 import styles from './AuthorizationForm.module.scss';
+// Operations
+import authOperations from '../../redux/operations/authOperations';
 // Others
 import sprite from '../../img/sprite.svg';
 
@@ -12,6 +15,7 @@ const AuthorizationForm = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const dispatch = useDispatch();
 
   const changeEmailValue = event => setEmail(event.target.value);
   const changePasswordValue = event => setPassword(event.target.value);
@@ -19,38 +23,42 @@ const AuthorizationForm = () => {
   const onSubmit = event => {
     event.preventDefault();
 
-    console.log('email', validateEmail(email));
-    console.log('password', validatePassword(password));
+    !validateEmail(email)
+      ? setEmailError('Некорректно введен e-mail.')
+      : setEmailError('');
 
-    if (!validateEmail(email)) {
-      setEmailError('Некорректно введен e-mail.');
-      return;
-    } else {
-      setEmailError('');
-    }
+    !validatePassword(password)
+      ? setPasswordError('Пароль должен быть от 4 до 16 символов.')
+      : setPasswordError('');
 
-    if (!validatePassword(password)) {
-      setPasswordError('Пароль должен быть от 4 до 16 символов.');
-      return;
-    } else {
-      setPasswordError('');
-    }
+    !email && setEmailError('это обязательное поле');
+    !password && setPasswordError('это обязательное поле');
 
-    if (event.nativeEvent.submitter.textContent === 'Войти') {
-      console.log('Запрос для логина');
-    }
-    if (event.nativeEvent.submitter.textContent === 'Регистрация') {
-      console.log('Запрос для регистрации');
+    if (validateEmail(email) && validatePassword(password)) {
+      if (event.nativeEvent.submitter.textContent === 'Войти') {
+        dispatch(authOperations.handleLogIn({ email, password }));
+      }
+      if (event.nativeEvent.submitter.textContent === 'Регистрация') {
+        dispatch(authOperations.handleSignUp({ email, password }));
+      }
+      formReset();
     }
   };
 
   const validateEmail = email => {
+    // eslint-disable-next-line
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   };
 
-  const validatePassword = password =>
-    Boolean(password.length >= 4 && password.length <= 16);
+  const validatePassword = password => {
+    return Boolean(password.length >= 4 && password.length <= 16);
+  };
+
+  const formReset = () => {
+    setEmail('');
+    setPassword('');
+  };
 
   return (
     <Container>
@@ -72,7 +80,10 @@ const AuthorizationForm = () => {
             зарегистрировавшись:
           </p>
           <div className={styles.emailBlock}>
-            <label htmlFor="AuthorizationForm__email">Электронная почта:</label>
+            <label htmlFor="AuthorizationForm__email">
+              {emailError && <span style={{ color: 'red' }}>*</span>}
+              Электронная почта:
+            </label>
             <input
               type="email"
               name="email"
@@ -80,12 +91,15 @@ const AuthorizationForm = () => {
               value={email}
               onChange={changeEmailValue}
               placeholder="your@email.com"
-              required
+              // required
             />
             <p className={styles.emailError}>{emailError}</p>
           </div>
           <div className={styles.passwordBlock}>
-            <label htmlFor="AuthorizationForm__password">Пароль:</label>
+            <label htmlFor="AuthorizationForm__password">
+              {passwordError && <span style={{ color: 'red' }}>*</span>}
+              Пароль:
+            </label>
             <input
               type="password"
               name="password"
@@ -95,7 +109,7 @@ const AuthorizationForm = () => {
               placeholder="Пароль"
               // minLength="4"
               // maxLength="16"
-              required
+              // required
             />
             <p className={styles.passwordError}>{passwordError}</p>
           </div>

@@ -11,7 +11,7 @@ const logInError = createAction('auth/logInError');
 const logOutRequest = createAction('auth/logOutRequest');
 const logOutSuccess = createAction('auth/logOutSuccess');
 const logOutError = createAction('auth/logOutError');
-
+// eslint-disable-next-line
 export default {
   signUpRequest,
   signUpSuccess,
