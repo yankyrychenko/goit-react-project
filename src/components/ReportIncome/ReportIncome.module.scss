@@ -1,0 +1,131 @@
+@import '../../styles/_mixins.scss';
+
+.ReportIncomeList {
+  display: flex;
+  align-self: center;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  //   width: 67%;
+  //   width: 282px;
+}
+
+.ReportIncomeItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //   width: 100px;
+  height: 140px;
+  //   margin-right: 25px;
+}
+
+// @if $range == mobile-only {
+//   @media (max-width: #{$tablet - 1}) {
+// .ReportIncomeItem:not(:last-child) {
+//   margin-right: 48px;
+// }
+
+//     .ReportIncomeItem::after {
+//       content: '';
+//       position: absolute;
+//       bottom: 0px;
+//       left: -14px;
+//       width: 93px;
+//       height: 1px;
+//       background-color: #e0e5eb;
+//       right: 0;
+//       margin: 0 auto;
+//       display: block;
+//     }
+//   }
+// }
+
+// ======mobile-only range======
+.ReportIncomeItem:not(:last-child) {
+  margin-right: 48px;
+}
+
+.ReportIncomeItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  width: 140px;
+  height: 1px;
+  background-color: #e0e5eb;
+  margin: 0 auto;
+  display: block;
+}
+// ================================
+
+.ReportIncomeAmount {
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #52555f;
+}
+
+.ReportIncomeBtn {
+  width: 59px;
+  height: 46px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f5f6fb;
+  //   background-color: orange;
+  border: none;
+}
+
+.ReportIncomeBtn:hover {
+  background-color: #ffdac0;
+}
+
+// .isActiveButton {
+//   background-color: #ffdac0;
+// }
+
+.ReportIncomeIcon {
+  width: 48px;
+  height: 56px;
+  //   pointer-events: none;
+  fill: #071f41;
+}
+
+.ReportIncomeIcon:hover {
+  fill: #ff751d;
+}
+
+.ReportIncomeTitle {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-top: 17px;
+
+  color: #52555f;
+}
+
+@include for-size(tablet) {
+  .ReportIncomeList {
+    width: 188px;
+    margin: 0 auto;
+  }
+
+  .ReportIncomeItem:not(:last-child) {
+    margin-right: 48px;
+  }
+}
+
+@include for-size(desktop) {
+}
