@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 // Components
 import Header from './components/Header/Header';
-import MonthCalendar from './components/MonthCalendar/MonthCalendar';
 import { routes } from './routes/routes';
 
 const AuthorizationView = lazy(() =>
