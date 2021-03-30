@@ -1,0 +1,45 @@
+@import 'react-calendar/dist/Calendar.css';
+
+.react-calendar__viewContainer,
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  display: none;
+}
+.react-calendar__navigation__label {
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.react-calendar {
+  border: none;
+}
+.react-calendar__navigation {
+  display: inline !important;
+  align-items: center;
+}
+.react-calendar__navigation__prev-button {
+  width: 15px !important;
+  min-width: 0 !important;
+
+  height: 10px;
+  font-size: 0;
+  padding-top: 7px;
+
+  background: url(../../img/arrow-left.svg) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.react-calendar__navigation__next-button {
+  width: 15px !important;
+  min-width: 0 !important;
+
+  height: 10px;
+  font-size: 0;
+  padding-top: 10px;
+  background: url(../../img/arrow-right.svg) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.react-calendar__navigation__label {
+  width: 120px;
+}
