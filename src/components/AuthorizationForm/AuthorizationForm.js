@@ -80,7 +80,10 @@ const AuthorizationForm = () => {
             зарегистрировавшись:
           </p>
           <div className={styles.emailBlock}>
-            <label htmlFor="AuthorizationForm__email">Электронная почта:</label>
+            <label htmlFor="AuthorizationForm__email">
+              {emailError && <span style={{ color: 'red' }}>*</span>}
+              Электронная почта:
+            </label>
             <input
               type="email"
               name="email"
@@ -93,7 +96,10 @@ const AuthorizationForm = () => {
             <p className={styles.emailError}>{emailError}</p>
           </div>
           <div className={styles.passwordBlock}>
-            <label htmlFor="AuthorizationForm__password">Пароль:</label>
+            <label htmlFor="AuthorizationForm__password">
+              {passwordError && <span style={{ color: 'red' }}>*</span>}
+              Пароль:
+            </label>
             <input
               type="password"
               name="password"
