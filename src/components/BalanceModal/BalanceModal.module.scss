@@ -1,0 +1,32 @@
+@import '../../styles/_variables.scss';
+
+.balanceModal {
+  position: relative;
+  border-radius: 30px;
+  padding: 30px 25px;
+  width: 282px;
+background: rgb(3, 22, 52);
+background: linear-gradient(297deg, rgba(3, 22, 52, 1) 70%, rgba(4, 16, 43, 0.7917542016806722) 100%);
+}
+
+.text {
+  width: 232px;
+  color :$white-color;
+  font-size: 14px;
+}
+
+.text:first-child {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.triangleUp {
+  position: absolute;
+bottom: 123px;
+left: 57px;
+ border: 10px solid transparent;
+border-bottom: 13px solid rgba(3, 22, 52, 1);
+display: block;
+width: 0;
+height: 0;
+}
