@@ -1,0 +1,15 @@
+@import '../../styles/_mixins.scss';
+
+header {
+  background-color: white;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 19px;
+
+  @include for-size(tablet) {
+    padding: 0 26px;
+  }
+}
