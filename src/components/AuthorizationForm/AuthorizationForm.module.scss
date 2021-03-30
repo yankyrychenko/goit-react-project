@@ -97,6 +97,7 @@
   & input {
     font-size: 14px;
     min-height: 52px;
+    margin: 0 0 8px 0;
     padding: 0 20px;
     border: none;
     border-radius: 30px;
@@ -109,11 +110,22 @@
 }
 
 .emailBlock {
-  margin-bottom: 30px;
+  margin-bottom: 8px;
 }
 
 .passwordBlock {
-  margin-bottom: 40px;
+  margin-bottom: 18px;
+}
+
+.emailError,
+.passwordError {
+  font-size: 10px;
+  color: red;
+  min-height: 14px;
+
+  @include for-size(tablet) {
+    font-size: 12px;
+  }
 }
 
 .buttonsBlock {
