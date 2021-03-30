@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // Components
 import UserMenu from './UserMenu/UserMenu';
 // Styles
-import './Header.module.scss';
+import styles from './Header.module.scss';
 // Others
 import { routes } from '../../routes/routes';
 import sprite from '../../img/sprite.svg';
@@ -13,7 +13,7 @@ const Header = () => {
   // const isAuthenticated = useSelector(state => Boolen(state.auth.token));
 
   return (
-    <header>
+    <header className={styles.Header}>
       <Link to={routes.home} className="logo">
         <svg width="90" height="31">
           <use href={sprite + '#icon-logo'}></use>
