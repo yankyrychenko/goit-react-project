@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// Components
+import Container from '../Container/Container';
 
 const Header = () => {
   return (
-    <header>
-      <Link></Link>
-    </header>
+    <Container>
+      <header>
+        <Link></Link>
+      </header>
+    </Container>
   );
 };
 

@@ -7,12 +7,8 @@ import AuthorizationForm from './components/AuthorizationForm/AuthorizationForm'
 export default function App() {
   return (
     <>
-      <Container>
-        <Header />
-      </Container>
-      <Container>
-        <AuthorizationForm />
-      </Container>
+      <Header />
+      <AuthorizationForm />
     </>
   );
 }
