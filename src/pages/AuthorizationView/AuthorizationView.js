@@ -1,5 +1,10 @@
 import React from 'react';
+import AuthorizationForm from '../../components/AuthorizationForm/AuthorizationForm';
 
-const AuthorizationView = () => <></>;
+const AuthorizationView = () => (
+  <>
+    <AuthorizationForm />
+  </>
+);
 
 export default AuthorizationView;
