@@ -9,6 +9,8 @@ export default function App() {
     <>
       <Container>
         <Header />
+      </Container>
+      <Container>
         <AuthorizationForm />
       </Container>
     </>
