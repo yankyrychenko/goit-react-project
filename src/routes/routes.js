@@ -1,6 +1,6 @@
 export const routes = {
   auth: '/authorization',
   income: '/income',
-  expences: '/expences',
+  expense: '/expense',
   stats: '/statistics',
 };
