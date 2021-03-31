@@ -14,7 +14,7 @@ const StatementBar = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(periodDate.getPeriodData('2020-04'));
-    }, 3000);
+    }, 6000);
   }, []);
 
   const incomeTotal = useSelector(getIncomeTotal);
@@ -24,10 +24,12 @@ const StatementBar = () => {
   return (
     <div className={styles.wrap}>
       <ul className={styles.statementBar}>
-        <li className={styles.statementBarItem}>
+        <li className={`${styles.statementBarItem} `}>
           <div className={styles.containerDetails}>
             <h2 className={styles.statementBarTitle}>Расходы:</h2>
-            <div className={styles.expensesAmount}>- {expenseTotal} грн.</div>
+            <div className={styles.expensesAmount}>
+              &#45; {expenseTotal} грн.
+            </div>
           </div>
         </li>
         <li
@@ -35,7 +37,7 @@ const StatementBar = () => {
         >
           <div className={styles.containerDetails}>
             <h2 className={styles.statementBarTitle}>Доходы:</h2>
-            <div className={styles.incomeAmount}>+ {incomeTotal} грн.</div>
+            <div className={styles.incomeAmount}>&#43; {incomeTotal} грн.</div>
           </div>
         </li>
       </ul>

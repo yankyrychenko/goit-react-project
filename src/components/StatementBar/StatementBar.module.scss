@@ -47,6 +47,7 @@
 .statementBarItem {
   flex-basis: 50%;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -62,10 +63,12 @@
 
 .statementBarItemBorder {
   border-left: 1px solid #e0e5eb;
+  justify-content: flex-start;
 }
 
 .containerDetails {
-  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
   @include for-size(tablet) {
     display: flex;
     align-items: baseline;
