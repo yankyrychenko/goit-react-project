@@ -7,6 +7,7 @@ import expenseReducer from './reducers/expenseReducers';
 import categoriesReducer from './reducers/categoriesReducers';
 import periodDataReducer from './reducers/periodDataReducers';
 import error from './error';
+import loadingReducer from './isLoading';
 
 const authPersistConfig = {
   key: 'auth',
@@ -16,12 +17,12 @@ const authPersistConfig = {
 
 export default combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  transactions: {
+  transactions: combineReducers({
     income: incomeReducer,
     expense: expenseReducer,
-  },
+  }),
   categories: categoriesReducer,
   periodData: periodDataReducer,
   error,
-  isLoading: false,
+  isLoading: loadingReducer,
 });
