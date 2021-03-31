@@ -29,7 +29,8 @@ const transactionDelete = transactionId =>
   axios.delete(`/transaction/${transactionId}`);
 const incomeCategoriesGet = () => axios.get('/transaction/income-categories');
 const expenseCategoriesGet = () => axios.get('/transaction/expense-categories');
-const periodDataGet = date => axios.get('/transaction/period-data', date);
+const periodDataGet = date =>
+  axios.get(`/transaction/period-data?date=${date}`);
 
 /* USER */
 const balancePatch = balance => axios.patch('/user/balance', balance);
