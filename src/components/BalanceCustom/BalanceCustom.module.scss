@@ -1,9 +1,5 @@
 @import '../../styles/_variables.scss';
 @import '../../styles/_mixins.scss';
-.balanceWrapper {
-
-  background-color:#F5F6FB ;
-}
 .balanceText {
   margin-bottom: 6px;
 }
@@ -13,13 +9,13 @@
 }
 .balanceText {
   text-align: center;
-color: $primary-text-color;
+  color: $primary-text-color;
 }
 
 .balanceForm {
   margin: 0 auto;
   max-width: 280px;
- position: relative;
+  position: relative;
 }
 
 .balanceInput {
@@ -29,7 +25,7 @@ color: $primary-text-color;
   width: 115px;
   padding: 12px ;
   border: 2px solid white;
-   border-right: 1px solid white;
+  border-right: 1px solid white;
   background-color: #F5F6FB;
   border-top-left-radius:  20px ;
   border-bottom-left-radius: 20px;
@@ -68,10 +64,12 @@ transition: ease 0.3s;
   background-color: $primary-orange-color;
 }
 
+
+
 @include for-size(tablet) {
 .balanceWrapper {
   padding-top: 40px;
-  width: 635px;
+width: 635px;
   display: flex;
   margin: 0 auto;
    align-items: baseline;
@@ -88,3 +86,8 @@ transition: ease 0.3s;
 }
 }
 
+@include for-size(tablet) {
+  .balanceWrapper {
+    width: 369px;
+  }
+}
