@@ -12,7 +12,7 @@ import loadingReducer from './isLoading';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isAuthenticated'],
 };
 
 export default combineReducers({

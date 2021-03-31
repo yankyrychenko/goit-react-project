@@ -32,7 +32,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -43,7 +43,11 @@ export default function App() {
             <AuthorizationView />
           </PublicRoute>
 
-          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
+          <PrivateRoute
+            exact={true}
+            path={routes.home}
+            redirectTo={routes.auth}
+          >
             <HomeView />
           </PrivateRoute>
 

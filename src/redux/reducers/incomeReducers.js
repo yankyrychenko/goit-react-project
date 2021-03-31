@@ -1,7 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
+import actions from '../actions/incomeActions';
 
-const intialState = {};
+const incomeReducer = createReducer([], {
+  [actions.incomeGetSuccess]: (_, { payload }) => payload,
+});
 
-const incomeReducers = createReducer(intialState, {});
-
-export default incomeReducers;
+export default incomeReducer;
