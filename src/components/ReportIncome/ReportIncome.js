@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import styles from '../ReportIncome/ReportIncome.module.scss';
 import Container from '../Container/Container';
-import sprite from '../../img/sprite.svg';
+// import sprite from '../../img/sprite.svg';
+import incomeSprite from '../ReportIncome/incomeSprite.svg';
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
+import CategoriesName from './CategoriesName';
 
 const ReportIncome = () => {
-  const [categories, setCategories] = useState(['З/П', 'Доп. доход']);
+  const [categories, setCategories] = useState([]);
+
+  const getCurrentCategory = name => {
+    return CategoriesName.find(({ category }) => {
+      return category === name;
+    });
+  };
+
   return (
     <>
       <ReportExpenseIncomeToggler />
@@ -14,10 +23,10 @@ const ReportIncome = () => {
         <h1 style={{ color: 'green', textAlign: 'center' }}>Доходы</h1>
 
         <ul className={styles.ReportIncomeList}>
-          {categories.map(({ category, id, amount }) => (
-            <li name={category} key={id} className={styles.ReportIncomeItem}>
+          {CategoriesName.map(({ category, _id, amount }) => (
+            <li name={category} key={_id} className={styles.ReportIncomeItem}>
               <p name={category} className={styles.ReportIncomeAmount}>
-                45000.00 {amount}
+                {amount}
               </p>
               <button
                 type="button"
@@ -26,11 +35,18 @@ const ReportIncome = () => {
                 // onClick={}
               >
                 <svg className={styles.ReportIncomeIcon}>
-                  <use href={sprite + '#icon-invoice-1'}></use>
+                  <use
+                    href={`${incomeSprite}#${
+                      getCurrentCategory(category).name
+                    }`}
+                  />
                 </svg>
+                {/* <svg className={styles.ReportIncomeIcon}>
+                  <use href={sprite + '#icon-invoice-1'}></use>
+                </svg> */}
               </button>
               <h3 name={category} className={styles.ReportIncomeTitle}>
-                З/П{category}
+                {category}
               </h3>
             </li>
           ))}

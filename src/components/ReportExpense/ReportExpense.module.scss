@@ -17,9 +17,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  //   width: 100px;
+  width: 90px;
   height: 140px;
-  //   margin-right: 25px;
+  margin-right: 25px;
 }
 
 // @if $range == mobile-only {
@@ -45,7 +45,7 @@
 
 // ======mobile-only range======
 .ReportExpenseItem:not(:nth-child(3n-3)) {
-  margin-right: 25px;
+  margin-right: 5px;
 }
 
 .ReportExpenseItem::after {
@@ -114,6 +114,7 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   margin-top: 17px;
+  // width: 90px;
 
   color: #52555f;
 }

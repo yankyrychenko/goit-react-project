@@ -1,13 +1,21 @@
-import React, { Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
-// Components
+import React, { Suspense, lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
-import { routes } from './routes/routes';
+import { routes, PublicRoute, PrivateRoute } from './routes';
+import authOperations from './redux/operations/authOperations';
+
+import ReportExpense from './components/ReportExpense/ReportExpense';
+import ReportIncome from './components/ReportIncome/ReportIncome';
 
 const AuthorizationView = lazy(() =>
   import(
     './pages/AuthorizationView' /* webpackChunkName: "AuthorizationView" */
   ),
+);
+
+const HomeView = lazy(() =>
+  import('./pages/HomeView' /* webpackChunkName: "HomeView" */),
 );
 
 const ExpenseView = lazy(() =>
@@ -23,16 +31,40 @@ const StatisticsView = lazy(() =>
 );
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, []);
+
   return (
     <>
       <Header />
 
+      {/* <ReportExpense /> */}
+      <ReportIncome />
+
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
-          <Route exact path="/" component={AuthorizationView} />
-          <Route exact path={routes.expense} component={ExpenseView} />
-          <Route exact path={routes.income} component={IncomeView} />
-          <Route exact path={routes.stats} component={StatisticsView} />
+          <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
+            <AuthorizationView />
+          </PublicRoute>
+
+          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
+            <HomeView />
+          </PrivateRoute>
+
+          <PrivateRoute path={routes.expense} redirectTo={routes.auth}>
+            <ExpenseView />
+          </PrivateRoute>
+
+          <PrivateRoute path={routes.income} redirectTo={routes.auth}>
+            <IncomeView />
+          </PrivateRoute>
+
+          <PrivateRoute path={routes.stats} redirectTo={routes.auth}>
+            <StatisticsView />
+          </PrivateRoute>
         </Switch>
       </Suspense>
     </>

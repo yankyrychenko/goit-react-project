@@ -1,5 +1,10 @@
 import React from 'react';
-
-const StatisticsView = () => <></>;
+import Stats from '../../components/Stats/Sats';
+import Container from '../../components/Container'
+const StatisticsView = () => <>
+<Container>
+        <Stats />
+        </Container>
+</>;
 
 export default StatisticsView;
