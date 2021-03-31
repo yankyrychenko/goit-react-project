@@ -38,5 +38,24 @@ const handleLogOut = () => dispatch => {
     })
     .catch(error => dispatch(authActions.logOutError(error.message)));
 };
+
+const getCurrentUser = () => (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+
+  if (persistedToken) {
+    api.token.set(persistedToken);
+
+    dispatch(authActions.getCurrentUserRequest());
+
+    api
+      .userDataGet()
+      .then(({ data }) => {
+        dispatch(authActions.getCurrentUserSuccess(data));
+      })
+      .catch(error => dispatch(authActions.getCurrentUserError(error.message)));
+  }
+};
 // eslint-disable-next-line
-export default { handleSignUp, handleLogIn, handleLogOut };
+export default { handleSignUp, handleLogIn, handleLogOut, getCurrentUser };

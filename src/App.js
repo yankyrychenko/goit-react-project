@@ -1,7 +1,10 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 // Components
 import Header from './components/Header/Header';
+// Operations
+import authOperations from './redux/operations/authOperations';
 // Others
 import { routes } from './routes/routes';
 
@@ -24,6 +27,12 @@ const StatisticsView = lazy(() =>
 );
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, []);
+
   return (
     <>
       <Header />
