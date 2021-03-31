@@ -7,7 +7,6 @@ import periodData from './actions/periodDataActions';
 import transactionDelete from './actions/transactionDeleteActions';
 
 const intialState = null;
-
 const errorReducer = createReducer(intialState, {
   [auth.signUpError]: (_, { payload }) => payload,
   [auth.logInError]: (_, { payload }) => payload,
