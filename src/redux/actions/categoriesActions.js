@@ -8,6 +8,7 @@ const expenseCategRequest = createAction('auth/expenseCategRequest');
 const expenseCategSuccess = createAction('auth/expenseCategSuccess');
 const expenseCategError = createAction('auth/expenseCategError');
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   incomeCategRequest,
   incomeCategSuccess,

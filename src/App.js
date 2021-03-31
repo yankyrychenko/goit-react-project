@@ -37,14 +37,17 @@ export default function App() {
   return (
     <>
       <Header />
-
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
           <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
             <AuthorizationView />
           </PublicRoute>
 
-          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
+          <PrivateRoute
+            exact={true}
+            path={routes.home}
+            redirectTo={routes.auth}
+          >
             <HomeView />
           </PrivateRoute>
 
