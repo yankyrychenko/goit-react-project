@@ -21,8 +21,7 @@
 
 .googleAuthBlock {
   text-align: center;
-  margin-bottom: 30px;
-  padding: 0 10px;
+  margin: 0 10px 30px;
 
   @include for-size(tablet) {
     text-align: left;
@@ -67,7 +66,7 @@
 }
 
 .authBlock {
-  padding: 0 10px;
+  margin: 0 10px 18px;
 }
 
 .authText {
@@ -111,10 +110,6 @@
 
 .emailBlock {
   margin-bottom: 8px;
-}
-
-.passwordBlock {
-  margin-bottom: 18px;
 }
 
 .emailError,
