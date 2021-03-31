@@ -18,14 +18,14 @@ Number.prototype.format = function (n, x, s, c) {
 };
 
 const StatementBar = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   //Имитация запроса на бек. Завернуто в setTimeout потому-что запрос выполняется раньше, чем приходит токен
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(periodDate.getPeriodData('2020-04'));
-    }, 3000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(periodDate.getPeriodData('2020-04'));
+  //   }, 3000);
+  // }, []);
 
   const incomeTotal = useSelector(getIncomeTotal);
 

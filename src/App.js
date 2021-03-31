@@ -4,7 +4,6 @@ import { Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import { routes, PublicRoute, PrivateRoute } from './routes';
 import authOperations from './redux/operations/authOperations';
-import StatementBar from './components/StatementBar/StatementBar';
 
 const AuthorizationView = lazy(() =>
   import(
@@ -38,7 +37,6 @@ export default function App() {
   return (
     <>
       <Header />
-      <StatementBar/>
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
           <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
