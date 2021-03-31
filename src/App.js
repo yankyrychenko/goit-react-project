@@ -37,7 +37,6 @@ export default function App() {
   return (
     <>
       <Header />
-
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
           <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
