@@ -8,7 +8,7 @@ import styles from './Header.module.scss';
 // Selectors
 import { getIsAuthenticated } from '../../redux/selectors/authSelectors';
 // Others
-import { routes } from '../../routes/routes';
+import { routes } from '../../routes';
 import sprite from '../../img/sprite.svg';
 
 const Header = () => {

@@ -7,7 +7,7 @@ import authOperations from '../../../redux/operations/authOperations';
 // Selectors
 import { getUserEmail } from '../../../redux/selectors/authSelectors';
 // Others
-import { routes } from '../../../routes/routes';
+import { routes } from '../../../routes';
 import sprite from '../../../img/sprite.svg';
 
 const UserMenu = () => {
