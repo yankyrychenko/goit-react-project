@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
+import expenseActions from '../actions/expenseActions';
 
 const userInitialState = { email: null };
 const user = createReducer(userInitialState, {
@@ -8,19 +9,20 @@ const user = createReducer(userInitialState, {
   [authActions.logInSuccess]: (_, { payload }) => payload.userData,
   [authActions.logOutSuccess]: () => userInitialState,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  // [authActions.googleLoginSuccess]: (_, { payload }) => payload,
 });
 
 const tokenInitialState = null;
 const token = createReducer(tokenInitialState, {
-  [authActions.signUpSuccess]: (_, { payload }) => payload, //! не приходит же токен
   [authActions.logInSuccess]: (_, { payload }) => payload.accessToken,
   [authActions.logOutSuccess]: () => tokenInitialState,
-  // [authActions.getCurrentUserSuccess]: () => ??? //! не приходит токен
+  [authActions.setGoogleToken]: (_, { payload }) => payload,
 });
 
 const isAuthenticated = createReducer(false, {
   [authActions.signUpSuccess]: () => true,
   [authActions.logInSuccess]: () => true,
+  [expenseActions.expenseGetSuccess]: () => true,
   [authActions.logOutSuccess]: () => false,
   [authActions.getCurrentUserSuccess]: () => true,
 });
