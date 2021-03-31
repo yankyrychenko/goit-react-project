@@ -41,11 +41,11 @@ const handleLogOut = () => dispatch => {
 
 const getCurrentUser = () => (dispatch, getState) => {
   const {
-    auth: { token: persistedToken },
+    auth: { token },
   } = getState();
 
-  if (persistedToken) {
-    api.token.set(persistedToken);
+  if (token) {
+    api.token.set(token);
 
     dispatch(authActions.getCurrentUserRequest());
 
