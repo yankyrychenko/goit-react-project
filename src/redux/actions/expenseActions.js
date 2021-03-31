@@ -8,6 +8,7 @@ const expensePostRequest = createAction('auth/expensePostRequest');
 const expensePostSuccess = createAction('auth/expensePostSuccess');
 const expensePostError = createAction('auth/expensePostError');
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   expenseGetRequest,
   expenseGetSuccess,
