@@ -6,7 +6,7 @@ const getPeriodData = date => async dispatch => {
   //   console.log(resp);
   try {
     const resp = await api.periodDataGet(date);
-    // console.log(resp.data);
+    console.log(resp.data);
     dispatch(actions.periodDataGetSuccess(resp.data));
   } catch (error) {
     dispatch(actions.periodDataGetError());
