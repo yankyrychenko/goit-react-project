@@ -2,7 +2,6 @@ import React from 'react';
 import GoToReport  from './components/GoToReport/GoToReport'
 import Container from './components/Container';
 import BalanceCustom from './components/BalanceCustom/BalanceCustom';
-import BalanceModal from './components/BalanceModal/BalanceModal';
 
 export default function App() {
   return (
@@ -10,7 +9,6 @@ export default function App() {
       <Container>
         <GoToReport />
         <BalanceCustom />
-        <BalanceModal/>
       </Container>
     </>
   );
