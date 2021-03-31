@@ -7,6 +7,12 @@ input::-webkit-inner-spin-button {
 }
 .form {
   text-align: center;
+  position: relative;
+  @include for-size(desktop) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .defaultOption {
   display: none;
@@ -60,15 +66,32 @@ input::-webkit-inner-spin-button {
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
   border-bottom-right-radius: 16px;
+
+  @include for-size(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    border: 2px solid $primary-gray-color;
+  }
 }
 
 .label {
   padding-left: 21px;
   padding-right: 21px;
 
+  @include for-size(tablet) {
+    border-right: 2px solid $primary-gray-color;
+  }
+
   &Select {
-    @extend .label;
+    padding-left: 21px;
+    padding-right: 21px;
     border-top: 2px solid $white-color;
+    @include for-size(tablet) {
+      border-top: none;
+      border-right: 2px solid $primary-gray-color;
+      width: 211px;
+    }
   }
 }
 
@@ -78,6 +101,20 @@ input::-webkit-inner-spin-button {
   background-color: $primary-gray-color;
   border-bottom-left-radius: 80px;
   margin-bottom: 40px;
+
+  @include for-size(tablet) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    margin-bottom: 0;
+  }
+
+  @include for-size(desktop) {
+    margin-right: 27px;
+  }
 }
 
 .inputNumberContainer {
@@ -89,6 +126,14 @@ input::-webkit-inner-spin-button {
   border-radius: 22px;
 
   max-width: 185px;
+
+  &TD {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
 }
 
 .inputNumber {
@@ -115,7 +160,24 @@ input::-webkit-inner-spin-button {
     color: $black-color;
     text-align: right;
   }
+
+  &TD {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    max-width: 50px;
+    background-color: transparent;
+
+    border: none;
+
+    &::placeholder {
+      color: $secondaty-text-color;
+    }
+  }
 }
+
 .labelNumber {
   border-right: 2px solid $white-color;
   padding-right: 20px;

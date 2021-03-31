@@ -1,57 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useWindowSize } from 'react-use-size';
 import style from './BalanceForm.module.scss';
 import sprite from '../../img/sprite.svg';
+import customStyles from './ReactSelectStyles';
+import 'react-calendar/dist/Calendar.css';
+import CustomCalendar from '../CustomCalendar/CustomCalendar';
+import Select from 'react-select';
 
 const BalanceForm = () => {
+  const { width } = useWindowSize();
+  const [chosenDate, setChosenDate] = useState('');
+
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
+
+  const getDate = data => {
+    setChosenDate(data);
+  };
+
   return (
-    <form className={style.form}>
-      <div className={style.test}>
-        <div className={style.labelsContainer}>
-          <label className={style.label}>
-            <input
-              className={style.input}
-              type="text"
-              placeholder="Описание товара"
-            />
-          </label>
-          <label className={style.labelSelect}>
-            <select className={style.select}>
-              <option
-                value="default-option-name"
-                selected
-                disabled
-                className={style.defaultOption}
-              >
-                Название категории
-              </option>
-              <option value="" className={style.option}>
-                Доход
-              </option>
-            </select>
-          </label>
-        </div>
-        <div className={style.inputNumberContainer}>
-          <label className={style.labelNumber}>
-            <input
-              className={style.inputNumber}
-              type="number"
-              placeholder="00.00 UAH"
-            />
-          </label>
-          <div className={style.svgContainer}>
-            <svg width="20" height="20" className={style.svg}>
-              <use href={sprite + '#icon-calculator'}></use>
-            </svg>
+    <>
+      <form className={style.form}>
+        <div className={style.test}>
+          {width > 767 && <CustomCalendar getDate={getDate} />}
+          <div className={style.labelsContainer}>
+            <label className={style.label}>
+              <input
+                className={style.input}
+                type="text"
+                placeholder="Описание товара"
+              />
+            </label>
+            <label className={style.labelSelect}>
+              <Select
+                options={options}
+                styles={customStyles}
+                placeholder={'Категория товара'}
+                components={{
+                  IndicatorSeparator: () => null,
+                }}
+                isSearchable={false}
+                onChange={e => console.log(e)}
+              />
+            </label>
+            {window.screen.width > 767 && (
+              <div className={style.inputNumberContainerTD}>
+                <label className={style.labelNumberTD}>
+                  <input
+                    className={style.inputNumberTD}
+                    type="number"
+                    placeholder="00,00"
+                  />
+                </label>
+                <div className={style.svgContainerTD}>
+                  <svg width="20" height="20" className={style.svg}>
+                    <use href={sprite + '#icon-calculator'}></use>
+                  </svg>
+                </div>
+              </div>
+            )}
           </div>
+          {width <= 767 && (
+            <div className={style.inputNumberContainer}>
+              <label className={style.labelNumber}>
+                <input
+                  className={style.inputNumber}
+                  type="number"
+                  placeholder="00.00 UAH"
+                />
+              </label>
+              <div className={style.svgContainer}>
+                <svg width="20" height="20" className={style.svg}>
+                  <use href={sprite + '#icon-calculator'}></use>
+                </svg>
+              </div>
+            </div>
+          )}
         </div>
-      </div>
-      <button type="submit" className={style.buttonSubmit}>
-        Ввод
-      </button>
-      <button type="button" className={style.buttonClear}>
-        Очистить
-      </button>
-    </form>
+        <div className={style.buttonContainer}>
+          <button type="submit" className={style.buttonSubmit}>
+            Ввод
+          </button>
+          <button type="button" className={style.buttonClear}>
+            Очистить
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 
