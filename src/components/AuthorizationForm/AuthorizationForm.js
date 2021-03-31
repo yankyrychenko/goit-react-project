@@ -61,7 +61,7 @@ const AuthorizationForm = () => {
   };
 
   return (
-    <Container>
+    <>
       <form className={styles.AuthorizationForm} onSubmit={onSubmit}>
         <div className={styles.googleAuthBlock}>
           <p className={styles.googleAuthText}>
@@ -123,7 +123,7 @@ const AuthorizationForm = () => {
           </button>
         </div>
       </form>
-    </Container>
+    </>
   );
 };
 
