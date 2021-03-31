@@ -1,5 +1,12 @@
 import React from 'react';
+import Container from '../../components/Container';
 
-const ExpenseView = () => <></>;
+const ExpenseView = () => (
+  <>
+    <main>
+      <Container></Container>
+    </main>
+  </>
+);
 
 export default ExpenseView;
