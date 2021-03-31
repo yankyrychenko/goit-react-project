@@ -43,11 +43,7 @@ export default function App() {
             <AuthorizationView />
           </PublicRoute>
 
-          <PrivateRoute
-            exact={true}
-            path={routes.home}
-            redirectTo={routes.auth}
-          >
+          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
             <HomeView />
           </PrivateRoute>
 

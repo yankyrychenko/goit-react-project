@@ -1,7 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
+import actions from '../actions/categoriesActions';
 
-const intialState = {};
+const categories = createReducer([], {
+  [actions.incomeCategSuccess]: (_, { payload }) => payload,
+  [actions.expenseCategSuccess]: (_, { payload }) => payload,
+});
 
-const categoriesReducers = createReducer(intialState, {});
-
-export default categoriesReducers;
+export default categories;
