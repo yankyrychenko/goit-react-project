@@ -1,0 +1,8 @@
+@import '../../styles/mixins';
+
+.authContainer {
+  @include for-size(desktop) {
+    display: flex;
+    align-items: center;
+  }
+}
