@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Container from '../Container';
 import styles from './MonthCalendar.module.scss';
 import sprite from '../../img/sprite.svg';
+import operations from '../../redux/operations/periodDataOperations';
 
 const MonthCalendar = () => {
   const [date, setDate] = useState(new Date());
+  const dispatch = useDispatch();
 
   useEffect(() => {
     date.setMonth(date.getMonth() - 1);
+    dispatch(operations.getPeriodData(formatDate(date)));
   }, []);
   const referenceDate = date;
 
@@ -18,12 +22,13 @@ const MonthCalendar = () => {
   const setNextMonth = () => {
     referenceDate.setMonth(referenceDate.getMonth() + 1);
     setDate(new Date(referenceDate));
-    formatDate(date);
+    dispatch(operations.getPeriodData(formatDate(date)));
   };
 
   const setPrevMonth = () => {
     referenceDate.setMonth(referenceDate.getMonth() - 1);
     setDate(new Date(referenceDate));
+    dispatch(operations.getPeriodData(formatDate(date)));
   };
 
   function formatDate(date) {
@@ -35,7 +40,6 @@ const MonthCalendar = () => {
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
     let result = [year, month].join('-');
-    // console.log(result);
     return result;
   }
 
