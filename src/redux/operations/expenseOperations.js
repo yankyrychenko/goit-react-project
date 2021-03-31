@@ -4,8 +4,8 @@ import api from '../../services/kapusta-api';
 const handleExpensePost = data => dispatch => {
   dispatch(actions.expensePostRequest());
 
-  api()
-    .incomePost(data)
+  api
+    .expensePost(data)
     .then(({ data }) => dispatch(actions.expensePostSuccess(data)))
     .catch(error => dispatch(actions.expensePostError(error.message)));
 };
@@ -13,8 +13,8 @@ const handleExpensePost = data => dispatch => {
 const handleExpenseGet = () => dispatch => {
   dispatch(actions.expenseGetRequest());
 
-  api()
-    .incomePost()
+  api
+    .expenseGet()
     .then(({ data }) => dispatch(actions.expenseGetSuccess(data)))
     .catch(error => dispatch(actions.expenseGetError(error.message)));
 };

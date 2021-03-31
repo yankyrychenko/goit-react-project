@@ -1,7 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
+import actions from '../actions/expenseActions';
 
-const intialState = {};
+const expenseReducer = createReducer([], {
+  [actions.expenseGetSuccess]: (_, { payload }) => payload,
+});
 
-const expenseReducers = createReducer(intialState, {});
-
-export default expenseReducers;
+export default expenseReducer;

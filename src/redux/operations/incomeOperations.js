@@ -1,10 +1,10 @@
-import actions from '../actions/authActions';
+import actions from '../actions/incomeActions';
 import api from '../../services/kapusta-api';
 
 const handleIncomePost = data => dispatch => {
   dispatch(actions.incomePostRequest());
 
-  api()
+  api
     .incomePost(data)
     .then(({ data }) => dispatch(actions.incomePostSuccess(data)))
     .catch(error => dispatch(actions.incomePostError(error.message)));
@@ -13,8 +13,8 @@ const handleIncomePost = data => dispatch => {
 const handleIncomeGet = () => dispatch => {
   dispatch(actions.incomeGetRequest());
 
-  api()
-    .incomePost()
+  api
+    .incomeGet()
     .then(({ data }) => dispatch(actions.incomeGetSuccess(data)))
     .catch(error => dispatch(actions.incomeGetError(error.message)));
 };

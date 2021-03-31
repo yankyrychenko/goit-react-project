@@ -4,7 +4,7 @@ import api from '../../services/kapusta-api';
 const handleIncomeCategGet = () => dispatch => {
   dispatch(actions.incomeCategRequest());
 
-  api()
+  api
     .incomeCategoriesGet()
     .then(({ data }) => dispatch(actions.incomeCategSuccess(data)))
     .catch(error => dispatch(actions.incomeCategError(error.message)));
@@ -13,7 +13,7 @@ const handleIncomeCategGet = () => dispatch => {
 const handleExpenseCategGet = () => dispatch => {
   dispatch(actions.expenseCategRequest());
 
-  api()
+  api
     .expenseCategoriesGet()
     .then(({ data }) => dispatch(actions.expenseCategSuccess(data)))
     .catch(error => dispatch(actions.expenseCategError(error.message)));
