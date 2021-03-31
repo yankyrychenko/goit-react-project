@@ -3,7 +3,7 @@ import Container from '../Container';
 import styles from './MonthCalendar.module.scss';
 import sprite from '../../img/sprite.svg';
 
-const MonthArrows = () => {
+const MonthCalendar = () => {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -69,4 +69,4 @@ const MonthArrows = () => {
   );
 };
 
-export default MonthArrows;
+export default MonthCalendar;
