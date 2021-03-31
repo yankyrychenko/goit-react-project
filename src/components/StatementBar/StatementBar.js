@@ -8,7 +8,7 @@ const StatementBar = () => {
         <li className={styles.statementBarItem}>
           <div className={styles.containerDetails}>
             <h2 className={styles.statementBarTitle}>Расходы:</h2>
-            <div className={styles.expensesAmount}>-18 000.00 грн.</div>
+            <div className={styles.expensesAmount}>- 18 000.00 грн.</div>
           </div>
         </li>
         <li
@@ -16,7 +16,7 @@ const StatementBar = () => {
         >
           <div className={styles.containerDetails}>
             <h2 className={styles.statementBarTitle}>Доходы:</h2>
-            <div className={styles.incomeAmount}>+45 000.00 грн.</div>
+            <div className={styles.incomeAmount}>+ 45 000.00 грн.</div>
           </div>
         </li>
       </ul>

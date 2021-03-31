@@ -45,9 +45,6 @@
   flex-basis: 50%;
   display: flex;
   align-items: center;
-  @include for-size(tablet) {
-    display: block;
-  }
 }
 
 .statementBarTitle {
@@ -55,6 +52,9 @@
   padding: 5px;
   font-size: 14px;
   text-align: center;
+  @include for-size(tablet) {
+    padding-right: 12px;
+  }
 }
 
 .statementBarItemBorder {
@@ -63,4 +63,8 @@
 
 .containerDetails {
   margin: 0 auto;
+  @include for-size(tablet) {
+    display: flex;
+    align-items: baseline;
+  }
 }
