@@ -1,14 +1,16 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
-// Components
+import { Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
-// Others
-import { routes } from './routes/routes';
+import { routes, PublicRoute, PrivateRoute } from './routes';
 
 const AuthorizationView = lazy(() =>
   import(
     './pages/AuthorizationView' /* webpackChunkName: "AuthorizationView" */
   ),
+);
+
+const HomeView = lazy(() =>
+  import('./pages/HomeView' /* webpackChunkName: "HomeView" */),
 );
 
 const ExpenseView = lazy(() =>
@@ -30,10 +32,25 @@ export default function App() {
 
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
-          <Route exact path={routes.home} component={AuthorizationView} />
-          <Route exact path={routes.expense} component={ExpenseView} />
-          <Route exact path={routes.income} component={IncomeView} />
-          <Route exact path={routes.stats} component={StatisticsView} />
+          <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
+            <AuthorizationView />
+          </PublicRoute>
+
+          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
+            <HomeView />
+          </PrivateRoute>
+
+          <PrivateRoute path={routes.expense} redirectTo={routes.auth}>
+            <ExpenseView />
+          </PrivateRoute>
+
+          <PrivateRoute path={routes.income} redirectTo={routes.auth}>
+            <IncomeView />
+          </PrivateRoute>
+
+          <PrivateRoute path={routes.stats} redirectTo={routes.auth}>
+            <StatisticsView />
+          </PrivateRoute>
         </Switch>
       </Suspense>
     </>
