@@ -34,7 +34,7 @@ const periodDataGet = date => axios.get('/transaction/period-data', date);
 /* USER */
 const balancePatch = balance => axios.patch('/user/balance', balance);
 const userDataGet = () => axios.get('/user');
-
+// eslint-disable-next-line
 export default {
   token,
   signUp,

@@ -1,12 +1,14 @@
 import authActions from '../actions/authActions';
-import { token, signUp, logIn, logOut } from '../../services/kapusta-api';
+import api from '../../services/kapusta-api';
 
 const handleSignUp = credentials => dispatch => {
   dispatch(authActions.signUpRequest());
 
-  signUp(credentials)
+  api
+    .signUp(credentials)
     .then(({ data }) => {
-      token.set(data.token);
+      console.dir(data); // data = { email, id } //! почему нету токена надо узнать
+      api.token.set(data.token);
       dispatch(authActions.signUpSuccess(data));
     })
     .catch(error => dispatch(authActions.signUpError(error.message)));
@@ -15,23 +17,26 @@ const handleSignUp = credentials => dispatch => {
 const handleLogIn = credentials => dispatch => {
   dispatch(authActions.logInRequest());
 
-  logIn(credentials)
+  api
+    .logIn(credentials)
     .then(({ data }) => {
-      token.set(data.token);
-      dispatch(authActions.signUpSuccess(data));
+      console.dir(data); // data = { accessToken, refreshToken, sid, userData: { balance, email, id, transactions } }
+      api.token.set(data.accessToken);
+      dispatch(authActions.logInSuccess(data));
     })
-    .catch(error => dispatch(authActions.signUpError(error.message)));
+    .catch(error => dispatch(authActions.logInError(error.message)));
 };
 
 const handleLogOut = () => dispatch => {
   dispatch(authActions.logOutRequest());
 
-  logOut
+  api
+    .logOut()
     .then(() => {
-      token.unset();
+      api.token.unset();
       dispatch(authActions.logOutSuccess());
     })
     .catch(error => dispatch(authActions.logOutError(error.message)));
 };
-
+// eslint-disable-next-line
 export default { handleSignUp, handleLogIn, handleLogOut };
