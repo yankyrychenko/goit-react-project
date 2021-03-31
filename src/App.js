@@ -32,7 +32,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
