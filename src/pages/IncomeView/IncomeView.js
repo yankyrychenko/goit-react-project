@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Container from '../../components/Container';
 import incomeOperations from '../../redux/operations/incomeOperations';
+import PagesCost from './../../components/PagesCost/CostPage'
 
 export default function IncomeView() {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ export default function IncomeView() {
   return (
     <>
       <main>
-        <Container></Container>
+        <Container>
+          <PagesCost/>
+        </Container>
       </main>
     </>
   );
