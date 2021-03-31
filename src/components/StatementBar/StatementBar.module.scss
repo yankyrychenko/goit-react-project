@@ -6,7 +6,7 @@
   height: 85px;
   border-radius: 20px;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-  background: #ffffff;
+  background: $white-color;
   margin: 0 auto;
   padding-top: 7px;
   padding-bottom: 7.5px;
@@ -29,7 +29,7 @@
 }
 
 .expensesAmount {
-  color: #e53935;
+  color: $red-color;
   font-weight: bold;
   font-size: 14px;
   text-align: center;
@@ -37,7 +37,7 @@
 }
 
 .incomeAmount {
-  color: #407946;
+  color: $green-color;
   font-weight: bold;
   font-size: 14px;
   text-align: center;
@@ -51,7 +51,7 @@
 }
 
 .statementBarTitle {
-  color: #52555f;
+  color: $primary-text-color;
   padding: 5px;
   font-size: 14px;
   text-align: center;

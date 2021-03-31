@@ -10,6 +10,7 @@ import styles from './StatementBar.module.scss';
 const StatementBar = () => {
   const dispatch = useDispatch();
 
+  //Имитация запроса на бек. Завернуто в setTimeout потому-что запрос выполняется раньше, чем приходит токен
   useEffect(() => {
     setTimeout(() => {
       dispatch(periodDate.getPeriodData('2020-04'));
