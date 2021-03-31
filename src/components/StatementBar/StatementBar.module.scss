@@ -17,6 +17,9 @@
     border-radius: 30px;
     padding-bottom: 7px;
   }
+  @include for-size(desktop) {
+    width: 1060px;
+  }
 }
 
 .statementBar {
