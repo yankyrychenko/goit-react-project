@@ -1,6 +1,9 @@
-export const routes = {
+const routes = {
+  home: '/',
   auth: '/authorization',
   income: '/income',
-  expences: '/expences',
+  expense: '/expense',
   stats: '/statistics',
 };
+
+export default routes;

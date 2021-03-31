@@ -1,0 +1,40 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.titleContainer {
+  margin-top: 85px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 380px;
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 900;
+
+  @include for-size(tablet) {
+    font-size: 102px;
+  }
+}
+
+.subTitle {
+  padding-left: 10px;
+
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $primary-text-color;
+
+  @include for-size(tablet) {
+    padding-left: 70px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.18em;
+
+    color: $primary-text-color;
+  }
+}

@@ -1,0 +1,88 @@
+@import '../../../styles/_mixins.scss';
+@import '../../../styles/_variables.scss';
+
+.UserMenu {
+  display: flex;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #e0e5eb;
+  text-decoration: none;
+  color: black;
+  outline: none;
+
+  &:hover .userIcon,
+  &:focus .userIcon {
+    background-color: #f1f2f7;
+  }
+
+  &:hover .userEmail,
+  &:focus .userEmail {
+    text-decoration: underline;
+  }
+
+  @include for-size(mobile-only) {
+    border: none;
+  }
+}
+
+.userIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 32px;
+  min-height: 32px;
+  background-color: $primary-gray-color;
+  border-radius: 50%;
+  font-weight: 700;
+
+  margin-right: 10px;
+
+  @include for-size(mobile-only) {
+    margin-right: 7px;
+  }
+}
+
+.userEmail {
+  margin-right: 20px;
+
+  @include for-size(mobile-only) {
+    display: none;
+  }
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 12px;
+  padding: 0 8px;
+  background-color: transparent;
+  border: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+
+    @include for-size(mobile-only) {
+      background-color: $primary-gray-color;
+    }
+  }
+
+  @include for-size(mobile-only) {
+    margin: 0;
+  }
+}
+
+.logoutButtonIcon {
+  @include for-size(tablet) {
+    display: none;
+  }
+}
+
+.logoutButtonText {
+  @include for-size(mobile-only) {
+    display: none;
+  }
+}
