@@ -1,0 +1,22 @@
+@import '../../styles/_variables.scss';
+
+
+.balanceLink {
+  justify-content: center;
+  display: flex;
+  align-items: baseline;
+color: $primary-text-color;
+list-style: none;
+text-decoration: none;
+margin-top: 30px;;
+margin-bottom: 40px;
+}
+
+.svg {
+  display: block;
+  width: 14px;
+  padding: 0;
+  height: 14px;
+fill: $primary-text-color;
+margin-left: 20px;
+}

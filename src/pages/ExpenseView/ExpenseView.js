@@ -1,5 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Container from '../../components/Container';
+import expenseOperations from '../../redux/operations/expenseOperations';
 
-const ExpenseView = () => <></>;
+export default function ExpenseView() {
+  const dispatch = useDispatch();
 
-export default ExpenseView;
+  useEffect(() => {
+    dispatch(expenseOperations.handleExpenseGet());
+  }, [dispatch]);
+
+  return (
+    <>
+      <main>
+        <Container></Container>
+      </main>
+    </>
+  );
+}

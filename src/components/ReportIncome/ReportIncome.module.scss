@@ -74,8 +74,8 @@
 }
 
 .ReportIncomeBtn {
-  width: 59px;
-  height: 46px;
+  width: 70px;
+  height: 60px;
   border-radius: 20px;
   cursor: pointer;
   background-color: #f5f6fb;
@@ -94,12 +94,45 @@
 .ReportIncomeIcon {
   width: 48px;
   height: 56px;
-  //   pointer-events: none;
   fill: #071f41;
+  pointer-events: none;
 }
 
 .ReportIncomeIcon:hover {
   fill: #ff751d;
+}
+
+.isActiveBtn {
+  width: 70px;
+  height: 60px;
+  border-radius: 20px;
+  cursor: pointer;
+  // background-color: #f5f6fb;
+  //   background-color: orange;
+  border: none;
+  background-color: #ffdac0;
+}
+
+.nonActiveBtn {
+  width: 70px;
+  height: 60px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f5f6fb;
+
+  border: none;
+}
+
+.isActiveIcon {
+  @extend .isActiveBtn;
+  fill: #ff751d;
+}
+
+.nonActiveIcon {
+  @extend .nonActiveBtn;
+  // width: 56px;
+  // height: 56px;
+  fill: #071f41;
 }
 
 .ReportIncomeTitle {
@@ -123,7 +156,7 @@
   }
 
   .ReportIncomeItem:not(:last-child) {
-    margin-right: 48px;
+    margin-right: 40px;
   }
 }
 

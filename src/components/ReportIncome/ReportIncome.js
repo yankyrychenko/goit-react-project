@@ -9,6 +9,7 @@ import CategoriesName from './CategoriesName';
 
 const ReportIncome = () => {
   const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState('');
 
   const getCurrentCategory = name => {
     return CategoriesName.find(({ category }) => {
@@ -16,11 +17,20 @@ const ReportIncome = () => {
     });
   };
 
+  const activeCategoryHandler = e => {
+    const { name } = e.target;
+    if (activeCategory !== name) {
+      setActiveCategory(name);
+    } else {
+      setActiveCategory('');
+    }
+  };
+
   return (
     <>
       <ReportExpenseIncomeToggler />
       <Container>
-        <h1 style={{ color: 'green', textAlign: 'center' }}>Доходы</h1>
+        {/* <h1 style={{ color: 'green', textAlign: 'center' }}>Доходы</h1> */}
 
         <ul className={styles.ReportIncomeList}>
           {CategoriesName.map(({ category, _id, amount }) => (
@@ -31,19 +41,26 @@ const ReportIncome = () => {
               <button
                 type="button"
                 name={category}
-                className={styles.ReportIncomeBtn}
-                // onClick={}
+                // className={styles.ReportIncomeBtn}
+                onClick={activeCategoryHandler}
+                className={
+                  activeCategory === category
+                    ? styles.isActiveBtn
+                    : styles.nonActiveBtn
+                }
               >
                 <svg className={styles.ReportIncomeIcon}>
                   <use
+                    className={
+                      activeCategory === category
+                        ? styles.isActiveIcon
+                        : styles.nonActiveIcon
+                    }
                     href={`${incomeSprite}#${
                       getCurrentCategory(category).name
                     }`}
                   />
                 </svg>
-                {/* <svg className={styles.ReportIncomeIcon}>
-                  <use href={sprite + '#icon-invoice-1'}></use>
-                </svg> */}
               </button>
               <h3 name={category} className={styles.ReportIncomeTitle}>
                 {category}

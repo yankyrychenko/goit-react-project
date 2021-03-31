@@ -1,5 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Container from '../../components/Container';
+import incomeOperations from '../../redux/operations/incomeOperations';
 
-const IncomeView = () => <></>;
+export default function IncomeView() {
+  const dispatch = useDispatch();
 
-export default IncomeView;
+  useEffect(() => {
+    dispatch(incomeOperations.handleIncomeGet());
+  }, [dispatch]);
+
+  return (
+    <>
+      <main>
+        <Container></Container>
+      </main>
+    </>
+  );
+}

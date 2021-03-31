@@ -15,11 +15,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   width: 90px;
   height: 140px;
-  margin-right: 25px;
+  // margin-right: 25px;
 }
 
 // @if $range == mobile-only {
@@ -45,19 +45,19 @@
 
 // ======mobile-only range======
 .ReportExpenseItem:not(:nth-child(3n-3)) {
-  margin-right: 5px;
+  margin-right: 3px;
 }
 
 .ReportExpenseItem::after {
   content: '';
   position: absolute;
-  bottom: 0px;
-  left: -14px;
+  bottom: 8px;
+  // left: -14px;
   width: 93px;
   height: 1px;
   background-color: #e0e5eb;
-  right: 0;
-  margin: 0 auto;
+  // right: 0;
+  // margin: 0 auto;
   display: block;
 }
 // ================================
@@ -76,12 +76,13 @@
 }
 
 .ReportExpenseBtn {
-  width: 59px;
-  height: 46px;
+  // width: 59px;
+  // height: 46px;
   border-radius: 20px;
   cursor: pointer;
   background-color: #f5f6fb;
   //   background-color: orange;
+
   border: none;
 }
 
@@ -96,12 +97,45 @@
 .ReportExpenseIcon {
   width: 56px;
   height: 56px;
-  //   pointer-events: none;
   fill: #071f41;
+  pointer-events: none;
 }
 
 .ReportExpenseIcon:hover {
   fill: #ff751d;
+}
+
+.isActiveBtn {
+  width: 70px;
+  height: 60px;
+  border-radius: 20px;
+  cursor: pointer;
+  // background-color: #f5f6fb;
+  //   background-color: orange;
+  border: none;
+  background-color: #ffdac0;
+}
+
+.nonActiveBtn {
+  width: 70px;
+  height: 60px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f5f6fb;
+
+  border: none;
+}
+
+.isActiveIcon {
+  @extend .isActiveBtn;
+  fill: #ff751d;
+}
+
+.nonActiveIcon {
+  @extend .nonActiveBtn;
+  width: 56px;
+  height: 56px;
+  fill: #071f41;
 }
 
 .ReportExpenseTitle {
@@ -133,7 +167,7 @@
   //   }
 
   .ReportExpenseItem:not(:nth-child(6n-6)) {
-    margin-right: 32px;
+    margin-right: 20px;
   }
 }
 
@@ -144,14 +178,10 @@
   }
 
   .ReportExpenseItem:not(:nth-child(6n-6)) {
-    margin-right: 40px;
+    margin-right: 9px;
   }
 
-  // .isActiveBtn {
-  //   background-color: #ffdac0;
-  // }
-
-  //   .isActiveIcon {
-  //     fill: #ff751d;
-  //   }
+  .ReportExpenseItem {
+    width: 94px;
+  }
 }

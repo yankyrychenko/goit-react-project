@@ -5,9 +5,6 @@ import Header from './components/Header/Header';
 import { routes, PublicRoute, PrivateRoute } from './routes';
 import authOperations from './redux/operations/authOperations';
 
-import ReportExpense from './components/ReportExpense/ReportExpense';
-import ReportIncome from './components/ReportIncome/ReportIncome';
-
 const AuthorizationView = lazy(() =>
   import(
     './pages/AuthorizationView' /* webpackChunkName: "AuthorizationView" */
@@ -35,14 +32,11 @@ export default function App() {
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <Header />
-
-      {/* <ReportExpense /> */}
-      <ReportIncome />
 
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
@@ -50,7 +44,11 @@ export default function App() {
             <AuthorizationView />
           </PublicRoute>
 
-          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
+          <PrivateRoute
+            exact={true}
+            path={routes.home}
+            redirectTo={routes.auth}
+          >
             <HomeView />
           </PrivateRoute>
 

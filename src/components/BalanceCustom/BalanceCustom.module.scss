@@ -1,0 +1,64 @@
+@import '../../styles/_variables.scss';
+
+
+.balanceWrapper {
+  position: relative;
+  background-color:#F5F6FB ;
+}
+.balanceText {
+  margin-bottom: 6px;
+}
+
+.balanceForm {
+    text-align: center;
+}
+.balanceText {
+  text-align: center;
+color: $primary-text-color;
+}
+
+.balanceInput {
+  color: $black-color;
+  padding-left: 35px;
+  font-weight: 700;
+  width: 115px;
+  padding: 12px ;
+  border: 2px solid white;
+   border-right: 1px solid white;
+  background-color: #F5F6FB;
+  border-top-left-radius:  20px ;
+  border-bottom-left-radius: 20px;
+  margin-bottom: 50px;
+
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.balanceInput::placeholder {
+  font-weight: 400;
+    color: $black-color;
+  text-align: center;
+}
+
+.balanceButton {
+  color: $primary-text-color;
+  width: 115px;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 12px;
+  border: 2px solid white;
+  border-left: 1px solid white;
+background-color: #F5F6FB;
+border-top-right-radius : 20px;
+border-bottom-right-radius: 20px;
+margin-bottom: 50px;
+cursor: pointer;
+transition: ease 0.3s;
+}
+
+.balanceButton:hover {
+  border-color: $primary-orange-color;
+  color: $white-color;
+  background-color: $primary-orange-color;
+}

@@ -9,6 +9,7 @@ import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeTogg
 
 const ReportExpense = () => {
   const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState('');
 
   const getCurrentCategory = name => {
     return CategoriesName.find(({ category }) => {
@@ -16,11 +17,20 @@ const ReportExpense = () => {
     });
   };
 
+  const activeCategoryHandler = e => {
+    const { name } = e.target;
+    if (activeCategory !== name) {
+      setActiveCategory(name);
+    } else {
+      setActiveCategory('');
+    }
+  };
+
   return (
     <>
       <ReportExpenseIncomeToggler />
       <Container>
-        <h1 style={{ color: 'red', textAlign: 'center' }}>Расходы</h1>
+        {/* <h1 style={{ color: 'red', textAlign: 'center' }}>Расходы</h1> */}
 
         <ul className={styles.ReportExpenseList}>
           {CategoriesName.map(({ category, _id, amount }) => (
@@ -31,12 +41,21 @@ const ReportExpense = () => {
               <button
                 type="button"
                 name={category}
-                className={styles.ReportExpenseBtn}
-                // onClick={}
-                // className={styles.IsActiveBtn && styles.isActiveIcon}
+                // className={styles.ReportExpenseBtn}
+                onClick={activeCategoryHandler}
+                className={
+                  activeCategory === category
+                    ? styles.isActiveBtn
+                    : styles.nonActiveBtn
+                }
               >
                 <svg className={styles.ReportExpenseIcon}>
                   <use
+                    className={
+                      activeCategory === category
+                        ? styles.isActiveIcon
+                        : styles.nonActiveIcon
+                    }
                     href={`${expenseSprite}#${
                       getCurrentCategory(category).name
                     }`}
