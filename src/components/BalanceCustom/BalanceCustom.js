@@ -12,7 +12,6 @@ const initialState = {
 const BalanceCustom = () => {
   const [newBalance, setNewBalance] = useState({...initialState })
   const dispatch = useDispatch()
-
   const balanceHandler = ({ target }) => {
     const {name, value } = target
     setNewBalance(state =>({...state, [name]:value}))
