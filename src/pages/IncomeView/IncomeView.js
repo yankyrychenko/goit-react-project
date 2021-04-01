@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container from '../../components/Container';
-import PagesCost from './../../components/PagesCost/CostPage';
+import TransactionContainer from '../../components/TransactionContainer/TransactionContainer';
+import TransactionTable from '../../components/TransactionTable/TransactionTable';
+import Summary from '../../components/Summary/Summary';
 import transactionsOperations from '../../redux/operations/transactionsOperations';
 import categoriesOperations from '../../redux/operations/categoriesOperations';
 import BalanceForm from '../../components/BalanceForm/BalanceForm';
 import { getCategoryIncome } from '../../redux/selectors/categoriesSelectors';
+import style from './IncomeView.module.scss';
 
 export default function IncomeView() {
   const dispatch = useDispatch();
@@ -24,8 +27,16 @@ export default function IncomeView() {
   return (
     <main>
       <Container>
-        <BalanceForm category={category} submitIncomeData={submitIncomeData} />
-        <PagesCost />
+        <TransactionContainer>
+          <BalanceForm
+            category={category}
+            submitIncomeData={submitIncomeData}
+          />
+          <div className={style.wrapper}>
+            <TransactionTable />
+            <Summary />
+          </div>
+        </TransactionContainer>
       </Container>
     </main>
   );
