@@ -7,7 +7,7 @@ const noop = () => {
 
 class FixRequiredSelect extends React.Component {
   state = {
-    value: this.props.value || '',
+    value: this.props.value,
   };
 
   selectRef = null;
