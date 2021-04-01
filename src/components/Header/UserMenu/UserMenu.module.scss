@@ -9,6 +9,19 @@
   display: flex;
   align-items: center;
   border-right: 1px solid #e0e5eb;
+  text-decoration: none;
+  color: black;
+  outline: none;
+
+  &:hover .userIcon,
+  &:focus .userIcon {
+    background-color: #f1f2f7;
+  }
+
+  &:hover .userEmail,
+  &:focus .userEmail {
+    text-decoration: underline;
+  }
 
   @include for-size(mobile-only) {
     border: none;
@@ -43,7 +56,7 @@
 .logoutButton {
   display: flex;
   align-items: center;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 12px;
   padding: 0 8px;
   background-color: transparent;
   border: none;

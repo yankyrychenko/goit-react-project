@@ -18,7 +18,7 @@ const signUp = credentials => axios.post('/auth/register', credentials);
 const logIn = credentials => axios.post('/auth/login', credentials);
 const logOut = () => axios.post('/auth/logout');
 const refreshToken = sid => axios.post('/auth/refresh', sid);
-const googleAuth = () => axios.post('/auth/google');
+const googleAuth = () => axios.get('/auth/google');
 
 /* TRANSACTIONS */
 const incomePost = data => axios.post('/transaction/income', data);
@@ -29,12 +29,13 @@ const transactionDelete = transactionId =>
   axios.delete(`/transaction/${transactionId}`);
 const incomeCategoriesGet = () => axios.get('/transaction/income-categories');
 const expenseCategoriesGet = () => axios.get('/transaction/expense-categories');
-const periodDataGet = date => axios.get('/transaction/period-data', date);
+const periodDataGet = date =>
+  axios.get(`/transaction/period-data?date=${date}`);
 
 /* USER */
 const balancePatch = balance => axios.patch('/user/balance', balance);
 const userDataGet = () => axios.get('/user');
-
+// eslint-disable-next-line
 export default {
   token,
   signUp,
