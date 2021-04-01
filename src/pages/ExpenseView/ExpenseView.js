@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useWindowSize } from 'react-use-size';
 import Container from '../../components/Container';
 import TransactionContainer from '../../components/TransactionContainer/TransactionContainer';
 import TransactionTable from '../../components/TransactionTable/TransactionTable';
@@ -7,12 +8,15 @@ import Summary from '../../components/Summary/Summary';
 import transactionsOperations from '../../redux/operations/transactionsOperations';
 import categoriesOperations from '../../redux/operations/categoriesOperations';
 import BalanceForm from '../../components/BalanceForm/BalanceForm';
+import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
+import GoToReport from '../../components/GoToReport/GoToReport';
 import { getCategoryExpense } from '../../redux/selectors/categoriesSelectors';
 import operation from '../../redux/selectors/transactionsSelectors';
 import style from './ExpenseView.module.scss';
 
 export default function ExpenseView() {
   const dispatch = useDispatch();
+  const { width } = useWindowSize();
 
   const costList = useSelector(operation.getExpenseTransaction);
   const category = useSelector(getCategoryExpense);
@@ -30,6 +34,11 @@ export default function ExpenseView() {
   return (
     <main>
       <Container>
+        <div className={style.balanceWrap}>
+          <BalanceCustom />
+          <GoToReport />
+        </div>
+
         <TransactionContainer>
           <BalanceForm
             category={category}
@@ -37,7 +46,7 @@ export default function ExpenseView() {
           />
           <div className={style.wrapper}>
             <TransactionTable costList={costList} />
-            <Summary />
+            {width > 767 && <Summary />}
           </div>
         </TransactionContainer>
       </Container>

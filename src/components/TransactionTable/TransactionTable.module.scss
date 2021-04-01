@@ -12,13 +12,8 @@
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 
-  @include for-size(tablet) {
-    margin-top: 50px;
-  }
-
   @include for-size(desktop) {
     width: 760px;
-    margin-top: 40px;
   }
 }
 

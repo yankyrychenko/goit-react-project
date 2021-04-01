@@ -4,15 +4,16 @@ import TransactionContainer from '../../components/TransactionContainer/Transact
 import TransactionTable from '../../components/TransactionTable/TransactionTable';
 import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
 import GoToReport from '../../components/GoToReport/GoToReport';
+import style from './HomeView.module.scss';
 
 const HomeView = () => (
   <main>
     <Container>
-      <BalanceCustom />
-      <GoToReport />
-    </Container>
+      <div className={style.balanceWrap}>
+        <BalanceCustom />
+        <GoToReport />
+      </div>
 
-    <Container>
       <TransactionContainer>
         <TransactionTable />
       </TransactionContainer>
