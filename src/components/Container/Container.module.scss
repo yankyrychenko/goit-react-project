@@ -6,8 +6,10 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  @include for-size(mobile) {
+  @include for-size(mobile-only) {
     width: 320px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   @include for-size(tablet) {
