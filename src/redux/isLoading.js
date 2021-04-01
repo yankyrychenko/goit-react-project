@@ -1,8 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import authActions from './actions/authActions';
 import categoriesActions from './actions/categoriesActions';
-import expenseActions from './actions/expenseActions';
-import incomeActions from './actions/incomeActions';
+import transactionsActions from './actions/transactionsActions';
 import periodDataActions from './actions/periodDataActions';
 import transactionDeleteActions from './actions/transactionDeleteActions';
 
@@ -33,21 +32,21 @@ const loadingReducer = createReducer(intialState, {
   [categoriesActions.expenseCategSuccess]: (_, __) => false,
   [categoriesActions.expenseCategError]: (_, __) => false,
 
-  [expenseActions.expenseGetRequest]: (_, __) => true,
-  [expenseActions.expenseGetSuccess]: (_, __) => false,
-  [expenseActions.expenseGetError]: (_, __) => false,
+  [transactionsActions.expenseGetRequest]: (_, __) => true,
+  [transactionsActions.expenseGetSuccess]: (_, __) => false,
+  [transactionsActions.expenseGetError]: (_, __) => false,
 
-  [expenseActions.expensePostRequest]: (_, __) => true,
-  [expenseActions.expensePostSuccess]: (_, __) => false,
-  [expenseActions.expensePostError]: (_, __) => false,
+  [transactionsActions.expensePostRequest]: (_, __) => true,
+  [transactionsActions.expensePostSuccess]: (_, __) => false,
+  [transactionsActions.expensePostError]: (_, __) => false,
 
-  [incomeActions.incomeGetRequest]: (_, __) => true,
-  [incomeActions.incomeGetSuccess]: (_, __) => false,
-  [incomeActions.incomeGetError]: (_, __) => false,
+  [transactionsActions.incomeGetRequest]: (_, __) => true,
+  [transactionsActions.incomeGetSuccess]: (_, __) => false,
+  [transactionsActions.incomeGetError]: (_, __) => false,
 
-  [incomeActions.incomePostRequest]: (_, __) => true,
-  [incomeActions.incomePostSuccess]: (_, __) => false,
-  [incomeActions.incomePostError]: (_, __) => false,
+  [transactionsActions.incomePostRequest]: (_, __) => true,
+  [transactionsActions.incomePostSuccess]: (_, __) => false,
+  [transactionsActions.incomePostError]: (_, __) => false,
 
   [periodDataActions.periodDataGetRequest]: (_, __) => true,
   [periodDataActions.periodDataGetSuccess]: (_, __) => false,

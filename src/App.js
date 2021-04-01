@@ -38,18 +38,14 @@ export default function App() {
 
   return (
     <>
-      {/* <Header />
+      <Header />
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
           <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
             <AuthorizationView />
           </PublicRoute>
 
-          <PrivateRoute
-            exact={true}
-            path={routes.home}
-            redirectTo={routes.auth}
-          >
+          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
             <HomeView />
           </PrivateRoute>
 
@@ -65,10 +61,7 @@ export default function App() {
             <StatisticsView />
           </PrivateRoute>
         </Switch>
-      </Suspense> */}
-      <Container>
-        <BalanceForm />
-      </Container>
+      </Suspense>
     </>
   );
 }
