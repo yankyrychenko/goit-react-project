@@ -33,7 +33,6 @@ const Summary = () => {
     let month = new Intl.DateTimeFormat('rus', options).format(date);
     data[year][month] += tr.amount;
   });
-  // console.log(data);
 
   for (let i = 1; i <= 6; i++) {
     let currentDate = new Date();
@@ -42,12 +41,9 @@ const Summary = () => {
     const month = new Intl.DateTimeFormat('rus', options).format(currentDate);
     const year = currentDate.getFullYear();
 
-    // console.log(test);
-    // console.log(data[year][month]);
-    // console.log(data?.[year]?.[month]);
-    // console.log(data[year], data[year][month]);
-    // console.log(currentDate);
-    // console.log(currentDate.toLocaleDateString());
+    data[year]?.[month] !== undefined
+      ? monthToShow.push([month, data[year][month]])
+      : monthToShow.push([month, 0]);
   }
 
   return (
@@ -58,17 +54,12 @@ const Summary = () => {
             CВОДКА
           </th>
         </tr>
-        <tr key="1">
-          {/* пример */}
-
-          <th>december</th>
-          <th>10000</th>
-        </tr>
-        <tr key="2">
-          {/*пример */}
-          <th>october</th>
-          <th>10000</th>
-        </tr>
+        {monthToShow.map(item => (
+          <tr key={item[0]}>
+            <th className={styles.month}>{item[0]}</th>
+            <th className={styles.sum}>{item[1]}</th>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
