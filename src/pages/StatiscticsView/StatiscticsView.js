@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Stats from '../../components/Stats/Sats';
 import Container from '../../components/Container';
+import StatementBar from '../../components/StatementBar/StatementBar';
 import periodDataOperations from '../../redux/operations/periodDataOperations';
 import MonthCalendar from '../../components/MonthCalendar/MonthCalendar';
 
@@ -14,11 +15,17 @@ export default function StatisticsView() {
 
   return (
     <main>
-      <Container>
-        <MonthCalendar />
+      {/*  <section>
+        <Container>
+          <StatementBar />
+        </Container>
+      </section> */}
 
-        <Stats />
-      </Container>
+      <section>
+        <Container>
+          <Stats />
+        </Container>
+      </section>
     </main>
   );
 }
