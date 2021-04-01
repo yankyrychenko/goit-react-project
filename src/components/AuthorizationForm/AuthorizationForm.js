@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // Styles
 import styles from './AuthorizationForm.module.scss';
 // Operations
@@ -12,6 +12,8 @@ const AuthorizationForm = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const error = useSelector(state => state.error);
   const dispatch = useDispatch();
 
   const changeEmailValue = event => setEmail(event.target.value);
@@ -57,6 +59,16 @@ const AuthorizationForm = () => {
     setPassword('');
   };
 
+  const errorMessage = () => {
+    if (error === 'Request failed with status code 409') {
+      return 'Пользователь с таким email уже зарегистрирован';
+    } else if (error === 'Request failed with status code 403') {
+      return 'Некорректный пароль или email';
+    } else {
+      return 'Ошибка! Попробуйте еще раз';
+    }
+  };
+
   return (
     <form className={styles.AuthorizationForm} onSubmit={onSubmit}>
       <div className={styles.googleAuthBlock}>
@@ -99,17 +111,26 @@ const AuthorizationForm = () => {
             {passwordError && <span style={{ color: 'red' }}>*</span>}
             Пароль:
           </label>
-          <input
-            type="password"
-            name="password"
-            id="AuthorizationForm__password"
-            value={password}
-            onChange={changePasswordValue}
-            placeholder="Пароль"
-            // minLength="4"
-            // maxLength="16"
-            // required
-          />
+          <div className={styles.passwordInputBlock}>
+            <input
+              type={isPasswordShown ? 'text' : 'password'}
+              name="password"
+              id="AuthorizationForm__password"
+              value={password}
+              onChange={changePasswordValue}
+              placeholder="Пароль"
+              // minLength="4"
+              // maxLength="16"
+              // required
+            />
+            <button
+              type="button"
+              className={styles.passwordButton}
+              onClick={() => setIsPasswordShown(!isPasswordShown)}
+            >
+              {isPasswordShown ? 'Скрыть' : 'Показать'} пароль
+            </button>
+          </div>
           <p className={styles.passwordError}>{passwordError}</p>
         </div>
       </div>
@@ -121,6 +142,7 @@ const AuthorizationForm = () => {
           Регистрация
         </button>
       </div>
+      <p className={styles.formError}>{error && errorMessage()}</p>
     </form>
   );
 };
