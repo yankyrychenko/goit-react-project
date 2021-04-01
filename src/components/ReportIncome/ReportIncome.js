@@ -34,10 +34,10 @@ const ReportIncome = () => {
   // const periodDataIncome = useSelector(state => state.periodData);
   // console.log(periodDataIncome);
 
-  const totalMonthIncomes = useSelector(
-    state => state.periodData.incomes.incomesData,
-  );
-  console.log(totalMonthIncomes);
+  // const totalMonthIncomes = useSelector(
+  //   state => state.periodData.incomes.incomesData,
+  // );
+  // console.log(totalMonthIncomes);
 
   return (
     <>

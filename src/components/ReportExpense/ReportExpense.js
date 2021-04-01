@@ -41,10 +41,34 @@ const ReportExpense = () => {
   // const totalExpenses = useSelector(state => state.periodData);
   // console.log(totalExpenses);
 
+  // const totalMonthExpenses = useSelector(
+  //   state => state.periodData.expenses.incomesData.Транспорт.total,
+  // );
+  // console.log(totalMonthExpenses);
+
+  // const total Object.entries(totalMonthExpenses);
+
+  let categoriesArray = [];
+
   const totalMonthExpenses = useSelector(
-    state => state.periodData.expenses.incomesData.Транспорт.total,
+    state => state.periodData.expenses.incomesData,
   );
-  console.log(totalMonthExpenses);
+
+  // console.log(totalMonthExpenses);
+
+  if (totalMonthExpenses !== undefined) {
+    const catArr = Object.entries(totalMonthExpenses);
+
+    categoriesArray = catArr.map(category => {
+      category.filter(({ total }) => total > 0);
+      return category[1].total;
+      // if (category[1].total > 0) {
+      //   return category;
+      // }
+    });
+  }
+
+  console.log(categoriesArray);
 
   return (
     <>
@@ -53,11 +77,18 @@ const ReportExpense = () => {
         {/* <h1 style={{ color: 'red', textAlign: 'center' }}>Расходы</h1> */}
 
         <ul className={styles.ReportExpenseList}>
-          {filteredExpenses.map(({ category, _id, amount }) => (
+          {filteredExpenses.map(({ category, _id }) => (
             <li name={category} key={_id} className={styles.ReportExpenseItem}>
-              <p name={category} className={styles.ReportExpenseAmount}>
-                {amount}
-              </p>
+              {categoriesArray.map(({ total }) => (
+                <p
+                  name={category}
+                  key={_id}
+                  className={styles.ReportExpenseAmount}
+                >
+                  {total}
+                </p>
+              ))}
+
               <button
                 type="button"
                 name={category}
@@ -94,3 +125,9 @@ const ReportExpense = () => {
 };
 
 export default ReportExpense;
+
+// Object.entries(totalMonthExpenses);
+
+// const totalMonthExpenses = useSelector(
+//     state => state.periodData.expenses.expensesData,
+//   );
