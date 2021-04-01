@@ -7,7 +7,7 @@ const handleSignUp = credentials => dispatch => {
   api
     .signUp(credentials)
     .then(({ data }) => {
-      console.dir(data); // data = { email, id } //! почему нету токена надо узнать
+      // console.dir(data); // data = { email, id } //! почему нету токена надо узнать
       api.token.set(data.token);
       dispatch(authActions.signUpSuccess(data));
     })
@@ -20,7 +20,7 @@ const handleLogIn = credentials => dispatch => {
   api
     .logIn(credentials)
     .then(({ data }) => {
-      console.dir(data); // data = { accessToken, refreshToken, sid, userData: { balance, email, id, transactions } }
+      // console.dir(data); // data = { accessToken, refreshToken, sid, userData: { balance, email, id, transactions } }
       api.token.set(data.accessToken);
       dispatch(authActions.logInSuccess(data));
     })
@@ -52,10 +52,36 @@ const getCurrentUser = () => (dispatch, getState) => {
     api
       .userDataGet()
       .then(({ data }) => {
+        // console.dir(data); // data = { balance, email, transactions } токен берем из localStorage от предыдущей сессии
         dispatch(authActions.getCurrentUserSuccess(data));
       })
       .catch(error => dispatch(authActions.getCurrentUserError(error.message)));
   }
 };
+
+const googleLogin = () => (dispatch, getState) => {
+  const {
+    auth: { token },
+  } = getState();
+
+  if (token) {
+    api.token.set(token);
+
+    dispatch(authActions.googleLoginRequest());
+
+    api
+      .googleAuth()
+      .then(({ data }) => {
+        dispatch(authActions.googleLoginSuccess(data));
+      })
+      .catch(error => dispatch(authActions.googleLoginError(error.message)));
+  }
+};
 // eslint-disable-next-line
-export default { handleSignUp, handleLogIn, handleLogOut, getCurrentUser };
+export default {
+  handleSignUp,
+  handleLogIn,
+  handleLogOut,
+  getCurrentUser,
+  googleLogin,
+};

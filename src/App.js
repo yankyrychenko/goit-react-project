@@ -4,7 +4,6 @@ import { Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import { routes, PublicRoute, PrivateRoute } from './routes';
 import authOperations from './redux/operations/authOperations';
-import GoToReport from './components/GoToReport/GoToReport';
 
 const AuthorizationView = lazy(() =>
   import(
@@ -33,12 +32,11 @@ export default function App() {
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <Header />
-     <GoToReport/>
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
           <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>

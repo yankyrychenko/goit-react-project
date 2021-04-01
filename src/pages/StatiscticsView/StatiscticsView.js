@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Stats from '../../components/Stats/Sats';
 import Container from '../../components/Container';
+import StatementBar from '../../components/StatementBar/StatementBar';
+import periodDataOperations from '../../redux/operations/periodDataOperations';
 
-const StatisticsView = () => (
-  <>
+export default function StatisticsView() {
+  /*   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(periodDataOperations.getPeriodData());
+  }, [dispatch]); */
+
+  return (
     <main>
-      <Container>
-        <Stats />
-      </Container>
-    </main>
-  </>
-);
+      {/*  <section>
+        <Container>
+          <StatementBar />
+        </Container>
+      </section> */}
 
-export default StatisticsView;
+      <section>
+        <Container>
+          <Stats />
+        </Container>
+      </section>
+    </main>
+  );
+}

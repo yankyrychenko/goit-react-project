@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Container from '../Container';
 import styles from './MonthCalendar.module.scss';
 import sprite from '../../img/sprite.svg';
 import operations from '../../redux/operations/periodDataOperations';
@@ -44,32 +43,30 @@ const MonthCalendar = () => {
   }
 
   return (
-    <Container>
-      <div className={styles.wrapper}>
-        <p className={styles.currentPeriod}>Текущий период:</p>
-        <div className={styles.calendarNav}>
-          <button
-            onClick={setPrevMonth}
-            className={`${styles.button}  ${styles.buttonPrev}`}
-            type="button"
-          >
-            <svg width="6" height="15">
-              <use href={sprite + '#icon-arrow-left'}></use>
-            </svg>
-          </button>
-          <span className={styles.date}>{`${month} ${year}`}</span>
-          <button
-            onClick={setNextMonth}
-            className={`${styles.button}  ${styles.buttonNext}`}
-            type="button"
-          >
-            <svg width="6" height="15">
-              <use href={sprite + '#icon-arrow-right'}></use>
-            </svg>
-          </button>
-        </div>
+    <div className={styles.wrapper}>
+      <p className={styles.currentPeriod}>Текущий период:</p>
+      <div className={styles.calendarNav}>
+        <button
+          onClick={setPrevMonth}
+          className={`${styles.button}  ${styles.buttonPrev}`}
+          type="button"
+        >
+          <svg width="6" height="15">
+            <use href={sprite + '#icon-arrow-left'}></use>
+          </svg>
+        </button>
+        <span className={styles.date}>{`${month} ${year}`}</span>
+        <button
+          onClick={setNextMonth}
+          className={`${styles.button}  ${styles.buttonNext}`}
+          type="button"
+        >
+          <svg width="6" height="15">
+            <use href={sprite + '#icon-arrow-right'}></use>
+          </svg>
+        </button>
       </div>
-    </Container>
+    </div>
   );
 };
 
