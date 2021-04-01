@@ -22,43 +22,22 @@
   //   margin-right: 25px;
 }
 
-// @if $range == mobile-only {
-//   @media (max-width: #{$tablet - 1}) {
-// .ReportIncomeItem:not(:last-child) {
-//   margin-right: 48px;
-// }
+@include for-size(mobile-only) {
+  .ReportIncomeItem:not(:last-child) {
+    margin-right: 48px;
+  }
 
-//     .ReportIncomeItem::after {
-//       content: '';
-//       position: absolute;
-//       bottom: 0px;
-//       left: -14px;
-//       width: 93px;
-//       height: 1px;
-//       background-color: #e0e5eb;
-//       right: 0;
-//       margin: 0 auto;
-//       display: block;
-//     }
-//   }
-// }
-
-// ======mobile-only range======
-.ReportIncomeItem:not(:last-child) {
-  margin-right: 48px;
+  .ReportIncomeItem::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    width: 140px;
+    height: 1px;
+    background-color: #e0e5eb;
+    margin: 0 auto;
+    display: block;
+  }
 }
-
-.ReportIncomeItem::after {
-  content: '';
-  position: absolute;
-  bottom: 0px;
-  width: 140px;
-  height: 1px;
-  background-color: #e0e5eb;
-  margin: 0 auto;
-  display: block;
-}
-// ================================
 
 .ReportIncomeAmount {
   font-size: 12px;
@@ -86,10 +65,6 @@
 .ReportIncomeBtn:hover {
   background-color: #ffdac0;
 }
-
-// .isActiveButton {
-//   background-color: #ffdac0;
-// }
 
 .ReportIncomeIcon {
   width: 48px;

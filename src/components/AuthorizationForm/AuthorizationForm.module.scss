@@ -15,7 +15,7 @@
   }
 
   @include for-size(desktop) {
-    margin: 117px 0 0 auto;
+    margin: 117px auto 0 auto;
   }
 }
 
@@ -53,6 +53,7 @@
   box-shadow: 0 3px 3px rgba(170, 178, 197, 0.4);
   text-decoration: none;
   color: black;
+  border: none;
 
   &:hover,
   &:focus {

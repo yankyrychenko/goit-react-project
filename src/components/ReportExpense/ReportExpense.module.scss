@@ -22,45 +22,24 @@
   // margin-right: 25px;
 }
 
-// @if $range == mobile-only {
-//   @media (max-width: #{$tablet - 1}) {
-//     .ReportExpenseItem:not(:nth-child(3n-3)) {
-//       margin-right: 25px;
-//     }
+@include for-size(mobile-only) {
+  .ReportExpenseItem:not(:nth-child(3n-3)) {
+    margin-right: 3px;
+  }
 
-//     .ReportExpenseItem::after {
-//       content: '';
-//       position: absolute;
-//       bottom: 0px;
-//       left: -14px;
-//       width: 93px;
-//       height: 1px;
-//       background-color: #e0e5eb;
-//       right: 0;
-//       margin: 0 auto;
-//       display: block;
-//     }
-//   }
-// }
-
-// ======mobile-only range======
-.ReportExpenseItem:not(:nth-child(3n-3)) {
-  margin-right: 3px;
+  .ReportExpenseItem::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    // left: -14px;
+    width: 93px;
+    height: 1px;
+    background-color: #e0e5eb;
+    // right: 0;
+    // margin: 0 auto;
+    display: block;
+  }
 }
-
-.ReportExpenseItem::after {
-  content: '';
-  position: absolute;
-  bottom: 8px;
-  // left: -14px;
-  width: 93px;
-  height: 1px;
-  background-color: #e0e5eb;
-  // right: 0;
-  // margin: 0 auto;
-  display: block;
-}
-// ================================
 
 .ReportExpenseAmount {
   font-size: 12px;
@@ -89,10 +68,6 @@
 .ReportExpenseBtn:hover {
   background-color: #ffdac0;
 }
-
-// .isActiveBtn {
-//   background-color: #ffdac0;
-// }
 
 .ReportExpenseIcon {
   width: 56px;
@@ -152,11 +127,6 @@
 
   color: #52555f;
 }
-
-// @if mobile == mobile-only {
-//   @media (max-width: #{$tablet - 1}) {
-//   }
-// }
 
 @include for-size(tablet) {
   //   .ReportExpenseList {

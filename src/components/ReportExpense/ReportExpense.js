@@ -8,7 +8,8 @@ import CategoriesName from './CategoriesName';
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
 
 const ReportExpense = () => {
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
+  const [expenses, setExpenses] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
 
   const getCurrentCategory = name => {
@@ -26,6 +27,8 @@ const ReportExpense = () => {
     }
   };
 
+  const filteredExpenses = CategoriesName.filter(({ amount }) => amount > 0);
+
   return (
     <>
       <ReportExpenseIncomeToggler />
@@ -33,7 +36,7 @@ const ReportExpense = () => {
         {/* <h1 style={{ color: 'red', textAlign: 'center' }}>Расходы</h1> */}
 
         <ul className={styles.ReportExpenseList}>
-          {CategoriesName.map(({ category, _id, amount }) => (
+          {filteredExpenses.map(({ category, _id, amount }) => (
             <li name={category} key={_id} className={styles.ReportExpenseItem}>
               <p name={category} className={styles.ReportExpenseAmount}>
                 {amount}

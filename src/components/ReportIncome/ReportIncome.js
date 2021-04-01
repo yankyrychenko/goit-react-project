@@ -8,7 +8,8 @@ import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeTogg
 import CategoriesName from './CategoriesName';
 
 const ReportIncome = () => {
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
+  const [incomes, setIncomes] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
 
   const getCurrentCategory = name => {
@@ -26,6 +27,8 @@ const ReportIncome = () => {
     }
   };
 
+  const filteredIncome = CategoriesName.filter(({ amount }) => amount > 0);
+
   return (
     <>
       <ReportExpenseIncomeToggler />
@@ -33,7 +36,7 @@ const ReportIncome = () => {
         {/* <h1 style={{ color: 'green', textAlign: 'center' }}>Доходы</h1> */}
 
         <ul className={styles.ReportIncomeList}>
-          {CategoriesName.map(({ category, _id, amount }) => (
+          {filteredIncome.map(({ category, _id, amount }) => (
             <li name={category} key={_id} className={styles.ReportIncomeItem}>
               <p name={category} className={styles.ReportIncomeAmount}>
                 {amount}
