@@ -1,4 +1,6 @@
 @import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+
 
 
 .balanceLink {
@@ -20,3 +22,13 @@ margin-bottom: 40px;
 fill: $primary-text-color;
 margin-left: 20px;
 }
+
+@include for-size(tablet) {
+.balanceLink {
+  top: 76px;
+position: absolute;
+right: 69px;
+}
+
+}
+
