@@ -75,3 +75,13 @@ export default ReportExpenseIncomeToggler;
 //     setToggler();
 //   }
 // };
+
+//  const token = useSelector(state => state.token);
+//  const history = useHistory();
+//  useEffect(() => {
+//    if (token) {
+//      history.push(navigation.home);
+//    } else {
+//      history.push(navigation.login);
+//    }
+//  }, [token]);

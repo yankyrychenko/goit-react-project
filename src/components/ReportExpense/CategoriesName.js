@@ -1,6 +1,6 @@
 export default [
   { name: 'icon-products', category: 'Продукты', amount: 1000.0, _id: '1' },
-  { name: 'icon-alcohol', category: 'Алкоголь', amount: 0, _id: '2' },
+  { name: 'icon-alcohol', category: 'Алкоголь', amount: 43000, _id: '2' },
   { name: 'icon-kite', category: 'Развлечения', amount: 3000.0, _id: '3' },
   {
     name: 'icon-hands-holding-heart',

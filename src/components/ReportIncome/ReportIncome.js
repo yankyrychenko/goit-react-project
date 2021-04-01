@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 import styles from '../ReportIncome/ReportIncome.module.scss';
 import Container from '../Container/Container';
@@ -6,6 +7,10 @@ import Container from '../Container/Container';
 import incomeSprite from '../ReportIncome/incomeSprite.svg';
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
 import CategoriesName from './CategoriesName';
+import {
+  getIncomeTotal,
+  getExpenseTotal,
+} from '../../redux/selectors/periodDataSelectors';
 
 const ReportIncome = () => {
   // const [categories, setCategories] = useState([]);
@@ -28,6 +33,9 @@ const ReportIncome = () => {
   };
 
   const filteredIncome = CategoriesName.filter(({ amount }) => amount > 0);
+
+  const periodDataExpenses = useSelector(state => state.periodData);
+  console.log(periodDataExpenses);
 
   return (
     <>

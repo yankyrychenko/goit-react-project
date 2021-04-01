@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 import styles from '../ReportExpense/ReportExpense.module.scss';
 import Container from '../Container/Container';
@@ -6,6 +7,12 @@ import Container from '../Container/Container';
 import expenseSprite from '../ReportExpense/expenseSprite.svg';
 import CategoriesName from './CategoriesName';
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
+// import kapustaApi from '../../services/kapusta-api';
+
+import {
+  getIncomeTotal,
+  getExpenseTotal,
+} from '../../redux/selectors/periodDataSelectors';
 
 const ReportExpense = () => {
   // const [categories, setCategories] = useState([]);
@@ -28,6 +35,14 @@ const ReportExpense = () => {
   };
 
   const filteredExpenses = CategoriesName.filter(({ amount }) => amount > 0);
+
+  // const fetchTotalExpenses = () => {
+  //   return kapustaApi.periodDataGet().then(response => response.data);
+  // };
+  // console.log(fetchTotalExpenses());
+
+  const periodDataExpenses = useSelector(state => state.periodData);
+  console.log(periodDataExpenses);
 
   return (
     <>

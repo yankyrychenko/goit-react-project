@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
-import expenseActions from '../actions/expenseActions';
+import transactionsActions from '../actions/transactionsActions';
 
 const userInitialState = { email: null };
 const user = createReducer(userInitialState, {
@@ -22,9 +22,13 @@ const token = createReducer(tokenInitialState, {
 const isAuthenticated = createReducer(false, {
   [authActions.signUpSuccess]: () => true,
   [authActions.logInSuccess]: () => true,
-  [expenseActions.expenseGetSuccess]: () => true,
   [authActions.logOutSuccess]: () => false,
   [authActions.getCurrentUserSuccess]: () => true,
+  [authActions.getCurrentUserError]: () => false,
+  [transactionsActions.expenseGetSuccess]: () => true,
+  [transactionsActions.expenseGetError]: () => false,
+  [transactionsActions.incomeGetSuccess]: () => true,
+  [transactionsActions.incomeGetError]: () => false,
 });
 
 export default combineReducers({
