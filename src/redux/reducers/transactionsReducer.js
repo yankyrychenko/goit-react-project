@@ -1,12 +1,22 @@
+import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import actions from '../actions/transactionsActions';
 
-const transactionsReducer = createReducer(
+const incomes = createReducer(
   {},
   {
     [actions.incomeGetSuccess]: (_, { payload }) => payload,
+  },
+);
+
+const expenses = createReducer(
+  {},
+  {
     [actions.expenseGetSuccess]: (_, { payload }) => payload,
   },
 );
 
-export default transactionsReducer;
+export default combineReducers({
+  incomes,
+  expenses,
+});
