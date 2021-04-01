@@ -68,21 +68,21 @@ const Stats = ({ category }) => {
           {/* <XAxis type="number" />
           <YAxis type="category" dataKey="name" /> */}
 
-          {!isMobile && <CartesianGrid vertical={false} strokeDashArray="4" />}
+          {!isMobile && <CartesianGrid vertical={false} strokeDashArray="7 5 2"/>}
           <Bar
-            maxBarSize={38}
+            maxBarSize={isMobile?15:38}
             shape={
               <Rectangle radius={isMobile ? [0, 10, 10, 0] : [10, 10, 0, 0]} />
             }
             dataKey="data"
-            fill="#8884d8"
+            fill="#FF751D"
             // shape={<TriangleBar />}
-            label={{ position: 'top', fill: '#FF9900' }}
+            label={{ position: 'top', fill: '#52555F' }}
           >
             {diagramData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill="#FF9900" />
+              <Cell key={`cell-${index}`} fill={index===0||index % 3 === 0?"#FF751D":"#FFDAC0"} />
             ))}
-            {/* <LabelList dataKey="name" position="bottom" /> */}
+            {isMobile &&<LabelList dataKey="name" position="center" fill="#52555F "/>}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
