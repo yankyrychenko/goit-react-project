@@ -9,8 +9,12 @@ import transactionsOperations from '../../redux/operations/transactionsOperation
 import categoriesOperations from '../../redux/operations/categoriesOperations';
 import style from './ExpenseView.module.scss';
 
+import { useSelector } from 'react-redux';
+import { getExpenses } from '../../redux/selectors/transactionsSelectors'
+
 export default function ExpenseView() {
   const dispatch = useDispatch();
+  const costList = useSelector(getExpenses)
 
   useEffect(() => {
     dispatch(transactionsOperations.handleExpenseGet());
@@ -23,7 +27,7 @@ export default function ExpenseView() {
         <TransactionContainer>
           <BalanceForm />
           <div className={style.wrapper}>
-            <TransactionTable />
+            <TransactionTable costList={costList}/>
             <Summary />
           </div>
         </TransactionContainer>

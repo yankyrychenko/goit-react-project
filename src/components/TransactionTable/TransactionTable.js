@@ -1,22 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { useWindowSize } from 'react-use-size';
 import CostItem from './CostItem';
-// import {} from './../../redux/selectors/transactionsSelectors'
 
 import { incomes } from './income.json';
 
 import style from './TransactionTable.module.scss';
 
-export default function TransactionTable() {
+export default function TransactionTable({costList}) {
     const { width } = useWindowSize();
-    // const listCost = useSelector(selRenderFilter); 
-    const dispatch = useDispatch();
-
-// const selIncomes = state => state.transactions.incomes
-// const selExpenses = state => state.transactions.expenses
-
 
   return (
       <div>
@@ -38,7 +30,6 @@ export default function TransactionTable() {
             amount={item.amount}
             date={item.date}
             category={item.category}
-            // disFnDeleteItem={disFnDeleteItem}
           ></CostItem>
         ))}
         {width > 767 ? (

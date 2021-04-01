@@ -141,6 +141,7 @@
 // -------------------------------------> Корзина
 
 .item__remove {
+  cursor: pointer;
   position: absolute;
   z-index: 100;
   top: 17px;
