@@ -68,80 +68,82 @@ const AuthorizationForm = () => {
   };
 
   return (
-    <form className={styles.AuthorizationForm} onSubmit={onSubmit}>
-      <div className={styles.googleAuthBlock}>
-        <p className={styles.googleAuthText}>
-          Вы можете авторизоваться с помощью Google Account:
-        </p>
-        <a
-          href="https://kapusta-backend.goit.global/auth/google"
-          className={styles.googleAuthButton}
-        >
-          <svg width="18" height="18">
-            <use href={sprite + '#icon-google-symbol-1'}></use>
-          </svg>
-          Google
-        </a>
-      </div>
-      <div className={styles.authBlock}>
-        <p className={styles.authText}>
-          Или зайти с помощью e-mail и пароля, предварительно
-          зарегистрировавшись:
-        </p>
-        <div className={styles.emailBlock}>
-          <label htmlFor="AuthorizationForm__email">
-            {emailError && <span style={{ color: 'red' }}>*</span>}
-            Электронная почта:
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="AuthorizationForm__email"
-            value={email}
-            onChange={changeEmailValue}
-            placeholder="your@email.com"
-            // required
-          />
-          <p className={styles.emailError}>{emailError}</p>
+    <>
+      <form className={styles.AuthorizationForm} onSubmit={onSubmit}>
+        <div className={styles.googleAuthBlock}>
+          <p className={styles.googleAuthText}>
+            Вы можете авторизоваться с помощью Google Account:
+          </p>
+          <a
+            href="https://kapusta-backend.goit.global/auth/google"
+            className={styles.googleAuthButton}
+          >
+            <svg width="18" height="18">
+              <use href={sprite + '#icon-google-symbol-1'}></use>
+            </svg>
+            Google
+          </a>
         </div>
-        <div className={styles.passwordBlock}>
-          <label htmlFor="AuthorizationForm__password">
-            {passwordError && <span style={{ color: 'red' }}>*</span>}
-            Пароль:
-          </label>
-          <div className={styles.passwordInputBlock}>
+        <div className={styles.authBlock}>
+          <p className={styles.authText}>
+            Или зайти с помощью e-mail и пароля, предварительно
+            зарегистрировавшись:
+          </p>
+          <div className={styles.emailBlock}>
+            <label htmlFor="AuthorizationForm__email">
+              {emailError && <span style={{ color: 'red' }}>*</span>}
+              Электронная почта:
+            </label>
             <input
-              type={isPasswordShown ? 'text' : 'password'}
-              name="password"
-              id="AuthorizationForm__password"
-              value={password}
-              onChange={changePasswordValue}
-              placeholder="Пароль"
-              // minLength="4"
-              // maxLength="16"
+              type="email"
+              name="email"
+              id="AuthorizationForm__email"
+              value={email}
+              onChange={changeEmailValue}
+              placeholder="your@email.com"
               // required
             />
-            <button
-              type="button"
-              className={styles.passwordButton}
-              onClick={() => setIsPasswordShown(!isPasswordShown)}
-            >
-              {isPasswordShown ? 'Скрыть' : 'Показать'} пароль
-            </button>
+            <p className={styles.emailError}>{emailError}</p>
           </div>
-          <p className={styles.passwordError}>{passwordError}</p>
+          <div className={styles.passwordBlock}>
+            <label htmlFor="AuthorizationForm__password">
+              {passwordError && <span style={{ color: 'red' }}>*</span>}
+              Пароль:
+            </label>
+            <div className={styles.passwordInputBlock}>
+              <input
+                type={isPasswordShown ? 'text' : 'password'}
+                name="password"
+                id="AuthorizationForm__password"
+                value={password}
+                onChange={changePasswordValue}
+                placeholder="Пароль"
+                // minLength="4"
+                // maxLength="16"
+                // required
+              />
+              <button
+                type="button"
+                className={styles.passwordButton}
+                onClick={() => setIsPasswordShown(!isPasswordShown)}
+              >
+                {isPasswordShown ? 'Скрыть' : 'Показать'} пароль
+              </button>
+            </div>
+            <p className={styles.passwordError}>{passwordError}</p>
+          </div>
         </div>
-      </div>
-      <div className={styles.buttonsBlock}>
-        <button type="submit" className={styles.loginButton}>
-          Войти
-        </button>
-        <button type="submit" className={styles.registrationButton}>
-          Регистрация
-        </button>
-      </div>
-      <p className={styles.formError}>{errorMessage()}</p>
-    </form>
+        <div className={styles.buttonsBlock}>
+          <button type="submit" className={styles.loginButton}>
+            Войти
+          </button>
+          <button type="submit" className={styles.registrationButton}>
+            Регистрация
+          </button>
+        </div>
+        <p className={styles.formError}>{errorMessage()}</p>
+      </form>
+    </>
   );
 };
 
