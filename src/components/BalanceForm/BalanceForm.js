@@ -1,34 +1,61 @@
 import React, { useState } from 'react';
 import { useWindowSize } from 'react-use-size';
 import style from './BalanceForm.module.scss';
+import PropTypes from 'prop-types';
 import sprite from '../../img/sprite.svg';
 import customStyles from './ReactSelectStyles';
-import 'react-calendar/dist/Calendar.css';
 import CustomCalendar from '../CustomCalendar/CustomCalendar';
-import Select from 'react-select';
+import Select from './Select/Select';
+import variables from './variables';
+import 'react-calendar/dist/Calendar.css';
 
-const BalanceForm = () => {
+const BalanceForm = ({ category, submitIncomeData }) => {
+  const options = category.map(el => ({ value: el, label: el }));
+
   const { width } = useWindowSize();
-  const [chosenDate, setChosenDate] = useState('');
-  const [category, setCategory] = useState(null);
+  const [date, setDate] = useState('');
+  const [value, setValue] = useState(null);
 
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
-
-  const getDate = data => {
-    setChosenDate(data);
+  const initialForm = {
+    description: '',
+    amount: '',
+    date: date,
+    category: '',
   };
 
-  const handleCategory = ({ value }) => {
-    setCategory(value);
+  const [form, setForm] = useState({
+    ...initialForm,
+  });
+
+  const handleFormValue = ({ target }) => {
+    const { name, value } = target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const getDate = date => {
+    setDate(date);
+    setForm({ ...form, [variables.date]: date });
+  };
+
+  const handleCategory = value => {
+    setForm({ ...form, [variables.category]: value.value });
+    setValue(value);
+  };
+
+  const clearForm = () => {
+    setForm({ ...initialForm });
+    setValue(null);
+  };
+
+  const handleSubmitForm = e => {
+    e.preventDefault();
+    submitIncomeData(form);
+    clearForm();
   };
 
   return (
     <>
-      <form className={style.form}>
+      <form onSubmit={handleSubmitForm} className={style.form}>
         <div className={style.test}>
           <CustomCalendar getDate={getDate} />
           <div className={style.labelsContainer}>
@@ -37,19 +64,24 @@ const BalanceForm = () => {
                 className={style.input}
                 type="text"
                 placeholder="Описание товара"
+                value={form.description}
+                name={variables.description}
+                onChange={handleFormValue}
+                required
               />
             </label>
             <label className={style.labelSelect}>
               <Select
+                required
                 options={options}
                 styles={customStyles}
                 placeholder={'Категория товара'}
+                value={value}
                 components={{
                   IndicatorSeparator: () => null,
                 }}
                 isSearchable={false}
-                onChange={e => handleCategory(e)}
-                required
+                onChange={handleCategory}
               />
             </label>
             {width > 767 && (
@@ -59,6 +91,10 @@ const BalanceForm = () => {
                     className={style.inputNumberTD}
                     type="number"
                     placeholder="00,00"
+                    value={form.amount}
+                    name={variables.amount}
+                    onChange={handleFormValue}
+                    required
                   />
                 </label>
                 <div className={style.svgContainerTD}>
@@ -76,6 +112,10 @@ const BalanceForm = () => {
                   className={style.inputNumber}
                   type="number"
                   placeholder="00.00 UAH"
+                  name={variables.amount}
+                  value={form.amount}
+                  onChange={handleFormValue}
+                  required
                 />
               </label>
               <div className={style.svgContainer}>
@@ -90,13 +130,22 @@ const BalanceForm = () => {
           <button type="submit" className={style.buttonSubmit}>
             Ввод
           </button>
-          <button type="button" className={style.buttonClear}>
+          <button
+            onClick={clearForm}
+            type="button"
+            className={style.buttonClear}
+          >
             Очистить
           </button>
         </div>
       </form>
     </>
   );
+};
+
+BalanceForm.propTypes = {
+  category: PropTypes.array.isRequired,
+  submitIncomeData: PropTypes.func.isRequired,
 };
 
 export default BalanceForm;
