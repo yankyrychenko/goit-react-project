@@ -6,12 +6,10 @@ import transactionsActions from '../actions/transactionsActions';
 
 const userInitialState = { };
 const user = createReducer(userInitialState, {
-  [authActions.signUpSuccess]: (_, { payload }) => payload,
   [authActions.logInSuccess]: (_, { payload }) => payload.userData,
   [authActions.logOutSuccess]: () => userInitialState,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
   [balanceActions.addBalanceSuccess]: (state, { payload }) => ({...state, balance: payload})
-  // [authActions.googleLoginSuccess]: (_, { payload }) => payload,
 });
 
 const tokenInitialState = null;
@@ -22,15 +20,13 @@ const token = createReducer(tokenInitialState, {
 });
 
 const isAuthenticated = createReducer(false, {
-  [authActions.signUpSuccess]: () => true,
   [authActions.logInSuccess]: () => true,
   [authActions.logOutSuccess]: () => false,
   [authActions.getCurrentUserSuccess]: () => true,
-  [authActions.getCurrentUserError]: () => false,
   [transactionsActions.expenseGetSuccess]: () => true,
-  [transactionsActions.expenseGetError]: () => false,
+  // [transactionsActions.expenseGetError]: () => false, // ошибки тут не нужно обрабатывать, он и без него false будет
   [transactionsActions.incomeGetSuccess]: () => true,
-  [transactionsActions.incomeGetError]: () => false,
+  // [transactionsActions.incomeGetError]: () => false, // ошибки тут не нужно обрабатывать, он и без него false будет
 });
 
 export default combineReducers({
