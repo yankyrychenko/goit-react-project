@@ -9,7 +9,7 @@ const HomeView = () => (
   <main>
        <Container>
         <GoToReport />
-    </Container>
+      </Container>
 
     <Container>
       <TransactionContainer>

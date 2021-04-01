@@ -5,6 +5,7 @@ import authReducer from './reducers/authReducers';
 import transactionsReducer from './reducers/transactionsReducer';
 import categoriesReducer from './reducers/categoriesReducers';
 import periodDataReducer from './reducers/periodDataReducers';
+import balanceReducer from './reducers/balanceReducers'
 import error from './error';
 import loadingReducer from './isLoading';
 
@@ -19,6 +20,7 @@ export default combineReducers({
   transactions: transactionsReducer,
   categories: categoriesReducer,
   periodData: periodDataReducer,
+  balance : balanceReducer,
   error,
   isLoading: loadingReducer,
 });
