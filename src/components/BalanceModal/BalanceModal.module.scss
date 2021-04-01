@@ -2,6 +2,7 @@
 @import '../../styles/_mixins.scss';
 
 .balanceModal {
+  z-index: 1;
 position: absolute;
 top: 55px;
 border-radius: 30px;
