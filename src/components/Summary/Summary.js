@@ -57,7 +57,7 @@ const Summary = () => {
         {monthToShow.map(item => (
           <tr key={item[0]}>
             <th className={styles.month}>{item[0]}</th>
-            <th>{item[1]}</th>
+            <th className={styles.sum}>{item[1]}</th>
           </tr>
         ))}
       </tbody>
