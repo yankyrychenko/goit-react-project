@@ -3,19 +3,19 @@
 
 .AuthorizationForm {
   background-color: $white-color;
-  // margin: 50px 0 0 0;
+  margin: 50px 0 0 0;
   padding: 40px 20px;
-  // box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 30px;
 
   @include for-size(tablet) {
-    // margin: 50px auto 0 auto;
-    // padding: 50px 77px;
-    // width: 436px;
+    margin: 50px auto 0 auto;
+    padding: 50px 77px;
+    width: 436px;
   }
 
   @include for-size(desktop) {
-    // margin: 117px 0 0 auto;
+     margin: 117px 0 0 auto;
   }
 }
 

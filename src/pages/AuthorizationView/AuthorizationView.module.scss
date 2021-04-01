@@ -4,12 +4,5 @@
   @include for-size(desktop) {
     display: flex;
     align-items: center;
-    height: 526px;
-    // background-color: red;
-    background: #f5f6fb url('../../img/icons.svg');
-    background-repeat: no-repeat;
-    background-position-y: 28px;
-    border-bottom-left-radius: 200px;
-    background-size: contain;
   }
 }
