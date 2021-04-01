@@ -41,12 +41,11 @@ const Summary = () => {
     currentDate.setMonth(currentDate.getMonth() - i);
     const month = new Intl.DateTimeFormat('rus', options).format(currentDate);
     const year = currentDate.getFullYear();
+
+    // console.log(test);
     // console.log(data[year][month]);
-    // let obj[month] = data[year]?.[month];
     // console.log(data?.[year]?.[month]);
     // console.log(data[year], data[year][month]);
-    // console.log(obj);
-    monthToShow.push();
     // console.log(currentDate);
     // console.log(currentDate.toLocaleDateString());
   }
