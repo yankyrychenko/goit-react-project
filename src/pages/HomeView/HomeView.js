@@ -1,13 +1,16 @@
 import React from 'react';
 import Container from '../../components/Container';
 import TransactionContainer from '../../components/TransactionContainer/TransactionContainer'
+import TransactionTable from '../../components/TransactionTable/TransactionTable';
 
 
 const HomeView = () => (
   <>
     <main>
       <Container>
-        <TransactionContainer></TransactionContainer>
+        <TransactionContainer>
+          <TransactionTable/>
+        </TransactionContainer>
       </Container>
     </main>
   </>
