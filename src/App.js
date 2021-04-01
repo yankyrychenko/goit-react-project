@@ -4,6 +4,8 @@ import { Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import { routes, PublicRoute, PrivateRoute } from './routes';
 import authOperations from './redux/operations/authOperations';
+import BalanceForm from './components/BalanceForm/BalanceForm';
+import Container from './components/Container';
 
 const AuthorizationView = lazy(() =>
   import(
