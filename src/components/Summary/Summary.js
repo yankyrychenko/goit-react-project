@@ -11,20 +11,7 @@ const Summary = () => {
   );
   let data = {};
   const options = { month: 'long' };
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const monthToShow = [];
 
   let transactionsToShow = [];
 
@@ -46,14 +33,30 @@ const Summary = () => {
     let month = new Intl.DateTimeFormat('rus', options).format(date);
     data[year][month] += tr.amount;
   });
-  console.log(data);
+  // console.log(data);
+
+  for (let i = 1; i <= 6; i++) {
+    let currentDate = new Date();
+
+    currentDate.setMonth(currentDate.getMonth() - i);
+    const month = new Intl.DateTimeFormat('rus', options).format(currentDate);
+    const year = currentDate.getFullYear();
+    // console.log(data[year][month]);
+    // let obj[month] = data[year]?.[month];
+    // console.log(data?.[year]?.[month]);
+    // console.log(data[year], data[year][month]);
+    // console.log(obj);
+    monthToShow.push();
+    // console.log(currentDate);
+    // console.log(currentDate.toLocaleDateString());
+  }
 
   return (
     <table className={styles.table}>
       <tbody>
         <tr key="sum">
           <th className={styles.tableHeader} colSpan="2">
-            Cводка
+            CВОДКА
           </th>
         </tr>
         <tr key="1">
