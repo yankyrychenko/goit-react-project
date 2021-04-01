@@ -45,7 +45,6 @@ const getCurrentUser = () => (dispatch, getState) => {
   const {
     auth: { token },
   } = getState();
-
   if (token) {
     api.token.set(token);
 
