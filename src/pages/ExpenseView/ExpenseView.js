@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Container from '../../components/Container';
-import PagesCost from './../../components/PagesCost/CostPage';
+// import PagesCost from './../../components/PagesCost/CostPage';
 import transactionsOperations from '../../redux/operations/transactionsOperations';
 import categoriesOperations from '../../redux/operations/categoriesOperations';
 
@@ -16,7 +16,7 @@ export default function ExpenseView() {
   return (
     <main>
       <Container>
-        <PagesCost />
+        {/* <PagesCost /> */}
       </Container>
     </main>
   );

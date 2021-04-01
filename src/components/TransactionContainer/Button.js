@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './CostPage.module.scss';
+import style from './TransactionContainer.module.scss';
 
 export default function Button({title}) {
   return (
