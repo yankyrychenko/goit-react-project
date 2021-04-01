@@ -28,7 +28,6 @@ const Stats = ({ category }) => {
 
   const [isMobile, setIsMobile] = useState(false);
   const periodData = useSelector(getPeriodData);
-  console.log(periodData);
   const diagramData = getDataForDiagram('Транспорт', periodData);
   useEffect(() => {
     const handleWindowResize = () => {
