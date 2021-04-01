@@ -8,8 +8,8 @@
 
   @include for-size(mobile-only) {
     width: 300px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   @include for-size(tablet) {
