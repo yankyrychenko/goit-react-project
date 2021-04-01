@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import BackHomeButton from '../../components/BackHomeButton/BackHomeButton';
 import Stats from '../../components/Stats/Sats';
 import Container from '../../components/Container';
+import StatementBar from '../../components/StatementBar/StatementBar';
 import periodDataOperations from '../../redux/operations/periodDataOperations';
 
 export default function StatisticsView() {
@@ -14,10 +15,18 @@ export default function StatisticsView() {
 
   return (
     <main>
-      <Container>
-        <BackHomeButton />
-        <Stats />
-      </Container>
+      {/*  <section>
+        <Container>
+          <StatementBar />
+        </Container>
+      </section> */}
+
+      <section>
+        <Container>
+          <BackHomeButton />
+          <Stats />
+        </Container>
+      </section>
     </main>
   );
 }
