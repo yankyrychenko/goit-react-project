@@ -9,18 +9,18 @@ import CategoriesName from './CategoriesName';
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
 // import kapustaApi from '../../services/kapusta-api';
 
-import { getExpenseTotal } from '../../redux/selectors/periodDataSelectors';
+// import { getExpenseTotal } from '../../redux/selectors/periodDataSelectors';
 
 const ReportExpense = () => {
-  const [category, setCategory] = useState({});
-  const [expenses, setExpenses] = useState([]);
+  // const [category, setCategory] = useState({});
+  // const [expenses, setExpenses] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
 
-  const getCurrentCategory = name => {
-    return CategoriesName.find(({ category }) => {
-      return category === name;
-    });
-  };
+  // const getCurrentCategory = name => {
+  //   return CategoriesName.find(({ category }) => {
+  //     return category === name;
+  //   });
+  // };
 
   const activeCategoryHandler = e => {
     const { name } = e.target;
@@ -31,103 +31,205 @@ const ReportExpense = () => {
     }
   };
 
-  const filteredExpenses = CategoriesName.filter(({ amount }) => amount > 0);
+  // const filteredExpenses = CategoriesName.filter(({ amount }) => amount > 0);
 
-  // const fetchTotalExpenses = () => {
-  //   return kapustaApi.periodDataGet().then(response => response.data);
-  // };
-  // console.log(fetchTotalExpenses());
-
-  // const totalExpenses = useSelector(state => state.periodData);
-  // console.log(totalExpenses);
-
-  // const totalMonthExpenses = useSelector(
-  //   state => state.periodData.expenses.incomesData.Транспорт.total,
-  // );
-  // console.log(totalMonthExpenses);
-
-  // const total Object.entries(totalMonthExpenses);
-
-  let categoriesArray = [];
+  // const filteredExpenses = categoriesArray.filter(({ total }) => total > 0);
 
   const totalMonthExpenses = useSelector(
-    state => state.periodData.expenses.incomesData,
+    state => state.periodData.expenses.expensesData,
   );
-
   // console.log(totalMonthExpenses);
+
+  let categoriesArray = [];
 
   if (totalMonthExpenses !== undefined) {
     const catArr = Object.entries(totalMonthExpenses);
 
-    categoriesArray = catArr.map(category => {
-      category.filter(({ total }) => total > 0);
-      return category[1].total;
-      // if (category[1].total > 0) {
-      //   return category;
-      // }
+    catArr.forEach(category => {
+      // category.filter(({ total }) => total > 0);
+      // return category[1].total;
+
+      if (category[1].total > 0) {
+        CategoriesName.forEach(item => {
+          if (item.category === category[0]) {
+            categoriesArray.push([...category, item.name]);
+          }
+        });
+      }
     });
   }
-
-  console.log(categoriesArray);
+  // console.log(categoriesArray);
 
   return (
     <>
       <ReportExpenseIncomeToggler />
-      <Container>
-        {/* <h1 style={{ color: 'red', textAlign: 'center' }}>Расходы</h1> */}
+      {/* <Container> */}
+      {/* <h1 style={{ color: 'red', textAlign: 'center' }}>Расходы</h1> */}
 
-        <ul className={styles.ReportExpenseList}>
-          {filteredExpenses.map(({ category, _id }) => (
-            <li name={category} key={_id} className={styles.ReportExpenseItem}>
-              {categoriesArray.map(({ total }) => (
-                <p
-                  name={category}
-                  key={_id}
-                  className={styles.ReportExpenseAmount}
-                >
-                  {total}
-                </p>
-              ))}
+      <ul className={styles.ReportExpenseList}>
+        {categoriesArray?.map(category => (
+          <li
+            name={category[0]}
+            key={category[0]}
+            className={styles.ReportExpenseItem}
+          >
+            <p name={category[0]} className={styles.ReportExpenseAmount}>
+              {category[1].total}
+            </p>
 
-              <button
-                type="button"
-                name={category}
-                // className={styles.ReportExpenseBtn}
-                onClick={activeCategoryHandler}
-                className={
-                  activeCategory === category
-                    ? styles.isActiveBtn
-                    : styles.nonActiveBtn
-                }
-              >
-                <svg className={styles.ReportExpenseIcon}>
-                  <use
-                    className={
-                      activeCategory === category
-                        ? styles.isActiveIcon
-                        : styles.nonActiveIcon
-                    }
-                    href={`${expenseSprite}#${
-                      getCurrentCategory(category).name
-                    }`}
-                  />
-                </svg>
-              </button>
-              <h3 name={category} className={styles.ReportExpenseTitle}>
-                {category}
-              </h3>
-            </li>
-          ))}
-        </ul>
-      </Container>
+            <button
+              type="button"
+              name={category[0]}
+              // className={styles.ReportExpenseBtn}
+              onClick={activeCategoryHandler}
+              className={
+                activeCategory === category[0]
+                  ? styles.isActiveBtn
+                  : styles.nonActiveBtn
+              }
+            >
+              <svg className={styles.ReportExpenseIcon}>
+                <use
+                  className={
+                    activeCategory === category[0]
+                      ? styles.isActiveIcon
+                      : styles.nonActiveIcon
+                  }
+                  href={`${expenseSprite}#${category[2]}`}
+                  // href={`${expenseSprite}#${getCurrentCategory(category).name}`}
+                />
+              </svg>
+            </button>
+            <h3 name={category[0]} className={styles.ReportExpenseTitle}>
+              {category[0]}
+            </h3>
+          </li>
+        ))}
+      </ul>
+      {/* </Container> */}
     </>
   );
 };
 
 export default ReportExpense;
 
-// Object.entries(totalMonthExpenses);
+// const ReportExpense = () => {
+//   const [category, setCategory] = useState({});
+//   const [expenses, setExpenses] = useState([]);
+//   const [activeCategory, setActiveCategory] = useState('');
 
-// const totalMonthExpenses = useSelector(
-//     state => state.periodData.expenses.expensesData,
+//   const getCurrentCategory = name => {
+//     return CategoriesName.find(({ category }) => {
+//       return category === name;
+//     });
+//   };
+
+//   const activeCategoryHandler = e => {
+//     const { name } = e.target;
+//     if (activeCategory !== name) {
+//       setActiveCategory(name);
+//     } else {
+//       setActiveCategory('');
+//     }
+//   };
+
+//   const filteredExpenses = CategoriesName.filter(({ amount }) => amount > 0);
+
+//   // const fetchTotalExpenses = () => {
+//   //   return kapustaApi.periodDataGet().then(response => response.data);
+//   // };
+//   // console.log(fetchTotalExpenses());
+
+//   // const totalExpenses = useSelector(state => state.periodData);
+//   // console.log(totalExpenses);
+
+//   // const totalMonthExpenses = useSelector(
+//   //   state => state.periodData.expenses.incomesData.Транспорт.total,
+//   // );
+//   // console.log(totalMonthExpenses);
+
+//   // const total Object.entries(totalMonthExpenses);
+
+//   let categoriesArray = [];
+
+//   const totalMonthExpenses = useSelector(
+//     state => state.periodData.expenses.incomesData,
 //   );
+
+//   // console.log(totalMonthExpenses);
+
+//   if (totalMonthExpenses !== undefined) {
+//     const catArr = Object.entries(totalMonthExpenses);
+
+//     categoriesArray = catArr.map(category => {
+//       category.filter(({ total }) => total > 0);
+//       return category[1].total;
+//       // if (category[1].total > 0) {
+//       //   return category;
+//       // }
+//     });
+//   }
+
+//   console.log(categoriesArray);
+
+//   return (
+//     <>
+//       <ReportExpenseIncomeToggler />
+//       <Container>
+//         {/* <h1 style={{ color: 'red', textAlign: 'center' }}>Расходы</h1> */}
+
+//         <ul className={styles.ReportExpenseList}>
+//           {filteredExpenses.map(({ category, _id }) => (
+//             <li name={category} key={_id} className={styles.ReportExpenseItem}>
+//               {categoriesArray.map(({ total }) => (
+//                 <p
+//                   name={category}
+//                   key={_id}
+//                   className={styles.ReportExpenseAmount}
+//                 >
+//                   {total}
+//                 </p>
+//               ))}
+
+//               <button
+//                 type="button"
+//                 name={category}
+//                 // className={styles.ReportExpenseBtn}
+//                 onClick={activeCategoryHandler}
+//                 className={
+//                   activeCategory === category
+//                     ? styles.isActiveBtn
+//                     : styles.nonActiveBtn
+//                 }
+//               >
+//                 <svg className={styles.ReportExpenseIcon}>
+//                   <use
+//                     className={
+//                       activeCategory === category
+//                         ? styles.isActiveIcon
+//                         : styles.nonActiveIcon
+//                     }
+//                     href={`${expenseSprite}#${
+//                       getCurrentCategory(category).name
+//                     }`}
+//                   />
+//                 </svg>
+//               </button>
+//               <h3 name={category} className={styles.ReportExpenseTitle}>
+//                 {category}
+//               </h3>
+//             </li>
+//           ))}
+//         </ul>
+//       </Container>
+//     </>
+//   );
+// };
+
+// export default ReportExpense;
+
+// // Object.entries(totalMonthExpenses);
+
+// // const totalMonthExpenses = useSelector(
+// //     state => state.periodData.expenses.expensesData,
+// //   );
