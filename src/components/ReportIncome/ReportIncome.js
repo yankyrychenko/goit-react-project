@@ -7,10 +7,7 @@ import Container from '../Container/Container';
 import incomeSprite from '../ReportIncome/incomeSprite.svg';
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
 import CategoriesName from './CategoriesName';
-import {
-  getIncomeTotal,
-  getExpenseTotal,
-} from '../../redux/selectors/periodDataSelectors';
+import { getIncomeTotal } from '../../redux/selectors/periodDataSelectors';
 
 const ReportIncome = () => {
   // const [categories, setCategories] = useState([]);
@@ -34,8 +31,13 @@ const ReportIncome = () => {
 
   const filteredIncome = CategoriesName.filter(({ amount }) => amount > 0);
 
-  const periodDataExpenses = useSelector(state => state.periodData);
-  console.log(periodDataExpenses);
+  // const periodDataIncome = useSelector(state => state.periodData);
+  // console.log(periodDataIncome);
+
+  const totalMonthIncomes = useSelector(
+    state => state.periodData.incomes.incomesData,
+  );
+  console.log(totalMonthIncomes);
 
   return (
     <>

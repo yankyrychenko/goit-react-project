@@ -9,13 +9,10 @@ import CategoriesName from './CategoriesName';
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
 // import kapustaApi from '../../services/kapusta-api';
 
-import {
-  getIncomeTotal,
-  getExpenseTotal,
-} from '../../redux/selectors/periodDataSelectors';
+import { getExpenseTotal } from '../../redux/selectors/periodDataSelectors';
 
 const ReportExpense = () => {
-  // const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState({});
   const [expenses, setExpenses] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
 
@@ -41,8 +38,13 @@ const ReportExpense = () => {
   // };
   // console.log(fetchTotalExpenses());
 
-  const periodDataExpenses = useSelector(state => state.periodData);
-  console.log(periodDataExpenses);
+  // const totalExpenses = useSelector(state => state.periodData);
+  // console.log(totalExpenses);
+
+  const totalMonthExpenses = useSelector(
+    state => state.periodData.expenses.incomesData.Транспорт.total,
+  );
+  console.log(totalMonthExpenses);
 
   return (
     <>
