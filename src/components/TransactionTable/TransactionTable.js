@@ -1,20 +1,27 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useWindowSize } from 'react-use-size';
 import CostItem from './CostItem';
+// import {} from './../../redux/selectors/transactionsSelectors'
+
 import { incomes } from './income.json';
 
 import style from './TransactionTable.module.scss';
 
 export default function TransactionTable() {
-  console.log(incomes);
-  // console.log(expenses);
-  // console.log(window.innerWidth);
-  // console.log(window.screen.width)
-  // console.dir(window.visualViewport.width)
+    const { width } = useWindowSize();
+    // const listCost = useSelector(selRenderFilter); 
+    const dispatch = useDispatch();
+
+// const selIncomes = state => state.transactions.incomes
+// const selExpenses = state => state.transactions.expenses
+
 
   return (
-    <div>
       <div>
-        {window.visualViewport.width > 767 ? (
+      <div>
+        {width > 767 ? (
           <div className={style.table__head}>
             <ul className={style.table__box}>
               <li className={style.table__title}>Дата</li>
@@ -34,7 +41,7 @@ export default function TransactionTable() {
             // disFnDeleteItem={disFnDeleteItem}
           ></CostItem>
         ))}
-        {window.visualViewport.width > 767 ? (
+        {width > 767 ? (
           <div>
             <div className={style.table__body}></div>
             <div className={style.table__body}></div>
@@ -46,12 +53,13 @@ export default function TransactionTable() {
             <div className={style.table__body}></div>
             <div className={style.table__body}></div>
           </div>
-        ) : (
-          <div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-          </div>
+              ) : (
+                      null
+        //   <div>
+        //     <div className={style.table__body}></div>
+        //     <div className={style.table__body}></div>
+        //     <div className={style.table__body}></div>
+        //   </div>
         )}
       </div>
     </div>

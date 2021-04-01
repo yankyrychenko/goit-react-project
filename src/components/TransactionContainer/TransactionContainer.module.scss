@@ -25,7 +25,6 @@
   }
 }
 
-// ----------------------------------------> BUTTON
 .button__flexbox {
   display: flex;
   justify-content: space-between;
@@ -34,53 +33,7 @@
   top: 514px;
 
   @include for-size(tablet) {
-    display: block;
+    justify-content: flex-start;
     position: static;
   }
-}
-
-.button__title {
-  font-weight: bold;
-  font-size: 12px;
-  text-transform: uppercase;
-
-  margin: 0;
-  padding: 0;
-
-  width: 138px;
-  // min-width: none;
-  // min-width: 118px;
-  // width: 159px;
-  // width: 100%;
-  min-height: 53px;
-  margin-right: 2px;
-  border: 0;
-  background-color: $primary-gray-color;
-
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  @include for-size(tablet) {
-    // min-width: 138px;
-    min-height: 40px;
-    margin-right: 0px;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    background-color: #fefefe;
-  }
-}
-
-.button__title:hover,
-.button__title:focus {
-  background: $primary-orange-color;
-  color: $white-color;
-
-  @include for-size(tablet) {
-    background: #fefefe;
-    color: $primary-orange-color;
-  }
-}
-
-.button__title_unactive {
-  background-color: #fafbfd;
 }
