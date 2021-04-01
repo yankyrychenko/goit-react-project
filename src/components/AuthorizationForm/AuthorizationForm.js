@@ -65,7 +65,7 @@ const AuthorizationForm = () => {
     } else if (error === 'Request failed with status code 403') {
       return 'Некорректный пароль или email';
     } else {
-      return error;
+      return 'Ошибка! Попробуйте еще раз';
     }
   };
 
