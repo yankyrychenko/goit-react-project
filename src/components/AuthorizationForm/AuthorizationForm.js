@@ -64,8 +64,6 @@ const AuthorizationForm = () => {
       return 'Пользователь с таким email уже зарегистрирован';
     } else if (error === 'Request failed with status code 403') {
       return 'Некорректный пароль или email';
-    } else {
-      return 'Ошибка! Попробуйте еще раз';
     }
   };
 
@@ -142,7 +140,7 @@ const AuthorizationForm = () => {
           Регистрация
         </button>
       </div>
-      <p className={styles.formError}>{error && errorMessage()}</p>
+      <p className={styles.formError}>{errorMessage()}</p>
     </form>
   );
 };
