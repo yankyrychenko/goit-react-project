@@ -5,6 +5,7 @@ import Stats from '../../components/Stats/Sats';
 import Container from '../../components/Container';
 import StatementBar from '../../components/StatementBar/StatementBar';
 import periodDataOperations from '../../redux/operations/periodDataOperations';
+import MonthCalendar from '../../components/MonthCalendar/MonthCalendar';
 
 export default function StatisticsView() {
   /*   const dispatch = useDispatch();
