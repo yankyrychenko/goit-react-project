@@ -1,37 +1,39 @@
-import React, { Component } from 'react';
-import styles from './Modal.module.css';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import s from './Modal.module.scss';
 
-export default class Modal extends Component {
-  state = {};
-  componentDidMount() {
-    const { hendleEsc } = this;
-    window.addEventListener('keydown', hendleEsc);
-  }
-  componentWillUnmount() {
-    const { hendleEsc } = this;
-    window.removeEventListener('keydown', hendleEsc);
-  }
-  hendleClose = e => {
-    const { toggleModal } = this.props;
-    if (e.target === e.carrentTarget) {
-      toggleModal();
+const Modal = ({ children }) => {
+  const [showModal, setShowModal] = useState(true);
+
+  console.log(showModal);
+
+  function closeModal(e) {
+    if (e.target === e.currentTarget) {
+      setShowModal(false);
     }
-  };
-  hendleEsc = e => {
-    const { toggleModal } = this.props;
-    if (e.code === 'Escape') {
-      toggleModal();
+  }
+  function escapeModal(e) {
+    if (e.code === `Escape`) {
+      setShowModal(false);
     }
-  };
-  render() {
-    const { hendleClose } = this;
-    const { children } = this.props;
-    return createPortal(
-      <div className={styles.backDrop} onClick={hendleClose}>
-        <div className={styles.content}>{children}</div>
+  }
+
+  useEffect(() => {
+    window.addEventListener('click', escapeModal);
+    return () => {
+      window.removeEventListener('click', escapeModal);
+    };
+  });
+
+  return (
+    showModal &&
+    createPortal(
+      <div className={s.backdrop} onClick={closeModal}>
+        <div className={s.content}>{children}</div>
       </div>,
       document.getElementById('modal-root'),
-    );
-  }
-}
+    )
+  );
+};
+
+export default Modal;
