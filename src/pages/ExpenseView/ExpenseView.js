@@ -10,8 +10,13 @@ import BalanceForm from '../../components/BalanceForm/BalanceForm';
 import { getCategoryExpense } from '../../redux/selectors/categoriesSelectors';
 import style from './ExpenseView.module.scss';
 
+import { useSelector } from 'react-redux';
+import operation from '../../redux/selectors/transactionsSelectors'
+
 export default function ExpenseView() {
   const dispatch = useDispatch();
+
+  const costList = useSelector(operation.getExpenseTransaction);
   const category = useSelector(getCategoryExpense);
 
   useEffect(() => {
@@ -33,7 +38,7 @@ export default function ExpenseView() {
             submitIncomeData={submitIncomeData}
           />
           <div className={style.wrapper}>
-            <TransactionTable />
+            <TransactionTable costList={costList}/>
             <Summary />
           </div>
         </TransactionContainer>
