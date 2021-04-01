@@ -142,7 +142,7 @@ const AuthorizationForm = () => {
           Регистрация
         </button>
       </div>
-      <p className={styles.formError}>{errorMessage()}</p>
+      <p className={styles.formError}>{error && errorMessage()}</p>
     </form>
   );
 };
