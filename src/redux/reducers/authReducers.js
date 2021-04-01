@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
+import balanceActions from '../actions/balanceActions'
 import transactionsActions from '../actions/transactionsActions';
 
-const userInitialState = { email: null };
+const userInitialState = { };
 const user = createReducer(userInitialState, {
   [authActions.signUpSuccess]: (_, { payload }) => payload,
   [authActions.logInSuccess]: (_, { payload }) => payload.userData,
   [authActions.logOutSuccess]: () => userInitialState,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  [balanceActions.addBalanceSuccess]: (state, { payload }) => ({...state, balance: payload})
   // [authActions.googleLoginSuccess]: (_, { payload }) => payload,
 });
 
