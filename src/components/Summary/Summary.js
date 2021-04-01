@@ -40,7 +40,6 @@ const Summary = () => {
     currentDate.setMonth(currentDate.getMonth() - i);
     const month = new Intl.DateTimeFormat('rus', options).format(currentDate);
     const year = currentDate.getFullYear();
-    console.log(year, month);
 
     data[year]?.[month] !== undefined
       ? monthToShow.push([month, data[year][month]])
