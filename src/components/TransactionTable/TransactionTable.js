@@ -1,13 +1,11 @@
 import React from 'react';
 
 import { useWindowSize } from 'react-use-size';
-import { Scrollbars } from 'react-custom-scrollbars';
 import CostItem from './CostItem';
 
 import { incomes } from './income.json';
 
 import style from './TransactionTable.module.scss';
-
 
 export default function TransactionTable({ costList }) {
   const { width } = useWindowSize();
@@ -24,10 +22,10 @@ export default function TransactionTable({ costList }) {
               <li className={style.table__title}>Сумма</li>
             </ul>
           </div>
-              ) : null}
-              {/* <Scrollbars style={{width: 1, color: "red"}}> */}
-              <div className={style.table__body_container}>
-        {incomes.map(item => (
+        ) : null}
+        {/* <Scrollbars style={{width: 1, color: "red"}}> */}
+        <div className={style.table__body_container}>
+          {incomes.map(item => (
             <CostItem
               key={item._id}
               desc={item.description}
@@ -35,28 +33,29 @@ export default function TransactionTable({ costList }) {
               date={item.date}
               category={item.category}
             ></CostItem>
-        ))}
-        {width > 767 ? (
-          <div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-          </div>
-        ) : null
-        //   <div>
-        //     <div className={style.table__body}></div>
-        //     <div className={style.table__body}></div>
-        //     <div className={style.table__body}></div>
-        //   </div>
-                  }
-                  </div>
-                  {/* </Scrollbars> */}
+          ))}
+          {
+            width > 767 ? (
+              <div>
+                <div className={style.table__body}></div>
+                <div className={style.table__body}></div>
+                <div className={style.table__body}></div>
+                <div className={style.table__body}></div>
+                <div className={style.table__body}></div>
+                <div className={style.table__body}></div>
+                <div className={style.table__body}></div>
+                <div className={style.table__body}></div>
+                <div className={style.table__body}></div>
+              </div>
+            ) : null
+            //   <div>
+            //     <div className={style.table__body}></div>
+            //     <div className={style.table__body}></div>
+            //     <div className={style.table__body}></div>
+            //   </div>
+          }
+        </div>
+        {/* </Scrollbars> */}
       </div>
     </div>
   );
