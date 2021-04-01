@@ -2,10 +2,10 @@
 @import '../../styles/variables';
 
 .titleContainer {
-  margin-top: 85px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 380px;
+  // margin-top: 85px;
+  // margin-left: auto;
+  // margin-right: auto;
+  // max-width: 380px;
 }
 
 .title {
@@ -14,6 +14,10 @@
 
   @include for-size(tablet) {
     font-size: 102px;
+  }
+  @include for-size(desktop) {
+    margin-top: 308px;
+    margin-left: 230px;
   }
 }
 
@@ -36,5 +40,9 @@
     letter-spacing: 0.18em;
 
     color: $primary-text-color;
+  }
+  @include for-size(desktop) {
+    margin-left: 230px;
+    margin-bottom: 79px;
   }
 }
