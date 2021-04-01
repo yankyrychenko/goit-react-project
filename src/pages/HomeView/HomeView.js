@@ -2,14 +2,15 @@ import React from 'react';
 import Container from '../../components/Container';
 import TransactionContainer from '../../components/TransactionContainer/TransactionContainer';
 import TransactionTable from '../../components/TransactionTable/TransactionTable';
-import GoToReport from '../../components/GoToReport/GoToReport'
-
+import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
+import GoToReport from '../../components/GoToReport/GoToReport';
 
 const HomeView = () => (
   <main>
-       <Container>
-        <GoToReport />
-      </Container>
+    <Container>
+      <BalanceCustom />
+      <GoToReport />
+    </Container>
 
     <Container>
       <TransactionContainer>
