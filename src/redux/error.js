@@ -1,8 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import auth from './actions/authActions';
 import categories from './actions/categoriesActions';
-import expense from './actions/expenseActions';
-import income from './actions/incomeActions';
+import transactions from './actions/transactionsActions';
 import periodData from './actions/periodDataActions';
 import transactionDelete from './actions/transactionDeleteActions';
 
@@ -14,10 +13,10 @@ const errorReducer = createReducer(intialState, {
   [auth.getCurrentUserError]: (_, { payload }) => payload,
   [categories.incomeCategError]: (_, { payload }) => payload,
   [categories.expenseCategError]: (_, { payload }) => payload,
-  [expense.expenseGetError]: (_, { payload }) => payload,
-  [expense.expensePostError]: (_, { payload }) => payload,
-  [income.incomeGetError]: (_, { payload }) => payload,
-  [income.incomePostError]: (_, { payload }) => payload,
+  [transactions.expenseGetError]: (_, { payload }) => payload,
+  [transactions.expensePostError]: (_, { payload }) => payload,
+  [transactions.incomeGetError]: (_, { payload }) => payload,
+  [transactions.incomePostError]: (_, { payload }) => payload,
   [periodData.periodDataGetError]: (_, { payload }) => payload,
   [transactionDelete.transactionDeleteError]: (_, { payload }) => payload,
 });
