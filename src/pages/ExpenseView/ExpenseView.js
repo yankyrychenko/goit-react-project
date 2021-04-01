@@ -10,11 +10,11 @@ import categoriesOperations from '../../redux/operations/categoriesOperations';
 import style from './ExpenseView.module.scss';
 
 import { useSelector } from 'react-redux';
-import { getExpenses } from '../../redux/selectors/transactionsSelectors'
+import operation from '../../redux/selectors/transactionsSelectors'
 
 export default function ExpenseView() {
   const dispatch = useDispatch();
-  const costList = useSelector(getExpenses)
+  const costList = useSelector(operation.getExpenseTransaction)
 
   useEffect(() => {
     dispatch(transactionsOperations.handleExpenseGet());

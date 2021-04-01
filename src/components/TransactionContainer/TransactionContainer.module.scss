@@ -13,15 +13,16 @@
   padding-bottom: 0px;
 
   @include for-size(tablet) {
-    padding-left: 10px; //30 должно быть
-    padding-right: 10px;
+    padding-left: 30px; //30 должно быть
+    padding-right: 30px;
     padding-bottom: 50px;
+    padding-top: 30px;
   }
 
   @include for-size(desktop) {
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 61px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
   }
 }
 

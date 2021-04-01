@@ -10,11 +10,11 @@ import categoriesOperations from '../../redux/operations/categoriesOperations';
 import style from './IncomeView.module.scss';
 
 import { useSelector } from 'react-redux';
-import { getIncomes } from '../../redux/selectors/transactionsSelectors'
+import operation from '../../redux/selectors/transactionsSelectors'
 
 export default function IncomeView() {
   const dispatch = useDispatch();
-  const costList = useSelector(getIncomes)
+  const costList = useSelector(operation.getIncomeTransaction)
 
   useEffect(() => {
     dispatch(transactionsOperations.handleIncomeGet());
