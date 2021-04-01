@@ -43,7 +43,7 @@ const CustomCalendar = ({ getDate }) => {
       )}
       <div className={style.calendarContainer} onClick={onToggleCalendar}>
         <div className={style.calendarSvgContainer} onClick={onToggleCalendar}>
-          <svg width="20" height="20" className={style.svg}>
+          <svg className={style.svg}>
             <use href={sprite + '#icon-calendar'}></use>
           </svg>
         </div>

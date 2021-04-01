@@ -5,6 +5,11 @@
   display: flex;
   align-items: center;
 
+  @include for-size(mobile-only) {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
   @include for-size(desktop) {
     margin-right: 27px;
   }
@@ -12,6 +17,15 @@
 
 .calendarSvgContainer {
   margin-right: 10px;
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+  @include for-size(mobile-only) {
+    width: 20px;
+    height: 17px;
+  }
 }
 
 .calendarText {
@@ -39,6 +53,11 @@
     @extend .calendar;
     opacity: 1;
     pointer-events: all;
+  }
+
+  @include for-size(mobile-only) {
+    top: 54%;
+    left: 50%;
   }
 
   @include for-size(desktop) {

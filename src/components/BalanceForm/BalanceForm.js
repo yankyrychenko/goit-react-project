@@ -10,6 +10,7 @@ import Select from 'react-select';
 const BalanceForm = () => {
   const { width } = useWindowSize();
   const [chosenDate, setChosenDate] = useState('');
+  const [category, setCategory] = useState(null);
 
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -21,11 +22,15 @@ const BalanceForm = () => {
     setChosenDate(data);
   };
 
+  const handleCategory = ({ value }) => {
+    setCategory(value);
+  };
+
   return (
     <>
       <form className={style.form}>
         <div className={style.test}>
-          {width > 767 && <CustomCalendar getDate={getDate} />}
+          <CustomCalendar getDate={getDate} />
           <div className={style.labelsContainer}>
             <label className={style.label}>
               <input
@@ -43,10 +48,11 @@ const BalanceForm = () => {
                   IndicatorSeparator: () => null,
                 }}
                 isSearchable={false}
-                onChange={e => console.log(e)}
+                onChange={e => handleCategory(e)}
+                required
               />
             </label>
-            {window.screen.width > 767 && (
+            {width > 767 && (
               <div className={style.inputNumberContainerTD}>
                 <label className={style.labelNumberTD}>
                   <input

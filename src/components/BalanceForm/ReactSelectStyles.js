@@ -1,24 +1,28 @@
 const customStyles = {
   option: (provided, state) => ({
     ...provided,
-    borderBottom: '1px dotted pink',
-    color: state.isSelected ? 'white' : '#000000',
-    backgroundColor: state.isSelected ? '#ff751d' : 'white',
+    color: state.isSelected ? '#52555F' : '#C7CCDC',
+    backgroundColor: state.isSelected ? '#c7ccdc' : 'white',
     padding: 10,
+    '&:hover': {
+      backgroundColor: state.isSelected ? null : '#F5F6FB',
+      color: state.isSelected ? null : '#52555F',
+    },
   }),
 
-  menu: (provided, state) => ({
-    ...provided,
-    paddingLeft: 5,
-    paddingRight: 5,
+  menuList: styles => ({
+    ...styles,
+    paddingTop: 0,
+    paddingBottom: 0,
   }),
-  valueContainer: (provided, state) => ({
-    ...provided,
+
+  valueContainer: styles => ({
+    ...styles,
     padding: '0',
   }),
 
-  singleValue: provided => ({
-    ...provided,
+  singleValue: styles => ({
+    ...styles,
     fontFamily: 'Roboto, sans-serif',
     fontSize: '12px',
     lineHeight: 0.85,

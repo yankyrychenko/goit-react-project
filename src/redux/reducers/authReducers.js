@@ -1,27 +1,29 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
+import expenseActions from '../actions/expenseActions';
 
-const initialUserState = { email: null };
-
-const user = createReducer(initialUserState, {
-  [authActions.signUpSuccess]: (_, { payload }) => payload.user,
-  [authActions.logInSuccess]: (_, { payload }) => payload.user,
-  [authActions.logOutSuccess]: () => initialUserState,
+const userInitialState = { email: null };
+const user = createReducer(userInitialState, {
+  [authActions.signUpSuccess]: (_, { payload }) => payload,
+  [authActions.logInSuccess]: (_, { payload }) => payload.userData,
+  [authActions.logOutSuccess]: () => userInitialState,
+  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
-const token = createReducer(null, {
-  [authActions.signUpSuccess]: (_, { payload }) => payload.token,
-  [authActions.logInSuccess]: (_, { payload }) => payload.token,
-  [authActions.logOutSuccess]: () => null,
+const tokenInitialState = null;
+const token = createReducer(tokenInitialState, {
+  [authActions.logInSuccess]: (_, { payload }) => payload.accessToken,
+  [authActions.logOutSuccess]: () => tokenInitialState,
+  // [authActions.getCurrentUserSuccess]: () => ??? //! не приходит токен
 });
 
 const isAuthenticated = createReducer(false, {
   [authActions.signUpSuccess]: () => true,
   [authActions.logInSuccess]: () => true,
-  [authActions.signUpError]: () => false,
-  [authActions.logInError]: () => false,
+  [expenseActions.expenseGetSuccess]: () => true,
   [authActions.logOutSuccess]: () => false,
+  [authActions.getCurrentUserSuccess]: () => true,
 });
 
 export default combineReducers({
