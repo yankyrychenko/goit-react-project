@@ -1,10 +1,5 @@
 @import '../../styles/_variables.scss';
-
-
-.balanceWrapper {
-  position: relative;
-  background-color:#F5F6FB ;
-}
+@import '../../styles/_mixins.scss';
 .balanceText {
   margin-bottom: 6px;
 }
@@ -14,17 +9,22 @@
 }
 .balanceText {
   text-align: center;
-color: $primary-text-color;
+  color: $primary-text-color;
+}
+
+.balanceForm {
+  margin: 0 auto;
+  max-width: 280px;
+  position: relative;
 }
 
 .balanceInput {
   color: $black-color;
-  padding-left: 35px;
   font-weight: 700;
   width: 115px;
-  padding: 12px ;
+  padding: 12px 12px 12px 20px ;
   border: 2px solid white;
-   border-right: 1px solid white;
+  border-right: 1px solid white;
   background-color: #F5F6FB;
   border-top-left-radius:  20px ;
   border-bottom-left-radius: 20px;
@@ -61,4 +61,32 @@ transition: ease 0.3s;
   border-color: $primary-orange-color;
   color: $white-color;
   background-color: $primary-orange-color;
+}
+
+
+
+@include for-size(tablet) {
+.balanceWrapper {
+  padding-top: 40px;
+width: 635px;
+  display: flex;
+  margin: 0 auto;
+   align-items: baseline;
+}
+.balanceForm {
+  margin-left: 60px;
+}
+.balanceInput {
+  margin-right: 15px;
+  border-radius: 20px;
+}
+.balanceButton {
+  border-radius: 20px;
+}
+}
+
+@include for-size(tablet) {
+  .balanceWrapper {
+    width: 369px;
+  }
 }
