@@ -114,6 +114,8 @@ input::-webkit-inner-spin-button {
 
   @include for-size(desktop) {
     margin-right: 27px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 

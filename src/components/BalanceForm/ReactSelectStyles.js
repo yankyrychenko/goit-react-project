@@ -7,6 +7,7 @@ const customStyles = {
     '&:hover': {
       backgroundColor: state.isSelected ? null : '#F5F6FB',
       color: state.isSelected ? null : '#52555F',
+      cursor: 'pointer',
     },
   }),
 
@@ -14,11 +15,13 @@ const customStyles = {
     ...styles,
     paddingTop: 0,
     paddingBottom: 0,
+    cursor: 'pointer',
   }),
 
   valueContainer: styles => ({
     ...styles,
     padding: '0',
+    cursor: 'pointer',
   }),
 
   singleValue: styles => ({
@@ -28,6 +31,7 @@ const customStyles = {
     lineHeight: 0.85,
     letterSpacing: '0.02em',
     color: '#000000',
+    cursor: 'pointer',
   }),
 
   control: styles => ({
@@ -35,6 +39,7 @@ const customStyles = {
     backgroundColor: 'transparent',
     border: 0,
     boxShadow: 'none',
+    cursor: 'pointer',
   }),
 
   placeholder: styles => ({ ...styles, color: '#c7ccdc', margin: '0' }),
