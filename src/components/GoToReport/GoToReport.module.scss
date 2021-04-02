@@ -6,7 +6,6 @@
 .balanceLink {
   justify-content: center;
   display: flex;
-  align-items: baseline;
 color: $primary-text-color;
 list-style: none;
 text-decoration: none;
@@ -23,12 +22,4 @@ fill: $primary-text-color;
 margin-left: 20px;
 }
 
-@include for-size(tablet) {
-.balanceLink {
-  top: 76px;
-position: absolute;
-right: 69px;
-}
-
-}
 
