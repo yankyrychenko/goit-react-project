@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import sprite from '../../img/sprite.svg';
 import customStyles from './ReactSelectStyles';
 import CustomCalendar from '../CustomCalendar/CustomCalendar';
+import BackHomeButton from '../BackHomeButton/BackHomeButton';
 import Select from './Select/Select';
 import variables from './variables';
 import 'react-calendar/dist/Calendar.css';
@@ -69,7 +70,13 @@ const BalanceForm = ({ category, submitIncomeData, size }) => {
     <>
       <form onSubmit={handleSubmitForm} className={style.form}>
         <div className={style.test}>
+          {size.width < 605 && (
+            <div className={style.headContainer}>
+              <BackHomeButton />
+            </div>
+          )}
           <CustomCalendar getDate={getDate} />
+
           <div className={style.labelsContainer}>
             <label className={style.label}>
               <input
@@ -97,7 +104,7 @@ const BalanceForm = ({ category, submitIncomeData, size }) => {
                 onChange={handleCategory}
               />
             </label>
-            {size.width > 644 && (
+            {size.width > 604 && (
               <div className={style.inputNumberContainerTD}>
                 <label className={style.labelNumberTD}>
                   <input
@@ -119,7 +126,7 @@ const BalanceForm = ({ category, submitIncomeData, size }) => {
               </div>
             )}
           </div>
-          {size.width < 645 && (
+          {size.width < 605 && (
             <div className={style.inputNumberContainer}>
               <label className={style.labelNumber}>
                 <input

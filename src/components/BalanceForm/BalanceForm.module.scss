@@ -75,6 +75,12 @@ input::-webkit-inner-spin-button {
   }
 }
 
+.headContainer {
+  margin-left: 22px;
+  display: flex;
+  justify-content: start;
+}
+
 .label {
   padding-left: 21px;
   padding-right: 21px;
