@@ -2,7 +2,7 @@
 
 .TogglerWrapper {
   margin-top: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: center;
 }
@@ -20,6 +20,14 @@
   margin: 0 15px 0 15px;
   color: #000000;
 }
+
+.TogglerButton {
+  background-color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
 .ArrowIcon {
   width: 8px;
   height: 16px;
@@ -29,7 +37,7 @@
 @include for-size(tablet) {
   .TogglerWrapper {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 }
 
