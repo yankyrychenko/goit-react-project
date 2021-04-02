@@ -29,9 +29,9 @@ export default function StatisticsView() {
           <MonthCalendar />
         </div>
 
-        {/*  <div className={style.wrapper}>
+        <div className={style.wrapper}>
           <StatementBar />
-        </div> */}
+        </div>
 
         <div className={style.wrapper}>
           <ReportExpenseIncomeToggler />
