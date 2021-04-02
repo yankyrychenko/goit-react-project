@@ -14,7 +14,7 @@ const intialState = {
   },
   expenses: {
     total: 5200,
-    incomesData: {
+    expensesData: {
       Транспорт: {
         total: 4000,
         СТО: 3500,
