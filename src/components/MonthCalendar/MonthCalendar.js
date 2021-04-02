@@ -8,10 +8,6 @@ const MonthCalendar = () => {
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    date.setMonth(date.getMonth() - 1);
-    dispatch(operations.getPeriodData(formatDate(date)));
-  }, []);
   const referenceDate = date;
 
   const options = { month: 'long' };
