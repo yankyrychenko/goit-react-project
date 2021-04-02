@@ -28,7 +28,7 @@ export default function StatisticsView() {
           <BackHomeButton />
           <div className={style.balanceWrap}>
             <BalanceCustom />
-            <MonthCalendar />
+            <MonthCalendar setActiveCategory={setActiveCategory} />
           </div>
         </div>
 
