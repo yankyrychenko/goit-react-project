@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 // Styles
 import styles from './UserMenu.module.scss';
 // Components
 import ExitModal from './ExitModal/ExitModal';
-// Operations
-import authOperations from '../../../redux/operations/authOperations';
 // Selectors
 import { getUserEmail } from '../../../redux/selectors/authSelectors';
 // Others
@@ -16,9 +14,6 @@ import sprite from '../../../img/sprite.svg';
 const UserMenu = () => {
   const [showModal, setShowModal] = useState(false);
   const email = useSelector(state => getUserEmail(state));
-  const dispatch = useDispatch();
-
-  const onLogout = () => dispatch(authOperations.handleLogOut());
 
   const toggleModal = () => setShowModal(!showModal);
 
@@ -45,7 +40,6 @@ const UserMenu = () => {
       {showModal && (
         <ExitModal
           question="Вы действительно хотите выйти?"
-          onLogout={onLogout}
           toggleModal={toggleModal}
           setShowModal={setShowModal}
         />
