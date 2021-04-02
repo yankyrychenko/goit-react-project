@@ -31,9 +31,9 @@ const StatementBar = () => {
 
   const expenseTotal = useSelector(getExpenseTotal);
 
-  const valueIncomeTotal = incomeTotal.format(2, 3, ' ', '.');
+  const valueIncomeTotal = incomeTotal?.format(2, 3, ' ', '.');
 
-  const valueExpenseTotal = expenseTotal.format(2, 3, ' ', '.');
+  const valueExpenseTotal = expenseTotal?.format(2, 3, ' ', '.');
 
   return (
     <div className={styles.wrap}>
