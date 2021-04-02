@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import styles from './ExitModal.module.scss';
 // Operations
 import authOperations from '../../../../redux/operations/authOperations';
+// Others
+import sprite from '../../../../img/sprite.svg';
 
 const ExitModal = ({ question, toggleModal, setShowModal }) => {
   const dispatch = useDispatch();
@@ -32,7 +34,9 @@ const ExitModal = ({ question, toggleModal, setShowModal }) => {
           className={styles.closeButton}
           onClick={toggleModal}
         >
-          x
+          <svg width="12" height="12">
+            <use href={sprite + '#icon-close'}></use>
+          </svg>
         </button>
         <p className={styles.question}>{question}</p>
         <button

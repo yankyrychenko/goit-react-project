@@ -25,8 +25,10 @@ const BalanceCustom = () => {
 
   return (
     <div className={style.balanceWrapper}>
-      <p className={style.balanceText}>Баланс:</p>
       <form className={style.balanceForm} onSubmit={balanceSubmit}>
+        <label htmlFor="balance" className={style.balanceLabel}>
+          Баланс:
+        </label>
         <input
           maxLength="6"
           min="1"
