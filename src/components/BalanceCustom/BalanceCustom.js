@@ -4,6 +4,7 @@ import style from './BalanceCustom.module.scss'
 import BalanceModal from '../BalanceModal/BalanceModal'
 import { getUserBalance } from '../../redux/selectors/authSelectors'
 import {addBalance} from '../../redux/operations/balanceOperations'
+import { reset } from 'numeral';
 
 const initialState = {
   newBalance: ''
@@ -20,6 +21,7 @@ const BalanceCustom = () => {
     e.preventDefault()
     console.log(newBalance);
     dispatch(addBalance(newBalance))
+    reset()
   }
   const currentBalance = useSelector(state => getUserBalance(state))
 
@@ -27,10 +29,10 @@ const BalanceCustom = () => {
     <div className={style.balanceWrapper} >
       <form className={style.balanceForm} onSubmit={balanceSubmit}>
         <label for="balance"  className={style.balanceLabel}>Баланс:</label>
-        <input min='1' max='999999' id="balance" onChange={balanceHandler} className={style.balanceInput} type="number" name="newBalance"
+        <input maxLength="6" min='1' max='999999' id="balance" onChange={balanceHandler} className={style.balanceInput} type="number" name="newBalance"
             placeholder={currentBalance === 0 ? '00.00 UAH' : currentBalance} value={newBalance.newBalance} />
         <button className={style.balanceButton}>ПОДТВЕРДИТЬ</button>
-        {newBalance.newBalance && currentBalance == 0 ? <BalanceModal /> : null }
+        { currentBalance == 0 ? <BalanceModal /> : null }
       </form>
     </div>
   );

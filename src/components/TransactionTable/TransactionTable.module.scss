@@ -12,10 +12,6 @@
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 
-  // @include for-size(tablet) {
-  //   // width: 600px; // 605
-  // }
-
   @include for-size(desktop) {
     width: 760px;
   }
@@ -57,18 +53,19 @@
 // --------->
 .table__box {
   display: flex;
-  padding-left: 20px;
+  padding-left: 0px;
 
   height: 50px;
 
   @include for-size(tablet) {
     height: 40px;
+    padding-left: 20px;
   }
 }
 
 .table__box :first-child {
   font-size: 8px;
-  width: 44px;
+  width: 42px;
   margin-right: 20px;
 
   // ------Позиционирование для мобилки
@@ -140,6 +137,7 @@
 // -------------------------------------> Корзина
 
 .item__remove {
+  cursor: pointer;
   position: absolute;
   z-index: 100;
   top: 17px;
@@ -152,5 +150,23 @@
 
   @include for-size(desktop) {
     right: 60px; // до центра
+  }
+}
+
+.table__body_container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  // scrollbar-color: red;
+  // scrollbar-width: 1px;
+  // scrollbar-color: rebeccapurple green;
+
+  @include for-size(tablet) {
+    height: 360px;
+    width: 605px;
+  }
+
+  @include for-size(desktop) {
+    height: 360px;
+    width: 760px;
   }
 }

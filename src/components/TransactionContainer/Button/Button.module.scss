@@ -1,0 +1,65 @@
+@import '../../../styles/_mixins.scss';
+@import '../../../styles/variables';
+
+// ----------------------------------------> BUTTON
+
+.button__title {
+  // NEW
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  // NEW
+
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  // margin: 0;
+  padding: 0;
+
+  width: 139px;
+
+  min-height: 53px;
+  margin-right: 4px;
+  border: 0;
+  background-color: $primary-gray-color;
+  color: $black-color;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  @include for-size(tablet) {
+    // min-width: 138px;
+    min-height: 40px;
+    margin-right: 0px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: #fefefe;
+  }
+}
+
+.button__title:hover,
+.button__title:focus {
+  background: $primary-orange-color;
+  color: $white-color;
+
+  @include for-size(tablet) {
+    background: #fefefe;
+    color: $primary-orange-color;
+  }
+}
+
+.button__title_active {
+  background: $primary-orange-color;
+  color: $white-color;
+
+  @include for-size(tablet) {
+    background: #fefefe;
+    color: $primary-orange-color;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
