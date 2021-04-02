@@ -11,13 +11,8 @@ const incomes = createReducer(
       ...state,
       incomes: [...state.incomes, payload.transaction],
     }),
-    // [actionDelete.transactionDeleteSuccess]: (state, {payload}) =>   state.filter(({ id }) => id !== payload)
-    // [actionDelete.transactionDeleteSuccess]: (state, {payload}) =>   state.filter(item => item.id !== payload)
-    // [actionDelete.transactionDeleteSuccess]: (state, {payload}) =>   ({
-    //   ...state,
-    //   incomes: [state.filter(item => item._id !== payload.transaction.incomes)],
-    // }),
   }
+    // [actionDelete.transactionDeleteSuccess]: (state, { payload }) => state.transaction.incomes.incomes.filter(({ item }) => (item !== payload))
 );
 
 const expenses = createReducer(
