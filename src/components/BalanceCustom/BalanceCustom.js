@@ -20,7 +20,6 @@ const BalanceCustom = () => {
     e.preventDefault();
     console.log(newBalance);
     dispatch(addBalance(newBalance))
-    reset()
   }
   const currentBalance = useSelector(state => getUserBalance(state))
 
