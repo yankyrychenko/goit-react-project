@@ -23,10 +23,12 @@ export default function StatisticsView() {
     <main>
       {/* <StatementBar /> */}
       <Container>
-        <div className={style.balanceWrap}>
+        <div className={style.barWrapper}>
           <BackHomeButton />
-          <BalanceCustom />
-          <MonthCalendar />
+          <div className={style.balanceWrap}>
+            <BalanceCustom />
+            <MonthCalendar />
+          </div>
         </div>
 
         <div className={style.wrapper}>
