@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BackHomeButton from '../../components/BackHomeButton/BackHomeButton';
 import Stats from '../../components/Stats/Sats';
@@ -17,6 +17,7 @@ export default function StatisticsView() {
   }, [dispatch]); */
 
   const periodData = useSelector(state => state.periodData);
+  const [activeCategory, setActiveCategory] = useState('');
 
   return (
     <main>
@@ -28,10 +29,10 @@ export default function StatisticsView() {
       <section>
         <Container>
           <BackHomeButton />
-          <MonthCalendar />
-          {periodData && <ReportExpense />}
-          {periodData && <ReportIncome />}
-          {/* <Stats /> */}
+          <MonthCalendar setActiveCategory={setActiveCategory} />
+          {periodData && <ReportExpense activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
+          {periodData && <ReportIncome activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
+          {activeCategory && <Stats category={activeCategory} />}
         </Container>
       </section>
     </main>

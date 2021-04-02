@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 import styles from '../ReportExpense/ReportExpense.module.scss';
@@ -6,8 +6,8 @@ import expenseSprite from '../ReportExpense/expenseSprite.svg';
 import CategoriesName from './CategoriesName';
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
 
-const ReportExpense = () => {
-  const [activeCategory, setActiveCategory] = useState('');
+const ReportExpense = ({setActiveCategory,activeCategory}) => {
+  // const [activeCategory, setActiveCategory] = useState('');
 
   const activeCategoryHandler = e => {
     const { name } = e.target;
@@ -37,6 +37,12 @@ const ReportExpense = () => {
       }
     });
   }
+
+      useEffect(() => {
+        if (categoriesArray.length > 0) {
+        setActiveCategory(categoriesArray[0][0])
+      }
+    }, [totalMonthExpenses]);
 
   return (
     <>

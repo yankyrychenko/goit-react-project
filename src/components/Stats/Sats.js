@@ -17,18 +17,20 @@ const Stats = ({ category }) => {
   const getDataForDiagram = (category, periodData) => {
     const categoryData = periodData?.incomes?.incomesData[category]
       ? periodData.incomes.incomesData[category]
-      : periodData?.expenses?.incomesData[category];
-    const categoryDataKeys = Object.keys(categoryData).slice(1);
-    const formatedCategoryData = categoryDataKeys.map(category => ({
-      name: category,
-      data: categoryData[category],
-    }));
-    return formatedCategoryData.sort((a, b) => b.data - a.data);
+      : periodData?.expenses?.expensesData[category];
+    if (getDataForDiagram) {
+      const categoryDataKeys = Object.keys(categoryData).slice(1);
+      const formatedCategoryData = categoryDataKeys.map(category => ({
+        name: category,
+        data: categoryData[category],
+      }));
+      return formatedCategoryData.sort((a, b) => b.data - a.data);
+    }
   };
 
   const [isMobile, setIsMobile] = useState(false);
   const periodData = useSelector(getPeriodData);
-  const diagramData = getDataForDiagram((category = 'Транспорт'), periodData);
+  const diagramData = getDataForDiagram((category), periodData);
   useEffect(() => {
     const handleWindowResize = () => {
       if (window.innerWidth <= 768) {
