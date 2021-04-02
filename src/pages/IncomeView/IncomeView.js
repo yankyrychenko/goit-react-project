@@ -12,6 +12,7 @@ import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
 import GoToReport from '../../components/GoToReport/GoToReport';
 import { getCategoryIncome } from '../../redux/selectors/categoriesSelectors';
 import operation from '../../redux/selectors/transactionsSelectors';
+import { handleDeleteIncome } from '../../redux/operations/transactionsDeleteOperations';
 import style from './IncomeView.module.scss';
 
 export default function IncomeView() {
@@ -45,7 +46,10 @@ export default function IncomeView() {
             submitIncomeData={submitIncomeData}
           />
           <div className={style.wrapper}>
-            <TransactionTable costList={costList} />
+            <TransactionTable
+              costList={costList}
+              fnRemove={handleDeleteIncome}
+            />
             {width > 767 && <Summary />}
           </div>
         </TransactionContainer>
