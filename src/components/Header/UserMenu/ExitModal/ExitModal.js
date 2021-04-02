@@ -1,14 +1,21 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 // Styles
 import styles from './ExitModal.module.scss';
+// Operations
+import authOperations from '../../../../redux/operations/authOperations';
 
-const ExitModal = ({ question, onLogout, toggleModal, setShowModal }) => {
+const ExitModal = ({ question, toggleModal, setShowModal }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     window.addEventListener('keydown', escapeModal);
     return () => {
       window.removeEventListener('keydown', escapeModal);
     };
   }, []);
+
+  const onLogout = () => dispatch(authOperations.handleLogOut());
 
   const escapeModal = event => {
     event.code === 'Escape' && setShowModal(false);
