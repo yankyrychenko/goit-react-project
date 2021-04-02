@@ -6,6 +6,7 @@ import styles from './AuthorizationForm.module.scss';
 import authOperations from '../../redux/operations/authOperations';
 // Others
 import sprite from '../../img/sprite.svg';
+import axios from 'axios'; // импортировал, что б брать baseURL
 
 const AuthorizationForm = () => {
   const [email, setEmail] = useState('');
@@ -75,7 +76,7 @@ const AuthorizationForm = () => {
             Вы можете авторизоваться с помощью Google Account:
           </p>
           <a
-            href="https://kapusta-backend.goit.global/auth/google"
+            href={`${axios.defaults.baseURL}/auth/google`}
             className={styles.googleAuthButton}
           >
             <svg width="18" height="18">
