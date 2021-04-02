@@ -28,9 +28,9 @@ const BalanceCustom = () => {
       <p className={style.balanceText}>Баланс:</p>
       <form className={style.balanceForm} onSubmit={balanceSubmit}>
         <input
-          maxLength="6" 
-          min='1' 
-          max='999999' 
+          maxLength="6"
+          min="1"
+          max="999999"
           id="balance"
           onChange={balanceHandler}
           className={style.balanceInput}
@@ -43,7 +43,7 @@ const BalanceCustom = () => {
           ПОДТВЕРДИТЬ
         </button>
       </form>
-      {currentBalance == 0 ? <BalanceModal /> : null}
+      {newBalance.newBalance && currentBalance == 0 ? <BalanceModal /> : null}
     </div>
   );
 };
