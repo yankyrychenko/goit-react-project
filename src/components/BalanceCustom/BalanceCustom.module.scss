@@ -1,6 +1,10 @@
 @import '../../styles/_variables.scss';
 @import '../../styles/_mixins.scss';
 
+body {
+  background-color: $primary-gray-color;
+}
+
 .balanceWrapper {
   display: flex;
   flex-direction: column;
@@ -17,22 +21,32 @@
   }
 }
 
-.balanceText {
+.balanceForm {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  // border: 1px solid blue;
+}
+
+.balanceLabel {
+  display: block;
   min-height: 20px;
   margin-bottom: 6px;
   color: inherit;
   // border: 1px solid green;
+  cursor: pointer;
+
+  @include for-size(mobile-only) {
+    width: 180px;
+  }
 
   @include for-size(tablet) {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    margin-right: 21px;
+    margin: 0 21px 0 0;
+    height: 44px;
   }
-}
-
-.balanceForm {
-  display: inline-block;
-  // border: 1px solid blue;
 }
 
 .balanceInput,
