@@ -30,9 +30,9 @@ export default function StatisticsView() {
           <MonthCalendar setActiveCategory={setActiveCategory}/>
         </div>
 
-        {/*  <div className={style.wrapper}>
+        <div className={style.wrapper}>
           <StatementBar />
-        </div> */}
+        </div>
 
         <div className={style.wrapper}>
           <ReportExpenseIncomeToggler activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
