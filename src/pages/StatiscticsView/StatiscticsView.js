@@ -7,8 +7,7 @@ import StatementBar from '../../components/StatementBar/StatementBar';
 import periodDataOperations from '../../redux/operations/periodDataOperations';
 import MonthCalendar from '../../components/MonthCalendar/MonthCalendar';
 
-import ReportExpense from '../../components/ReportExpense/ReportExpense';
-import ReportIncome from '../../components/ReportIncome/ReportIncome';
+import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
 
 export default function StatisticsView() {
   /*   const dispatch = useDispatch();
@@ -29,8 +28,7 @@ export default function StatisticsView() {
         <Container>
           <BackHomeButton />
           <MonthCalendar />
-          {periodData && <ReportExpense />}
-          {periodData && <ReportIncome />}
+          <ReportExpenseIncomeToggler />
           {/* <Stats /> */}
         </Container>
       </section>

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
 import styles from '../ReportExpense/ReportExpense.module.scss';
-import expenseSprite from '../ReportExpense/expenseSprite.svg';
+import expenseSprite from '../../img/expenseSprite.svg';
 import CategoriesName from './CategoriesName';
-import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
 
 const ReportExpense = () => {
   const [activeCategory, setActiveCategory] = useState('');
@@ -18,20 +16,20 @@ const ReportExpense = () => {
     }
   };
 
-  const totalMonthExpenses = useSelector(
+  const categoryTotalExpenses = useSelector(
     state => state.periodData.expenses.expensesData,
   );
 
-  let categoriesArray = [];
+  let allCategoriesArray = [];
 
-  if (totalMonthExpenses !== undefined) {
-    const catArr = Object.entries(totalMonthExpenses);
+  if (categoryTotalExpenses !== undefined) {
+    const categoryArr = Object.entries(categoryTotalExpenses);
 
-    catArr.forEach(category => {
+    categoryArr.forEach(category => {
       if (category[1].total > 0) {
         CategoriesName.forEach(item => {
           if (item.category === category[0]) {
-            categoriesArray.push([...category, item.name]);
+            allCategoriesArray.push([...category, item.name]);
           }
         });
       }
@@ -40,10 +38,8 @@ const ReportExpense = () => {
 
   return (
     <>
-      <ReportExpenseIncomeToggler />
-
       <ul className={styles.ReportExpenseList}>
-        {categoriesArray?.map(category => (
+        {allCategoriesArray?.map(category => (
           <li
             name={category[0]}
             key={category[0]}
