@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
 import styles from '../ReportIncome/ReportIncome.module.scss';
-import incomeSprite from '../ReportIncome/incomeSprite.svg';
-import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
+import incomeSprite from '../../img/incomeSprite.svg';
 import CategoriesName from './CategoriesName';
 
 const ReportIncome = ({ setActiveCategory, activeCategory }) => {
@@ -18,37 +16,35 @@ const ReportIncome = ({ setActiveCategory, activeCategory }) => {
     }
   };
 
-  const totalMonthExpenses = useSelector(
+  const categoryTotalIncomes = useSelector(
     state => state.periodData.incomes.incomesData,
   );
 
-  let categoriesArray = [];
+  let allCategoriesArray = [];
 
-  if (totalMonthExpenses !== undefined) {
-    const catArr = Object.entries(totalMonthExpenses);
+  if (categoryTotalIncomes !== undefined) {
+    const categoryArr = Object.entries(categoryTotalIncomes);
 
-    catArr.forEach(category => {
+    categoryArr.forEach(category => {
       if (category[1].total > 0) {
         CategoriesName.forEach(item => {
           if (item.category === category[0]) {
-            categoriesArray.push([...category, item.name]);
+            allCategoriesArray.push([...category, item.name]);
           }
         });
       }
     });
   }
   useEffect(() => {
-    if (categoriesArray.length > 0) {
-      setActiveCategory(categoriesArray[0][0]);
+    if (allCategoriesArray.length > 0) {
+      setActiveCategory(allCategoriesArray[0][0]);
     }
-  }, [totalMonthExpenses]);
+  }, [categoryTotalIncomes]);
 
   return (
     <>
-      <ReportExpenseIncomeToggler />
-
       <ul className={styles.ReportIncomeList}>
-        {categoriesArray?.map(category => (
+        {allCategoriesArray?.map(category => (
           <li
             name={category[0]}
             key={category[0]}

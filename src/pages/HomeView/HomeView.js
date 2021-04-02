@@ -1,24 +1,30 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Container from '../../components/Container';
 import TransactionContainer from '../../components/TransactionContainer/TransactionContainer';
 import TransactionTable from '../../components/TransactionTable/TransactionTable';
 import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
 import GoToReport from '../../components/GoToReport/GoToReport';
+import operation from '../../redux/selectors/transactionsSelectors';
 import style from './HomeView.module.scss';
 
-const HomeView = () => (
-  <main>
-    <Container>
-      <div className={style.balanceWrap}>
-        <BalanceCustom />
-        <GoToReport />
-      </div>
+const HomeView = () => {
+  const costList = useSelector(operation.getAllransactions);
 
-      <TransactionContainer>
-        <TransactionTable />
-      </TransactionContainer>
-    </Container>
-  </main>
-);
+  return (
+    <main>
+      <Container>
+        <div className={style.balanceWrap}>
+          <BalanceCustom />
+          <GoToReport />
+        </div>
+
+        <TransactionContainer>
+          <TransactionTable costList={costList} />
+        </TransactionContainer>
+      </Container>
+    </main>
+  );
+};
 
 export default HomeView;

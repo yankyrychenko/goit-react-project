@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import BackHomeButton from '../../components/BackHomeButton/BackHomeButton';
 import Stats from '../../components/Stats/Sats';
 import Container from '../../components/Container';
+import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
+import GoToReport from '../../components/GoToReport/GoToReport';
 import StatementBar from '../../components/StatementBar/StatementBar';
 import periodDataOperations from '../../redux/operations/periodDataOperations';
 import MonthCalendar from '../../components/MonthCalendar/MonthCalendar';
-
-import ReportExpense from '../../components/ReportExpense/ReportExpense';
-import ReportIncome from '../../components/ReportIncome/ReportIncome';
+import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
+import style from './StatiscticsView.module.scss';
 
 export default function StatisticsView() {
   /*   const dispatch = useDispatch();
@@ -21,20 +22,26 @@ export default function StatisticsView() {
 
   return (
     <main>
-      {/*  <section>
-        <Container>
-          <StatementBar />
-        </Container>
-      </section> */}
-      <section>
-        <Container>
+      {/* <StatementBar /> */}
+      <Container>
+        <div className={style.balanceWrap}>
           <BackHomeButton />
-          <MonthCalendar setActiveCategory={setActiveCategory} />
-          {periodData && <ReportExpense activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
-          {periodData && <ReportIncome activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
+          <BalanceCustom />
+          <MonthCalendar setActiveCategory={setActiveCategory}/>
+        </div>
+
+        {/*  <div className={style.wrapper}>
+          <StatementBar />
+        </div> */}
+
+        <div className={style.wrapper}>
+          <ReportExpenseIncomeToggler activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+        </div>
+
+         <div className={style.wrapper}>
           {activeCategory && <Stats category={activeCategory} />}
-        </Container>
-      </section>
+        </div>
+      </Container>
     </main>
   );
 }

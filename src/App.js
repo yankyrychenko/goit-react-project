@@ -37,7 +37,7 @@ export default function App() {
     const googleUserToken = new URLSearchParams(location.search).get(
       'accessToken',
     );
-    
+
     // 2. Если googleUserToken есть, то записываем его в наш Redux Store в свойсво token.
     googleUserToken && dispatch(authActions.setGoogleToken(googleUserToken));
 

@@ -19,7 +19,6 @@
   align-items: center;
   width: 90px;
   height: 140px;
-  // margin-right: 25px;
 }
 
 @include for-size(mobile-only) {
@@ -31,12 +30,9 @@
     content: '';
     position: absolute;
     bottom: 8px;
-    // left: -14px;
     width: 93px;
     height: 1px;
     background-color: #e0e5eb;
-    // right: 0;
-    // margin: 0 auto;
     display: block;
   }
 }
@@ -55,13 +51,9 @@
 }
 
 .ReportExpenseBtn {
-  // width: 59px;
-  // height: 46px;
   border-radius: 20px;
   cursor: pointer;
   background-color: #f5f6fb;
-  //   background-color: orange;
-
   border: none;
 }
 
@@ -85,8 +77,6 @@
   height: 60px;
   border-radius: 20px;
   cursor: pointer;
-  // background-color: #f5f6fb;
-  //   background-color: orange;
   border: none;
   background-color: #ffdac0;
 }
@@ -123,19 +113,11 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   margin-top: 17px;
-  // width: 90px;
 
   color: #52555f;
 }
 
 @include for-size(tablet) {
-  //   .ReportExpenseList {
-  //     width: 100%;
-  //     padding: 0;
-  //     height: auto;
-  //     border-radius: 0;
-  //   }
-
   .ReportExpenseItem:not(:nth-child(6n-6)) {
     margin-right: 20px;
   }
