@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BackHomeButton from '../../components/BackHomeButton/BackHomeButton';
 import Stats from '../../components/Stats/Sats';
@@ -18,6 +18,7 @@ export default function StatisticsView() {
   }, [dispatch]); */
 
   const periodData = useSelector(state => state.periodData);
+  const [activeCategory, setActiveCategory] = useState('');
 
   return (
     <main>
@@ -36,12 +37,15 @@ export default function StatisticsView() {
         </div>
 
         <div className={style.wrapper}>
-          <ReportExpenseIncomeToggler />
+          <ReportExpenseIncomeToggler
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
         </div>
 
-        {/*  <div className={style.wrapper}>
-          <Stats />
-        </div> */}
+        <div className={style.wrapper}>
+          {activeCategory && <Stats category={activeCategory} />}
+        </div>
       </Container>
     </main>
   );

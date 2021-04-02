@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styles from '../ReportIncome/ReportIncome.module.scss';
 import incomeSprite from '../../img/incomeSprite.svg';
 import CategoriesName from './CategoriesName';
 
-const ReportIncome = () => {
-  const [activeCategory, setActiveCategory] = useState('');
+const ReportIncome = ({ setActiveCategory, activeCategory }) => {
+  // const [activeCategory, setActiveCategory] = useState('');
 
   const activeCategoryHandler = e => {
     const { name } = e.target;
@@ -35,6 +35,11 @@ const ReportIncome = () => {
       }
     });
   }
+  useEffect(() => {
+    if (allCategoriesArray.length > 0) {
+      setActiveCategory(allCategoriesArray[0][0]);
+    }
+  }, [categoryTotalIncomes]);
 
   return (
     <>
