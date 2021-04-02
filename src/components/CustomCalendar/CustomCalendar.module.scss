@@ -17,6 +17,9 @@
 
 .calendarSvgContainer {
   margin-right: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .svg {
@@ -37,6 +40,10 @@
   text-transform: uppercase;
 
   color: $primary-text-color;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .calendar {
@@ -61,7 +68,7 @@
   }
 
   @include for-size(desktop) {
-    top: 230%;
+    top: 390%;
     left: 20%;
   }
 }

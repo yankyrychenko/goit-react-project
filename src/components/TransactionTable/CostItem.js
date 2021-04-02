@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import handleTransactionDelete from '../../redux/operations/transactionsDeleteOperations';
+import operation from '../../redux/operations/transactionsDeleteOperations';
 import style from './TransactionTable.module.scss';
 
 function CostItem({ desc, amount, date, category, id }) {
   const dispatch = useDispatch();
+  
   const fnDelete = (id) => {
-    // dispatch(handleTransactionDelete(id))
-    console.log('Удалили!!')
+    dispatch(operation.handleTransactionDelete(id))
   }
   
   // const dateUpdate =

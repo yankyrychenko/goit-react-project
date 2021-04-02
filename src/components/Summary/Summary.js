@@ -34,18 +34,15 @@ const Summary = () => {
     data[year][month] += tr.amount;
   });
 
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 0; i < 6; i++) {
     let currentDate = new Date();
-
     currentDate.setMonth(currentDate.getMonth() - i);
     const month = new Intl.DateTimeFormat('rus', options).format(currentDate);
     const year = currentDate.getFullYear();
-
     data[year]?.[month] !== undefined
       ? monthToShow.push([month, data[year][month]])
       : monthToShow.push([month, 0]);
   }
-
   return (
     <table className={styles.table}>
       <tbody>
