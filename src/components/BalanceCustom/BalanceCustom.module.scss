@@ -5,30 +5,41 @@
 }
 
 .balanceForm {
+    position: relative;
     text-align: center;
 }
-.balanceText {
-  text-align: center;
+@include for-size(mobile-only) {
+  .balanceLabel {
+      position: absolute;
+  top: -25px;
+  right: 120px;
+  }
+
+}
+.balanceLabel {
   color: $primary-text-color;
 }
 
-.balanceForm {
+@include for-size(mobile-only) {
+  .balanceForm {
   margin: 0 auto;
   max-width: 280px;
-  position: relative;
+}
 }
 
+
 .balanceInput {
+  text-align: center;
   color: $black-color;
   font-weight: 700;
   width: 115px;
-  padding: 12px 12px 12px 20px ;
+  padding: 12px ;
   border: 2px solid white;
   border-right: 1px solid white;
   background-color: #F5F6FB;
   border-top-left-radius:  20px ;
   border-bottom-left-radius: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 
 }
 input::-webkit-outer-spin-button,
@@ -52,7 +63,7 @@ input::-webkit-inner-spin-button {
 background-color: #F5F6FB;
 border-top-right-radius : 20px;
 border-bottom-right-radius: 20px;
-margin-bottom: 50px;
+margin-bottom: 10px;
 cursor: pointer;
 transition: ease 0.3s;
 }
@@ -65,7 +76,12 @@ transition: ease 0.3s;
 
 
 
+
 @include for-size(tablet) {
+  .balanceLabel {
+    margin-right: 30px;
+  }
+
 .balanceWrapper {
   padding-top: 40px;
 width: 635px;
@@ -74,6 +90,8 @@ width: 635px;
    align-items: baseline;
 }
 .balanceForm {
+  display: flex;
+align-items: baseline;
   margin-left: 60px;
 }
 .balanceInput {
@@ -83,10 +101,4 @@ width: 635px;
 .balanceButton {
   border-radius: 20px;
 }
-}
-
-@include for-size(tablet) {
-  .balanceWrapper {
-    width: 369px;
-  }
 }

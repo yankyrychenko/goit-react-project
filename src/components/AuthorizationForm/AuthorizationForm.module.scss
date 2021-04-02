@@ -3,19 +3,19 @@
 
 .AuthorizationForm {
   background-color: $white-color;
-  margin: 50px 0 0 0;
-  padding: 40px 20px;
+  margin: 50px 0;
+  padding: 40px 20px 22px;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 30px;
 
   @include for-size(tablet) {
-    margin: 50px auto 0 auto;
-    padding: 50px 77px;
+    margin: 50px auto;
+    padding: 50px 77px 30px;
     width: 436px;
   }
 
   @include for-size(desktop) {
-    margin: 117px auto 0 auto;
+    margin: 80px auto;
   }
 }
 
@@ -97,11 +97,12 @@
   & input {
     font-size: 14px;
     min-height: 52px;
-    margin: 0 0 8px 0;
+    margin: 0;
     padding: 0 20px;
     border: none;
     border-radius: 30px;
     background-color: $secondary-gray-color;
+    width: 100%;
 
     &::placeholder {
       color: #a6abb9;
@@ -113,8 +114,36 @@
   margin-bottom: 8px;
 }
 
+.passwordInputBlock {
+  position: relative;
+  margin: 0 0 8px 0;
+}
+
+.passwordButton {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translate(0, -50%);
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  word-wrap: break-word;
+  max-width: 50px;
+  min-height: 36px;
+  font-size: 10px;
+  border: none;
+  border-radius: 20px;
+  color: transparent;
+
+  &:hover,
+  &:focus {
+    color: $secondaty-text-color;
+  }
+}
+
 .emailError,
-.passwordError {
+.passwordError,
+.formError {
   font-size: 10px;
   color: red;
   min-height: 14px;
@@ -122,6 +151,10 @@
   @include for-size(tablet) {
     font-size: 12px;
   }
+}
+
+.formError {
+  margin: 8px 10px 0;
 }
 
 .buttonsBlock {
