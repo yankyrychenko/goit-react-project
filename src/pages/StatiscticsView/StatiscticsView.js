@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import BackHomeButton from '../../components/BackHomeButton/BackHomeButton';
 import Stats from '../../components/Stats/Sats';
 import Container from '../../components/Container';
+import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
+import GoToReport from '../../components/GoToReport/GoToReport';
 import StatementBar from '../../components/StatementBar/StatementBar';
 import periodDataOperations from '../../redux/operations/periodDataOperations';
 import MonthCalendar from '../../components/MonthCalendar/MonthCalendar';
-
 import ReportExpenseIncomeToggler from '../../components/ReportExpenseIncomeToggler/ReportExpenseIncomeToggler';
+import style from './StatiscticsView.module.scss';
 
 export default function StatisticsView() {
   /*   const dispatch = useDispatch();
@@ -19,19 +21,26 @@ export default function StatisticsView() {
 
   return (
     <main>
-      {/*  <section>
-        <Container>
-          <StatementBar />
-        </Container>
-      </section> */}
-      <section>
-        <Container>
+      {/* <StatementBar /> */}
+      <Container>
+        <div className={style.balanceWrap}>
           <BackHomeButton />
+          <BalanceCustom />
           <MonthCalendar />
+        </div>
+
+        {/*  <div className={style.wrapper}>
+          <StatementBar />
+        </div> */}
+
+        <div className={style.wrapper}>
           <ReportExpenseIncomeToggler />
-          {/* <Stats /> */}
-        </Container>
-      </section>
+        </div>
+
+        {/*  <div className={style.wrapper}>
+          <Stats />
+        </div> */}
+      </Container>
     </main>
   );
 }
