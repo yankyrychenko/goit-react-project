@@ -26,7 +26,7 @@ export default function StatisticsView() {
         <Container>
           <BackHomeButton />
           <MonthCalendar />
-          <Stats />
+          {/* <Stats /> */}
         </Container>
       </section>
     </main>
