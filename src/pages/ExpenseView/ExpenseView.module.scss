@@ -1,3 +1,15 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
 .wrapper {
-  display: flex;
+  @include for-size(tablet) {
+    margin-top: 50px;
+  }
+
+  @include for-size(desktop) {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 70px;
+  }
 }

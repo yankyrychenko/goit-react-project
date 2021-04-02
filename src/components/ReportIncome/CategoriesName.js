@@ -1,11 +1,6 @@
 export default [
-  { name: 'icon-envelope', category: 'З/П', amount: 45000.0, _id: '1' },
-  {
-    name: 'icon-credit-card',
-    category: 'Доп. доход',
-    amount: 5000.0,
-    _id: '2',
-  },
+  { name: 'icon-envelope', category: 'З/П' },
+  { name: 'icon-credit-card', category: 'Доп. доход' },
 ];
 
 // ['З/П', 'Доп. доход'];

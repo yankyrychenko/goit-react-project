@@ -1,49 +1,22 @@
 export default [
-  { name: 'icon-products', category: 'Продукты', amount: 1000.0, _id: '1' },
-  { name: 'icon-alcohol', category: 'Алкоголь', amount: 0, _id: '2' },
-  { name: 'icon-kite', category: 'Развлечения', amount: 3000.0, _id: '3' },
+  { name: 'icon-products', category: 'Продукты' },
+  { name: 'icon-alcohol', category: 'Алкоголь' },
+  { name: 'icon-kite', category: 'Развлечения' },
   {
     name: 'icon-hands-holding-heart',
     category: 'Здоровье',
-    amount: 4000.0,
-    _id: '4',
   },
-  { name: 'icon-car', category: 'Транспорт', amount: 5000.0, _id: '5' },
-  { name: 'icon-couch', category: 'Всё для дома', amount: 0, _id: '6' },
-  { name: 'icon-tools', category: 'Техника', amount: 0, _id: '7' },
+  { name: 'icon-car', category: 'Транспорт' },
+  { name: 'icon-couch', category: 'Всё для дома' },
+  { name: 'icon-tools', category: 'Техника' },
   {
     name: 'icon-invoice',
-    category: 'Коммуналка, связь',
-    amount: 8000.0,
-    _id: '8',
+    category: 'Коммуналка и связь',
   },
-  { name: 'icon-clay', category: 'Спорт, хобби', amount: 0, _id: '9' },
+  { name: 'icon-clay', category: 'Спорт и хобби' },
   {
     name: 'icon-book',
     category: 'Образование',
-    amount: 0,
-    _id: '10',
   },
-  { name: 'icon-ufo', category: 'Прочее', amount: 11000.0, _id: '11' },
+  { name: 'icon-ufo', category: 'Прочее' },
 ];
-
-// ========================================================================
-// [
-//   'Продукты',
-//   'Алкоголь',
-//   'Развлечения',
-//   'Здоровье',
-//   'Транспорт',
-//   'Всё для дома',
-//   'Техника',
-//   'Коммуналка и связь',
-//   'Спорт и хобби',
-//   'Образование',
-//   'Прочее',
-// ];
-
-// import ReportExpense from './components/ReportExpense/ReportExpense';
-// import ReportIncome from './components/ReportIncome/ReportIncome';
-
-//  <ReportExpense />
-//  <ReportIncome />

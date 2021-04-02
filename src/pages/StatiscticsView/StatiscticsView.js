@@ -37,31 +37,3 @@ export default function StatisticsView() {
     </main>
   );
 }
-
-// export default function StatisticsView() {
-//   /*   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(periodDataOperations.getPeriodData());
-//   }, [dispatch]); */
-
-//   return (
-//     <main>
-//       {/*  <section>
-//         <Container>
-//           <StatementBar />
-//         </Container>
-//       </section> */}
-
-//       <section>
-//         <Container>
-//           <BackHomeButton />
-//           <MonthCalendar />
-//           <ReportExpense />
-//           <ReportIncome />
-//           {/* <Stats /> */}
-//         </Container>
-//       </section>
-//     </main>
-//   );
-// }
