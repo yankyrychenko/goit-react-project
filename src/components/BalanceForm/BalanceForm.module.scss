@@ -96,7 +96,9 @@ input::-webkit-inner-spin-button {
     @include for-size(tablet) {
       border-top: none;
       border-right: 2px solid $primary-gray-color;
-      width: 211px;
+      width: 171px;
+      padding-left: 14px;
+      padding-right: 14px;
     }
   }
 }
