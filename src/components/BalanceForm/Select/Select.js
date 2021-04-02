@@ -1,14 +1,31 @@
 import React from 'react';
-import FixRequiredSelect from '../FixRequiredSelect/FixRequiredSelect';
-import BaseSelect from 'react-select';
+import SelectWrap from 'react-select';
+import style from './Select.module.scss';
 
 const Select = props => {
+  const { value, required, disabled, className } = props;
+  let pardeValue = value;
+  if (pardeValue === null) {
+    pardeValue = '';
+  }
+
   return (
-    <FixRequiredSelect
-      {...props}
-      SelectComponent={BaseSelect}
-      options={props.options}
-    />
+    <div className={style.selectWrapperContainer}>
+      <SelectWrap
+        {...props}
+        className={`${className} ${style.selectWrapper}`}
+      />
+      <input
+        className={style.input}
+        type="text"
+        value={pardeValue}
+        onChange={e => (e.target.value = pardeValue)}
+        tabIndex={-1}
+        autoComplete="off"
+        required={required}
+        disabled={disabled}
+      />
+    </div>
   );
 };
 

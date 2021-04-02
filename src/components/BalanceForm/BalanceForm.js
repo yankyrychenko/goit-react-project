@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useWindowSize } from 'react-use-size';
+import { withSize } from 'react-sizeme';
 import style from './BalanceForm.module.scss';
 import PropTypes from 'prop-types';
 import sprite from '../../img/sprite.svg';
@@ -9,10 +9,9 @@ import Select from './Select/Select';
 import variables from './variables';
 import 'react-calendar/dist/Calendar.css';
 
-const BalanceForm = ({ category, submitIncomeData }) => {
+const BalanceForm = ({ category, submitIncomeData, size }) => {
   const options = category.map(el => ({ value: el, label: el }));
 
-  const { width } = useWindowSize();
   const [date, setDate] = useState('');
   const [value, setValue] = useState(null);
 
@@ -28,8 +27,21 @@ const BalanceForm = ({ category, submitIncomeData }) => {
   });
 
   const handleFormValue = ({ target }) => {
+    const { name } = target;
+    const value = target.value
+      .split()
+      .filter(el => el !== '+' && el !== '-' && el !== '=' && el !== ' ');
+    const filterValue = value.join();
+    setForm({ ...form, [name]: filterValue });
+  };
+
+  const handleNumberValue = ({ target }) => {
+    const regexp = /^[0-9\b]+$/;
     const { name, value } = target;
-    setForm({ ...form, [name]: value });
+
+    if (value === '' || regexp.test(value)) {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const getDate = date => {
@@ -65,6 +77,7 @@ const BalanceForm = ({ category, submitIncomeData }) => {
                 type="text"
                 placeholder="Описание товара"
                 value={form.description}
+                maxLength="20"
                 name={variables.description}
                 onChange={handleFormValue}
                 required
@@ -84,16 +97,17 @@ const BalanceForm = ({ category, submitIncomeData }) => {
                 onChange={handleCategory}
               />
             </label>
-            {width > 767 && (
+            {size.width > 644 && (
               <div className={style.inputNumberContainerTD}>
                 <label className={style.labelNumberTD}>
                   <input
                     className={style.inputNumberTD}
-                    type="number"
+                    type="text"
                     placeholder="00,00"
                     value={form.amount}
                     name={variables.amount}
-                    onChange={handleFormValue}
+                    onChange={handleNumberValue}
+                    maxLength="6"
                     required
                   />
                 </label>
@@ -105,16 +119,17 @@ const BalanceForm = ({ category, submitIncomeData }) => {
               </div>
             )}
           </div>
-          {width <= 767 && (
+          {size.width < 645 && (
             <div className={style.inputNumberContainer}>
               <label className={style.labelNumber}>
                 <input
                   className={style.inputNumber}
-                  type="number"
+                  type="text"
                   placeholder="00.00 UAH"
                   name={variables.amount}
                   value={form.amount}
-                  onChange={handleFormValue}
+                  maxLength="6"
+                  onChange={handleNumberValue}
                   required
                 />
               </label>
@@ -146,6 +161,7 @@ const BalanceForm = ({ category, submitIncomeData }) => {
 BalanceForm.propTypes = {
   category: PropTypes.array.isRequired,
   submitIncomeData: PropTypes.func.isRequired,
+  size: PropTypes.object.isRequired,
 };
 
-export default BalanceForm;
+export default withSize({ monitorWidth: true })(BalanceForm);
