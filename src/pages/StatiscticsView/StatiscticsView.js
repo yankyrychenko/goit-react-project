@@ -24,10 +24,12 @@ export default function StatisticsView() {
     <main>
       {/* <StatementBar /> */}
       <Container>
-        <div className={style.balanceWrap}>
+        <div className={style.barWrapper}>
           <BackHomeButton />
-          <BalanceCustom />
-          <MonthCalendar setActiveCategory={setActiveCategory}/>
+          <div className={style.balanceWrap}>
+            <BalanceCustom />
+            <MonthCalendar />
+          </div>
         </div>
 
         <div className={style.wrapper}>
@@ -35,10 +37,13 @@ export default function StatisticsView() {
         </div>
 
         <div className={style.wrapper}>
-          <ReportExpenseIncomeToggler activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+          <ReportExpenseIncomeToggler
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
         </div>
 
-         <div className={style.wrapper}>
+        <div className={style.wrapper}>
           {activeCategory && <Stats category={activeCategory} />}
         </div>
       </Container>

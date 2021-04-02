@@ -4,14 +4,30 @@
 .balanceWrap {
   display: flex;
   flex-direction: column;
-  margin: 40px 0;
+
   // border: 1px solid black;
 
+  @include for-size(mobile) {
+    align-items: center;
+  }
   @include for-size(tablet) {
+    margin: 40px 0;
+
     flex-direction: row;
+  }
+  @include for-size(desktop) {
+    margin-left: 150px;
   }
 }
 
 .wrapper {
   margin-bottom: 30px;
+}
+.barWrapper {
+  @include for-size(tablet) {
+    display: flex;
+  }
+  @include for-size(desktop) {
+    align-items: center;
+  }
 }
