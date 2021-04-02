@@ -3,15 +3,15 @@ import React from 'react';
 import { useWindowSize } from 'react-use-size';
 import CostItem from './CostItem';
 
-import { incomes } from './income.json';
-
 import style from './TransactionTable.module.scss';
 
 export default function TransactionTable({ costList }) {
   const { width } = useWindowSize();
+  console.log(costList);
 
   return (
     <div>
+      {/* --------------------------------Заголовок таблицы------------------------- */}
       {width > 767 ? (
         <div className={style.table__head}>
           <ul className={style.table__box}>
@@ -22,39 +22,67 @@ export default function TransactionTable({ costList }) {
           </ul>
         </div>
       ) : null}
-      {/* <Scrollbars style={{width: 1, color: "red"}}> */}
+      {/* --------------------------------Затраты-Доходы------------------------- */}
       <div className={style.table__body_container}>
-        {incomes.map(item => (
-          <CostItem
-            key={item._id}
-            desc={item.description}
-            amount={item.amount}
-            date={item.date}
-            category={item.category}
-          ></CostItem>
-        ))}
-        {
-          width > 767 ? (
-            <div>
-              <div className={style.table__body}></div>
-              <div className={style.table__body}></div>
-              <div className={style.table__body}></div>
-              <div className={style.table__body}></div>
-              <div className={style.table__body}></div>
-              <div className={style.table__body}></div>
-              <div className={style.table__body}></div>
-              <div className={style.table__body}></div>
-              <div className={style.table__body}></div>
-            </div>
-          ) : null
-          //   <div>
-          //     <div className={style.table__body}></div>
-          //     <div className={style.table__body}></div>
-          //     <div className={style.table__body}></div>
-          //   </div>
-        }
+        {costList
+          ? costList.map(item => (
+              <CostItem
+              key={item._id}
+              desc={item.description}
+              amount={item.amount}
+              date={item.date}
+              category={item.category}
+              id={item._id}
+              ></CostItem>
+            ))
+          : null}
+        {/* --------------------------------Пустые строки------------------------- */}
+                {costList && costList.length < 3 && width > 767 ? (
+          <div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+          </div>
+        ) : null}
+          {costList && costList.length >=3 && costList.length < 6 && width > 767 ? (
+          <div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+          </div>
+        ) : null}
+        {/* {costList && costList.length < 4 && width > 767 ? (
+          <div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+          </div>
+        ) : null}
+        {costList && costList.length >= 4 && width > 767 ? (
+          <div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+            <div className={style.table__body}></div>
+          </div>
+        ) : null} */}
       </div>
-      {/* </Scrollbars> */}
     </div>
   );
 }
