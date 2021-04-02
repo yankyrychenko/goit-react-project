@@ -10,10 +10,12 @@ import { getUserEmail } from '../../../redux/selectors/authSelectors';
 // Others
 import { routes } from '../../../routes';
 import sprite from '../../../img/sprite.svg';
+import { useBreakpoint } from 'react-use-size';
 
 const UserMenu = () => {
   const [showModal, setShowModal] = useState(false);
   const email = useSelector(state => getUserEmail(state));
+  const mobile = useBreakpoint(768);
 
   const toggleModal = () => setShowModal(!showModal);
 
@@ -24,17 +26,19 @@ const UserMenu = () => {
           <span className={styles.userIcon}>
             {email && email[0].toUpperCase()}
           </span>
-          <p className={styles.userEmail}>{email}</p>
+          {!mobile && <p className={styles.userEmail}>{email}</p>}
         </Link>
         <button
           type="button"
           className={styles.logoutButton}
           onClick={toggleModal}
         >
-          <svg className={styles.logoutButtonIcon} width="16" height="16">
-            <use href={sprite + '#icon-logout-1'}></use>
-          </svg>
-          <p className={styles.logoutButtonText}>Выйти</p>
+          {mobile && (
+            <svg className={styles.logoutButtonIcon} width="16" height="16">
+              <use href={sprite + '#icon-logout-1'}></use>
+            </svg>
+          )}
+          {!mobile && <p className={styles.logoutButtonText}>Выйти</p>}
         </button>
       </div>
       {showModal && (
