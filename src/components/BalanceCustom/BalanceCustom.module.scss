@@ -1,92 +1,83 @@
 @import '../../styles/_variables.scss';
 @import '../../styles/_mixins.scss';
-.balanceText {
-  margin-bottom: 6px;
+
+body {
+  background-color: $primary-gray-color; //! потом удалить
 }
 
-.balanceForm {
-    text-align: center;
-}
-.balanceText {
-  text-align: center;
-  color: $primary-text-color;
-}
-
-.balanceForm {
-  margin: 0 auto;
-  max-width: 280px;
-  position: relative;
-}
-
-.balanceInput {
-  color: $black-color;
-  font-weight: 700;
-  width: 115px;
-  padding: 12px 12px 12px 20px ;
-  border: 2px solid white;
-  border-right: 1px solid white;
-  background-color: #F5F6FB;
-  border-top-left-radius:  20px ;
-  border-bottom-left-radius: 20px;
-  margin-bottom: 50px;
-
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-.balanceInput::placeholder {
-  font-weight: 400;
-    color: $black-color;
-  text-align: center;
-}
-
-.balanceButton {
-  color: $primary-text-color;
-  width: 115px;
-  font-size: 12px;
-  font-weight: 400;
-  padding: 12px;
-  border: 2px solid white;
-  border-left: 1px solid white;
-background-color: #F5F6FB;
-border-top-right-radius : 20px;
-border-bottom-right-radius: 20px;
-margin-bottom: 50px;
-cursor: pointer;
-transition: ease 0.3s;
-}
-
-.balanceButton:hover {
-  border-color: $primary-orange-color;
-  color: $white-color;
-  background-color: $primary-orange-color;
-}
-
-
-
-@include for-size(tablet) {
 .balanceWrapper {
-  padding-top: 40px;
-width: 635px;
   display: flex;
-  margin: 0 auto;
-   align-items: baseline;
-}
-.balanceForm {
-  margin-left: 60px;
-}
-.balanceInput {
-  margin-right: 15px;
-  border-radius: 20px;
-}
-.balanceButton {
-  border-radius: 20px;
-}
+  flex-direction: column;
+  order: 2;
+  color: $primary-text-color;
+  text-align: center;
+  // border: 1px solid red;
+  margin-right: auto;
+  width: 100%;
+
+  @include for-size(tablet) {
+    display: block;
+    order: 1;
+  }
 }
 
-@include for-size(tablet) {
-  .balanceWrapper {
-    width: 369px;
+.balanceText {
+  min-height: 20px;
+  margin-bottom: 6px;
+  color: inherit;
+  // border: 1px solid green;
+
+  @include for-size(tablet) {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 21px;
+  }
+}
+
+.balanceForm {
+  display: inline-block;
+  // border: 1px solid blue;
+}
+
+.balanceInput,
+.balanceButton {
+  width: 125px;
+  min-height: 44px;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  margin: 0;
+  padding: 13px 17px;
+}
+
+.balanceInput {
+  color: black;
+  text-align: right;
+  font-weight: 700;
+  border-radius: 22px 0 0 22px;
+
+  &::placeholder {
+    color: inherit;
+  }
+
+  @include for-size(tablet) {
+    margin-right: 15px;
+    border-radius: 16px;
+  }
+}
+
+.balanceButton {
+  color: inherit;
+  border-radius: 0 22px 22px 0;
+  transition: ease 0.3s;
+
+  &:hover,
+  &:focus {
+    background-color: $primary-orange-color;
+    border-color: $primary-orange-color;
+    color: white;
+  }
+
+  @include for-size(tablet) {
+    border-radius: 16px;
   }
 }
