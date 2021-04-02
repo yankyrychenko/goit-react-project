@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
 import balanceActions from '../actions/balanceActions';
 import transactionsActions from '../actions/transactionsActions';
+import actionDelete from '../actions/transactionDeleteActions';
 
 const userInitialState = {};
 const user = createReducer(userInitialState, {
