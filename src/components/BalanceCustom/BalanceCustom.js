@@ -25,10 +25,10 @@ const BalanceCustom = () => {
 
   return (
     <div className={style.balanceWrapper} >
-      <p className={style.balanceText}>Баланс:</p>
       <form className={style.balanceForm} onSubmit={balanceSubmit}>
-        <input onChange={balanceHandler} className={style.balanceInput} type="number" name="newBalance"
-          placeholder={currentBalance === 0 ? '00:00 UAH' : currentBalance} value={newBalance.newBalance} />
+        <label for="balance"  className={style.balanceLabel}>Баланс:</label>
+        <input min='1' max='999999' id="balance" onChange={balanceHandler} className={style.balanceInput} type="number" name="newBalance"
+            placeholder={currentBalance === 0 ? '00.00 UAH' : currentBalance} value={newBalance.newBalance} />
         <button className={style.balanceButton}>ПОДТВЕРДИТЬ</button>
         {newBalance.newBalance && currentBalance == 0 ? <BalanceModal /> : null }
       </form>
