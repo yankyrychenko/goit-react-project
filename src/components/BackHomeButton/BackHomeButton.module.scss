@@ -19,12 +19,6 @@
     background-color: rgba(0, 0, 0, 0.05);
   }
 
-  @include for-size(mobile-only) {
-    & span {
-      display: none;
-    }
-  }
-
   @include for-size(tablet) {
     padding: 0 3px 0 0;
 
