@@ -9,6 +9,8 @@ function CostItem({ desc, amount, date, category, id }) {
   
   const fnDelete = (id) => {
     dispatch(operation.handleTransactionDelete(id))
+    console.log('удалили')
+    console.log(`удалили ${id}`)
   }
   
   // const dateUpdate =

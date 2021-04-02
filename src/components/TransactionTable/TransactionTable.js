@@ -7,7 +7,6 @@ import style from './TransactionTable.module.scss';
 
 export default function TransactionTable({ costList }) {
   const { width } = useWindowSize();
-  console.log(costList);
 
   return (
     <div>
