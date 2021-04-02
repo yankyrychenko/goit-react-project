@@ -6,9 +6,7 @@ const handleTransactionDelete = id => dispatch => {
 
   api
     .transactionDelete(id)
-    .then((data) => {
-      console.log(id)
-      console.log(data)
+    .then(() => {
       dispatch(actions.transactionDeleteSuccess(id))
     })
     .catch(error => dispatch(actions.transactionDeleteError(error.message)));
