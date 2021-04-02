@@ -19,6 +19,18 @@ const errorReducer = createReducer(intialState, {
   [transactions.incomePostError]: (_, { payload }) => payload,
   [periodData.periodDataGetError]: (_, { payload }) => payload,
   [transactionDelete.transactionDeleteError]: (_, { payload }) => payload,
+  [auth.signUpRequest]: () => intialState,
+  [auth.logInRequest]: () => intialState,
+  [auth.logOutRequest]: () => intialState,
+  [auth.getCurrentUserRequest]: () => intialState,
+  [categories.incomeCategRequest]: () => intialState,
+  [categories.expenseCategRequest]: () => intialState,
+  [transactions.expenseGetRequest]: () => intialState,
+  [transactions.expensePostRequest]: () => intialState,
+  [transactions.incomeGetRequest]: () => intialState,
+  [transactions.incomePostRequest]: () => intialState,
+  [periodData.periodDataGetRequest]: () => intialState,
+  [transactionDelete.transactionDeleteRequest]: () => intialState,
 });
 
 export default errorReducer;

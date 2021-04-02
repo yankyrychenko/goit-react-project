@@ -1,3 +1,26 @@
-.wrapper {
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.balanceWrap {
   display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+  // border: 1px solid black;
+
+  @include for-size(tablet) {
+    flex-direction: row;
+  }
+}
+
+.wrapper {
+  @include for-size(tablet) {
+    margin-top: 50px;
+  }
+
+  @include for-size(desktop) {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 70px;
+  }
 }

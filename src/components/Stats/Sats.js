@@ -23,12 +23,12 @@ const Stats = ({ category }) => {
       name: category,
       data: categoryData[category],
     }));
-    return formatedCategoryData.sort((a,b)=>b.data-a.data);
+    return formatedCategoryData.sort((a, b) => b.data - a.data);
   };
 
   const [isMobile, setIsMobile] = useState(false);
   const periodData = useSelector(getPeriodData);
-  const diagramData = getDataForDiagram(category='Транспорт', periodData);
+  const diagramData = getDataForDiagram((category = 'Транспорт'), periodData);
   useEffect(() => {
     const handleWindowResize = () => {
       if (window.innerWidth <= 768) {

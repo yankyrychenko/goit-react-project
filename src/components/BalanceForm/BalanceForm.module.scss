@@ -75,6 +75,12 @@ input::-webkit-inner-spin-button {
   }
 }
 
+.headContainer {
+  margin-left: 22px;
+  display: flex;
+  justify-content: start;
+}
+
 .label {
   padding-left: 21px;
   padding-right: 21px;
@@ -90,7 +96,9 @@ input::-webkit-inner-spin-button {
     @include for-size(tablet) {
       border-top: none;
       border-right: 2px solid $primary-gray-color;
-      width: 211px;
+      width: 171px;
+      padding-left: 14px;
+      padding-right: 14px;
     }
   }
 }
@@ -114,6 +122,8 @@ input::-webkit-inner-spin-button {
 
   @include for-size(desktop) {
     margin-right: 27px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
