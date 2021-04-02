@@ -35,7 +35,12 @@ const ExitModal = ({ question, toggleModal, setShowModal }) => {
           x
         </button>
         <p className={styles.question}>{question}</p>
-        <button type="button" className={styles.yesButton} onClick={onLogout}>
+        <button
+          type="button"
+          className={styles.yesButton}
+          onClick={onLogout}
+          autoFocus
+        >
           Да
         </button>
         <button type="button" className={styles.noButton} onClick={toggleModal}>
