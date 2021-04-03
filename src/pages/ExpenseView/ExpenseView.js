@@ -35,10 +35,12 @@ export default function ExpenseView() {
   return (
     <main>
       <Container>
-        <div className={style.balanceWrap}>
-          <BalanceCustom />
-          <GoToReport />
-        </div>
+        {width > 767 && (
+          <div className={style.balanceWrap}>
+            <BalanceCustom />
+            <GoToReport />
+          </div>
+        )}
 
         <TransactionContainer>
           <BalanceForm
@@ -46,10 +48,12 @@ export default function ExpenseView() {
             submitIncomeData={submitIncomeData}
           />
           <div className={style.wrapper}>
-            <TransactionTable
-              costList={costList}
-              fnRemove={handleDeleteExpence}
-            />
+            {width > 767 && (
+              <TransactionTable
+                costList={costList}
+                fnRemove={handleDeleteExpence}
+              />
+            )}
             {width > 767 && <Summary />}
           </div>
         </TransactionContainer>
