@@ -7,6 +7,7 @@ import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
 import GoToReport from '../../components/GoToReport/GoToReport';
 import operation from '../../redux/selectors/transactionsSelectors';
 import style from './HomeView.module.scss';
+import CustomCalendar from '../../components/CustomCalendar/CustomCalendar';
 
 const HomeView = () => {
   const costList = useSelector(operation.getAllransactions);
@@ -17,6 +18,7 @@ const HomeView = () => {
         <div className={style.balanceWrap}>
           <BalanceCustom />
           <GoToReport />
+          {/* <CustomCalendar /> */}
         </div>
 
         <TransactionContainer>
