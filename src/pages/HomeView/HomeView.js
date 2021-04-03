@@ -1,5 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useWindowSize } from 'react-use-size';
+import { Redirect } from 'react-router-dom';
+
 import Container from '../../components/Container';
 import TransactionContainer from '../../components/TransactionContainer/TransactionContainer';
 import TransactionTable from '../../components/TransactionTable/TransactionTable';
@@ -11,21 +14,25 @@ import CustomCalendar from '../../components/CustomCalendar/CustomCalendar';
 
 const HomeView = () => {
   const costList = useSelector(operation.getAllransactions);
+  const { width } = useWindowSize();
 
   return (
-    <main>
-      <Container>
-        <div className={style.balanceWrap}>
-          <BalanceCustom />
-          <GoToReport />
-          {/* <CustomCalendar /> */}
-        </div>
+    <>
+      {width > 767 && <Redirect to="/expense" />}
+      <main>
+        <Container>
+          <div className={style.balanceWrap}>
+            <BalanceCustom />
+            <GoToReport />
+            {/* <CustomCalendar /> */}
+          </div>
 
-        <TransactionContainer>
-          <TransactionTable costList={costList} />
-        </TransactionContainer>
-      </Container>
-    </main>
+          <TransactionContainer>
+            <TransactionTable costList={costList} />
+          </TransactionContainer>
+        </Container>
+      </main>
+    </>
   );
 };
 
