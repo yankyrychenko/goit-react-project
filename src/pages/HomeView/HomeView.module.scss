@@ -12,5 +12,18 @@
   }
 }
 .main {
-  background-color: black;
+  @include for-size(tablet) {
+    padding-bottom: 90px;
+    background: url(../../img/tablet-bottom.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 103px;
+  }
+  @include for-size(desktop) {
+    padding-bottom: 84px;
+    background: url(../../img/desktop-bottom.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 230px;
+  }
 }

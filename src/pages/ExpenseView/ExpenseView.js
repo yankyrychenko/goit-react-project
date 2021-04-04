@@ -33,7 +33,7 @@ export default function ExpenseView() {
   };
 
   return (
-    <main>
+    <main className={style.main}>
       <Container>
         {width > 767 && (
           <div className={style.balanceWrap}>

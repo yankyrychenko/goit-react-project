@@ -24,3 +24,19 @@
     margin-top: 70px;
   }
 }
+.main {
+  @include for-size(tablet) {
+    padding-bottom: 90px;
+    background: url(../../img/tablet-bottom.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 90%;
+  }
+  @include for-size(desktop) {
+    padding-bottom: 84px;
+    background: url(../../img/desktop-bottom2.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 90%;
+  }
+}
