@@ -52,6 +52,7 @@ export default function IncomeView() {
               <TransactionTable
                 costList={costList}
                 fnRemove={handleDeleteIncome}
+                styleOption={false}
               />
             )}
             {width > 767 && <Summary />}
