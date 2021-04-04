@@ -4,21 +4,21 @@ const transactionDeleteRequest = createAction('auth/transactionDeleteRequest');
 const transactionDeleteSuccess = createAction('auth/transactionDeleteSuccess');
 const transactionDeleteError = createAction('auth/transactionDeleteError');
 
-const transactionIncomeDeleteSuccess = createAction(
-  'auth/transactionIncomeDeleteSuccess',
-);
 const transactionIncomeDeleteRequest = createAction(
   'auth/transactionIncomeDeleteRequest',
+);
+const transactionIncomeDeleteSuccess = createAction(
+  'auth/transactionIncomeDeleteSuccess',
 );
 const transactionIncomeDeleteError = createAction(
   'auth/transactionIncomeDeleteError',
 );
 
-const transactionExpenceDeleteSuccess = createAction(
-  'auth/transactionExpenceDeleteSuccess',
-);
 const transactionExpenceDeleteRequest = createAction(
   'auth/transactionExpenceDeleteRequest',
+);
+const transactionExpenceDeleteSuccess = createAction(
+  'auth/transactionExpenceDeleteSuccess',
 );
 const transactionExpenceDeleteError = createAction(
   'auth/transactionExpenceDeleteError',

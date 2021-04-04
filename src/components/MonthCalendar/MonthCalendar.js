@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './MonthCalendar.module.scss';
 import sprite from '../../img/sprite.svg';
 import operations from '../../redux/operations/periodDataOperations';
+import {
+  getIncomeTotal,
+  getExpenseTotal,
+} from '../../redux/selectors/periodDataSelectors';
 
-const MonthCalendar = ({setActiveCategory}) => {
+const MonthCalendar = ({ setActiveCategory }) => {
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
 
+  const incomeTotal = useSelector(getIncomeTotal);
+  const expenseTotal = useSelector(getExpenseTotal);
+
   useEffect(() => {
+    if (incomeTotal && expenseTotal) {
+      return;
+    }
+
     dispatch(operations.getPeriodData(formatDate(date)));
-  }, []);
+  }, [dispatch, incomeTotal, expenseTotal, date]);
+
   const referenceDate = date;
 
   const options = { month: 'long' };
@@ -28,7 +40,7 @@ const MonthCalendar = ({setActiveCategory}) => {
     referenceDate.setMonth(referenceDate.getMonth() - 1);
     setDate(new Date(referenceDate));
     dispatch(operations.getPeriodData(formatDate(date)));
-     setActiveCategory('');
+    setActiveCategory('');
   };
 
   function formatDate(date) {
