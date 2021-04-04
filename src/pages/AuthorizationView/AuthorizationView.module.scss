@@ -6,3 +6,19 @@
     align-items: center;
   }
 }
+.main {
+  @include for-size(mobile-only) {
+    padding-bottom: 76px;
+    background: url(../../img/mob-bottom.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 35px;
+  }
+  @include for-size(tablet) {
+    padding-bottom: 90px;
+    background: url(../../img/tablet-bottom.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 103px;
+  }
+}

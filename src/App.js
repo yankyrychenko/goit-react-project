@@ -49,10 +49,12 @@ export default function App() {
     //* Комментарии не удаляйте, на будущее будет полезно что б понимать, что тут происходит.
   }, [dispatch, location, token, userEmail]);
 
+  let x = location.pathname === '/authorization';
+  let y = x ? 'main-top-auth' : 'main-top';
   return (
     <>
       <Header />
-      <div className="main-top">
+      <div className={y}>
         <Suspense fallback={<h1>Loading...</h1>}>
           <Switch>
             <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>

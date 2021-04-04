@@ -1,4 +1,5 @@
 @import './mixins';
+@import './variables';
 
 body {
   font-family: Roboto, serif;
@@ -7,23 +8,51 @@ body {
   line-height: 1.17;
   letter-spacing: 0.02em;
 }
-.main-top {
+.main-top-auth {
   @include for-size(mobile-only) {
     height: 286px;
-    background: #ff751d url(../img/mob-top.svg);
-    background-repeat: no-repeat;
+    background: $primary-gray-color url(../img/mob-top.svg);
     background-position-y: 104px;
     background-position-x: 100%;
+    background-repeat: no-repeat;
     padding-top: 86px;
     border-bottom-left-radius: 120px;
   }
-}
-main {
-  @include for-size(mobile-only) {
-    padding-bottom: 76px;
-    background: url(../img/mob-bottom.svg);
+  @include for-size(tablet) {
+    height: 526px;
+    background: $primary-gray-color url(../img/tablet-top.svg);
     background-repeat: no-repeat;
-    background-position-y: 100%;
-    background-position-x: 35px;
+    background-position-y: 28px;
+    background-position-x: center;
+    padding-top: 90px;
+    border-bottom-left-radius: 120px;
+    background-size: contain;
+  }
+  @include for-size(desktop) {
+    // height: 526px;
+    background: $primary-gray-color url(../img/desktop-top.svg);
+    background-repeat: no-repeat;
+    background-position-y: 28px;
+    background-position-x: center;
+    padding-top: 28px;
+    border-bottom-left-radius: 120px;
+    background-size: contain;
+  }
+}
+.main-top {
+  @include for-size(mobile-only) {
+    height: 290px;
+    background: $primary-gray-color;
+    border-bottom-left-radius: 150px;
+  }
+  @include for-size(tablet) {
+    height: 526px;
+    background: $primary-gray-color;
+    border-bottom-left-radius: 120px;
+  }
+  @include for-size(desktop) {
+    height: 526px;
+    background: $primary-gray-color;
+    border-bottom-left-radius: 120px;
   }
 }
