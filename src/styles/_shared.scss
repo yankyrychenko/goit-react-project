@@ -1,7 +1,29 @@
+@import './mixins';
+
 body {
   font-family: Roboto, serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17;
   letter-spacing: 0.02em;
+}
+.main-top {
+  @include for-size(mobile-only) {
+    height: 286px;
+    background: #ff751d url(../img/mob-top.svg);
+    background-repeat: no-repeat;
+    background-position-y: 104px;
+    background-position-x: 100%;
+    padding-top: 86px;
+    border-bottom-left-radius: 120px;
+  }
+}
+main {
+  @include for-size(mobile-only) {
+    padding-bottom: 76px;
+    background: url(../img/mob-bottom.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 35px;
+  }
 }

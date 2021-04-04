@@ -52,30 +52,31 @@ export default function App() {
   return (
     <>
       <Header />
+      <div className="main-top">
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Switch>
+            <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
+              <AuthorizationView />
+            </PublicRoute>
 
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Switch>
-          <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
-            <AuthorizationView />
-          </PublicRoute>
+            <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
+              <HomeView />
+            </PrivateRoute>
 
-          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
-            <HomeView />
-          </PrivateRoute>
+            <PrivateRoute path={routes.expense} redirectTo={routes.auth}>
+              <ExpenseView />
+            </PrivateRoute>
 
-          <PrivateRoute path={routes.expense} redirectTo={routes.auth}>
-            <ExpenseView />
-          </PrivateRoute>
+            <PrivateRoute path={routes.income} redirectTo={routes.auth}>
+              <IncomeView />
+            </PrivateRoute>
 
-          <PrivateRoute path={routes.income} redirectTo={routes.auth}>
-            <IncomeView />
-          </PrivateRoute>
-
-          <PrivateRoute path={routes.stats} redirectTo={routes.auth}>
-            <StatisticsView />
-          </PrivateRoute>
-        </Switch>
-      </Suspense>
+            <PrivateRoute path={routes.stats} redirectTo={routes.auth}>
+              <StatisticsView />
+            </PrivateRoute>
+          </Switch>
+        </Suspense>
+      </div>
     </>
   );
 }
