@@ -52,6 +52,7 @@ export default function ExpenseView() {
               <TransactionTable
                 costList={costList}
                 fnRemove={handleDeleteExpence}
+                styleOption={true}
               />
             )}
             {width > 767 && <Summary />}

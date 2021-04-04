@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { useWindowSize } from 'react-use-size';
-import { Scrollbars, scrollToBottom } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars';
 import CostItem from './CostItem';
 
 import style from './TransactionTable.module.scss';
 
-export default function TransactionTable({ costList, fnRemove }) {
+export default function TransactionTable({ costList, fnRemove, styleOption }) {
   const { width } = useWindowSize();
 
   // ------------------------------------> Настройки Scrollbar:
@@ -18,22 +18,20 @@ export default function TransactionTable({ costList, fnRemove }) {
     return <div style={{ ...style, ...optionStyle }} {...props} />;
   };
 
-  const optionScrollMobile = ({ style, ...props }) => {
-    const optionStyle = {
-      backgroundColor: '##FFFFFF',
-      width: 1,
-    };
-    return <div style={{ ...style, ...optionStyle }} {...props} />;
-  };
-
-  // const test = document.querySelector('#scroll')
+  // const optionScrollMobile = ({ style, ...props }) => {
+  //   const optionStyle = {
+  //     backgroundColor: '##FFFFFF',
+  //     width: 1,
+  //   };
+  //   return <div style={{ ...style, ...optionStyle }} {...props} />;
+  // };
 
   // console.dir(test)
-  
-    // window.scrollTo({
-    //   top: test.scrollHeight,
-    //   behavior: 'smooth',
-    // });
+
+  // window.scrollTo({
+  //   top: test.scrollHeight,
+  //   behavior: 'smooth',
+  // });
 
   return (
     <div>
@@ -51,7 +49,6 @@ export default function TransactionTable({ costList, fnRemove }) {
       {/* --------------------------------Затраты-Доходы для Desktop and Tablet------------------------- */}
       {/* <div className={style.table__body_container}> */}
       {width > 767 && (
-        <div id="scroll">
         <Scrollbars
           renderThumbVertical={optionScrollGeneral}
           autoHide
@@ -70,6 +67,7 @@ export default function TransactionTable({ costList, fnRemove }) {
                   category={item.category}
                   id={item._id}
                   fnRemove={fnRemove}
+                  styleOption={styleOption}
                 ></CostItem>
               ))
             : null}
@@ -104,14 +102,13 @@ export default function TransactionTable({ costList, fnRemove }) {
               <div className={style.table__body}></div>
             </div>
           ) : null}
-          </Scrollbars>
-          </div>
+        </Scrollbars>
       )}
       {/* --------------------------------Затраты-Доходы для Mobile------------------------- */}
       {width <= 767 && (
         <Scrollbars
-          renderThumbVertical={optionScrollMobile}
-          renderThumbHorizontal={optionScrollMobile}
+          renderThumbVertical={optionScrollGeneral}
+          // renderThumbHorizontal={optionScrollMobile}
           autoHide
           autoHideTimeout={700}
           autoHideDuration={500}
@@ -128,6 +125,7 @@ export default function TransactionTable({ costList, fnRemove }) {
                   category={item.category}
                   id={item._id}
                   fnRemove={fnRemove}
+                  styleOption={styleOption}
                 ></CostItem>
               ))
             : null}

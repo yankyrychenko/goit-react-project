@@ -7,10 +7,8 @@
   margin: 0;
   padding: 0;
 
-  // -------------------------------
   padding-left: 20px;
   padding-right: 20px;
-  // -------------------------------
 
   background-color: $primary-gray-color;
   border-top-right-radius: 20px;
@@ -25,7 +23,7 @@
   // для корзины:
   position: relative;
 
-  // width: 294px; //605
+  // width: 300px; //605
   padding-left: 10px;
   padding-right: 10px;
   height: 50px;
@@ -38,13 +36,13 @@
   @include for-size(tablet) {
     padding-left: 20px;
     padding-right: 20px;
-
+    width: 605px;
     height: 40px;
   }
 
-  // @include for-size(desktop) {
-  //   width: 760px;
-  // }
+  @include for-size(desktop) {
+    width: 760px;
+  }
 }
 
 .table__title {
@@ -132,13 +130,14 @@
   font-weight: bold;
   position: absolute;
   margin-top: 10px;
-  width: 100%;
+  width: 280px;
 
   @include for-size(tablet) {
     font-weight: normal;
     position: static;
     margin-top: auto;
     margin-bottom: auto;
+    width: 100%;
   }
 }
 
@@ -153,7 +152,7 @@
   cursor: pointer;
   position: absolute;
   z-index: 100;
-  top: 0;
+  // top: 0;
   top: 9px;
   right: 0px;
 
@@ -171,6 +170,22 @@
 .item__remove:focus {
   border-radius: 50%;
   background-color: $primary-gray-color;
+}
+
+.item__minus {
+  margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
+  margin-bottom: auto !important;
+  color: #e7192e;
+  font-weight: bold;
+  font-size: 12px !important;
+}
+
+.item__plus {
+  margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
+  margin-bottom: auto !important;
+  color: #407946;
+  font-weight: bold;
+  font-size: 12px !important;
 }
 
 // // ---------> Контейнер для скрола
