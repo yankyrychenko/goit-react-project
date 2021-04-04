@@ -4,12 +4,11 @@ import styles from './MonthCalendar.module.scss';
 import sprite from '../../img/sprite.svg';
 import operations from '../../redux/operations/periodDataOperations';
 
-const MonthCalendar = () => {
+const MonthCalendar = ({setActiveCategory}) => {
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
 
   useEffect(() => {
-    date.setMonth(date.getMonth() - 1);
     dispatch(operations.getPeriodData(formatDate(date)));
   }, []);
   const referenceDate = date;
@@ -22,12 +21,14 @@ const MonthCalendar = () => {
     referenceDate.setMonth(referenceDate.getMonth() + 1);
     setDate(new Date(referenceDate));
     dispatch(operations.getPeriodData(formatDate(date)));
+    setActiveCategory('');
   };
 
   const setPrevMonth = () => {
     referenceDate.setMonth(referenceDate.getMonth() - 1);
     setDate(new Date(referenceDate));
     dispatch(operations.getPeriodData(formatDate(date)));
+     setActiveCategory('');
   };
 
   function formatDate(date) {

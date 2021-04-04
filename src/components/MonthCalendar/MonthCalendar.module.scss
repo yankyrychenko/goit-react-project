@@ -1,6 +1,15 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
+
 .wrapper {
   width: 150px;
+  order: 3;
+  @include for-size(mobile) {
+    order: 1;
+  }
+  @include for-size(desktop) {
+    margin-left: 220px;
+  }
 }
 .currentPeriod {
   text-align: center;

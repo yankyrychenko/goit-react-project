@@ -1,0 +1,13 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+
+.balanceWrap {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+  // border: 1px solid black;
+
+  @include for-size(tablet) {
+    flex-direction: row;
+  }
+}

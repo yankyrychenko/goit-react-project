@@ -1,64 +1,89 @@
 @import '../../styles/_variables.scss';
-
+@import '../../styles/_mixins.scss';
 
 .balanceWrapper {
-  position: relative;
-  background-color:#F5F6FB ;
-}
-.balanceText {
-  margin-bottom: 6px;
+  display: flex;
+  flex-direction: column;
+  order: 2;
+  color: $primary-text-color;
+  text-align: center;
+  // border: 1px solid red;
+  margin-right: auto;
+  width: 100%;
+
+  @include for-size(tablet) {
+    display: block;
+    order: 1;
+  }
 }
 
 .balanceForm {
-    text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  // border: 1px solid blue;
 }
-.balanceText {
-  text-align: center;
-color: $primary-text-color;
+
+.balanceLabel {
+  display: block;
+  min-height: 20px;
+  margin-bottom: 6px;
+  color: inherit;
+  // border: 1px solid green;
+  cursor: pointer;
+
+  @include for-size(mobile-only) {
+    width: 180px;
+  }
+
+  @include for-size(tablet) {
+    display: flex;
+    align-items: center;
+    margin: 0 21px 0 0;
+    height: 44px;
+  }
+}
+
+.balanceInput,
+.balanceButton {
+  width: 125px;
+  min-height: 44px;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  margin: 0;
+  padding: 13px 17px;
 }
 
 .balanceInput {
-  color: $black-color;
-  padding-left: 35px;
+  color: black;
+  text-align: right;
   font-weight: 700;
-  width: 115px;
-  padding: 12px ;
-  border: 2px solid white;
-   border-right: 1px solid white;
-  background-color: #F5F6FB;
-  border-top-left-radius:  20px ;
-  border-bottom-left-radius: 20px;
-  margin-bottom: 50px;
+  border-radius: 22px 0 0 22px;
 
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-.balanceInput::placeholder {
-  font-weight: 400;
-    color: $black-color;
-  text-align: center;
+  &::placeholder {
+    color: inherit;
+  }
+
+  @include for-size(tablet) {
+    margin-right: 15px;
+    border-radius: 16px;
+  }
 }
 
 .balanceButton {
-  color: $primary-text-color;
-  width: 115px;
-  font-size: 12px;
-  font-weight: 400;
-  padding: 12px;
-  border: 2px solid white;
-  border-left: 1px solid white;
-background-color: #F5F6FB;
-border-top-right-radius : 20px;
-border-bottom-right-radius: 20px;
-margin-bottom: 50px;
-cursor: pointer;
-transition: ease 0.3s;
-}
+  color: inherit;
+  border-radius: 0 22px 22px 0;
+  transition: ease 0.3s;
 
-.balanceButton:hover {
-  border-color: $primary-orange-color;
-  color: $white-color;
-  background-color: $primary-orange-color;
+  &:hover,
+  &:focus {
+    background-color: $primary-orange-color;
+    border-color: $primary-orange-color;
+    color: white;
+  }
+
+  @include for-size(tablet) {
+    border-radius: 16px;
+  }
 }

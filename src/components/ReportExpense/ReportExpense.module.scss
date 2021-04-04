@@ -1,0 +1,139 @@
+@import '../../styles/_mixins.scss';
+
+.ReportExpenseList {
+  display: flex;
+  align-self: center;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  //   width: 67%;
+  //   width: 282px;
+}
+
+.ReportExpenseItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 140px;
+}
+
+@include for-size(mobile-only) {
+  .ReportExpenseItem:not(:nth-child(3n-3)) {
+    margin-right: 3px;
+  }
+
+  .ReportExpenseItem::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    width: 93px;
+    height: 1px;
+    background-color: #e0e5eb;
+    display: block;
+  }
+}
+
+.ReportExpenseAmount {
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #52555f;
+}
+
+.ReportExpenseBtn {
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f5f6fb;
+  border: none;
+}
+
+.ReportExpenseBtn:hover {
+  background-color: #ffdac0;
+}
+
+.ReportExpenseIcon {
+  width: 56px;
+  height: 56px;
+  fill: #071f41;
+  pointer-events: none;
+}
+
+.ReportExpenseIcon:hover {
+  fill: #ff751d;
+}
+
+.isActiveBtn {
+  width: 70px;
+  height: 60px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #ffdac0;
+}
+
+.nonActiveBtn {
+  width: 70px;
+  height: 60px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f5f6fb;
+
+  border: none;
+}
+
+.isActiveIcon {
+  @extend .isActiveBtn;
+  fill: #ff751d;
+}
+
+.nonActiveIcon {
+  @extend .nonActiveBtn;
+  width: 56px;
+  height: 56px;
+  fill: #071f41;
+}
+
+.ReportExpenseTitle {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-top: 17px;
+
+  color: #52555f;
+}
+
+@include for-size(tablet) {
+  .ReportExpenseItem:not(:nth-child(6n-6)) {
+    margin-right: 20px;
+  }
+}
+
+@include for-size(desktop) {
+  .ReportExpenseList {
+    width: 613px;
+    margin: 0 auto;
+  }
+
+  .ReportExpenseItem:not(:nth-child(6n-6)) {
+    margin-right: 9px;
+  }
+
+  .ReportExpenseItem {
+    width: 94px;
+  }
+}

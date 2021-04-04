@@ -1,0 +1,45 @@
+@import '../../styles/_mixins.scss';
+
+.TogglerWrapper {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.TogglerText {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  margin: 0 15px 0 15px;
+  color: #000000;
+}
+
+.TogglerButton {
+  background-color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.ArrowIcon {
+  width: 8px;
+  height: 16px;
+  cursor: pointer;
+}
+
+@include for-size(tablet) {
+  .TogglerWrapper {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}
+
+@include for-size(desktop) {
+}

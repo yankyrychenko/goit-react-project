@@ -1,0 +1,95 @@
+@import '../../../../styles/_mixins.scss';
+@import '../../../../styles/_variables.scss';
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 1000;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  min-height: 184px;
+  background-color: white;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  text-align: center;
+  padding: 50px 40px;
+
+  @include for-size(tablet) {
+    width: 380px;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  margin: 0;
+  padding: 0;
+  min-width: 24px;
+  min-height: 24px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: $primary-gray-color;
+  }
+}
+
+.question {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+.yesButton,
+.noButton {
+  width: 100px;
+  height: 44px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 16px;
+
+  @include for-size(tablet) {
+    width: 125px;
+  }
+}
+
+.yesButton {
+  margin-right: 15px;
+  background-color: $primary-orange-color;
+  color: $white-color;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: #ff873c;
+  }
+}
+
+.noButton {
+  color: $primary-text-color;
+  background-color: transparent;
+  border: 2px solid $primary-gray-color;
+
+  &:hover,
+  &:focus {
+    background-color: $primary-gray-color;
+  }
+}

@@ -1,0 +1,30 @@
+@import '../../styles/_mixins.scss';
+@import '../../styles/_variables.scss';
+
+.BackHomeButton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  max-height: 24px;
+  min-width: 24px;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  color: $primary-text-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  @include for-size(tablet) {
+    padding: 0 3px 0 0;
+
+    & svg {
+      margin: 0 15px 0 0;
+    }
+  }
+}

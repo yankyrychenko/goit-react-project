@@ -1,0 +1,235 @@
+@import '../../styles/mixins';
+@import '../../styles//variables';
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.form {
+  text-align: center;
+  position: relative;
+  @include for-size(desktop) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.defaultOption {
+  display: none;
+}
+
+.select {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  color: $secondaty-text-color;
+
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.input {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  &::placeholder {
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    color: $secondaty-text-color;
+  }
+}
+
+.labelsContainer {
+  display: flex;
+  margin-bottom: 30px;
+  margin-left: 19px;
+  margin-right: 19px;
+  flex-direction: column;
+  border: 2px solid $white-color;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+
+  @include for-size(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    border: 2px solid $primary-gray-color;
+  }
+}
+
+.headContainer {
+  margin-left: 22px;
+  display: flex;
+  justify-content: start;
+}
+
+.label {
+  padding-left: 21px;
+  padding-right: 21px;
+
+  @include for-size(tablet) {
+    border-right: 2px solid $primary-gray-color;
+  }
+
+  &Select {
+    padding-left: 21px;
+    padding-right: 21px;
+    border-top: 2px solid $white-color;
+    @include for-size(tablet) {
+      border-top: none;
+      border-right: 2px solid $primary-gray-color;
+      width: 171px;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  }
+}
+
+.test {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: $primary-gray-color;
+  border-bottom-left-radius: 80px;
+  margin-bottom: 40px;
+
+  @include for-size(tablet) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    margin-bottom: 0;
+  }
+
+  @include for-size(desktop) {
+    margin-right: 27px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.inputNumberContainer {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid $white-color;
+  border-radius: 22px;
+
+  max-width: 185px;
+
+  &TD {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+}
+
+.inputNumber {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  max-width: 105px;
+  padding-left: 40%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  &::placeholder {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    color: $black-color;
+    text-align: right;
+  }
+
+  &TD {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    max-width: 50px;
+    background-color: transparent;
+
+    border: none;
+
+    &::placeholder {
+      color: $secondaty-text-color;
+    }
+  }
+}
+
+.labelNumber {
+  border-right: 2px solid $white-color;
+  padding-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.svgContainer {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.svg {
+  fill: $calc-fill;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonSubmit {
+  font-family: Roboto, sans-serif;
+  width: 125px;
+  margin-right: 15px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 12px 34px;
+
+  color: $white-color;
+  background-color: $primary-orange-color;
+  border-radius: 16px;
+  border: none;
+}
+
+.buttonClear {
+  @extend .buttonSubmit;
+  box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+  background-color: $primary-gray-color;
+  color: $primary-text-color;
+  margin-right: 0;
+}

@@ -1,0 +1,84 @@
+@import '../../styles/mixins';
+@import '../../styles//variables';
+
+.calendarContainer {
+  display: flex;
+  align-items: center;
+
+  @include for-size(mobile-only) {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  @include for-size(desktop) {
+    margin-right: 27px;
+  }
+}
+
+.calendarSvgContainer {
+  margin-right: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+  @include for-size(mobile-only) {
+    width: 20px;
+    height: 17px;
+  }
+}
+
+.calendarText {
+  font-family: Roboto, sans-serif;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 0.85;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: $primary-text-color;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.calendar {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  top: 165%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  transition: opacity 200ms ease-in;
+
+  &IsActive {
+    @extend .calendar;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @include for-size(mobile-only) {
+    top: 54%;
+    left: 50%;
+  }
+
+  @include for-size(desktop) {
+    top: 390%;
+    left: 20%;
+  }
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: transparent;
+}

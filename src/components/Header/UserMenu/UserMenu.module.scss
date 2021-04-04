@@ -48,9 +48,9 @@
 .userEmail {
   margin-right: 20px;
 
-  @include for-size(mobile-only) {
-    display: none;
-  }
+  // @include for-size(mobile-only) {
+  //   display: none;
+  // }
 }
 
 .logoutButton {
@@ -60,6 +60,7 @@
   padding: 0 8px;
   background-color: transparent;
   border: none;
+  border-radius: 5px;
 
   &:hover,
   &:focus {
@@ -75,14 +76,14 @@
   }
 }
 
-.logoutButtonIcon {
-  @include for-size(tablet) {
-    display: none;
-  }
-}
+// .logoutButtonIcon {
+//   @include for-size(tablet) {
+//     display: none;
+//   }
+// }
 
-.logoutButtonText {
-  @include for-size(mobile-only) {
-    display: none;
-  }
-}
+// .logoutButtonText {
+//   @include for-size(mobile-only) {
+//     display: none;
+//   }
+// }

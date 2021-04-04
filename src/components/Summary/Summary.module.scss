@@ -3,11 +3,14 @@
 
 .table {
   width: 230px;
-  margin-top: 100px;
 
   border-collapse: collapse;
   border-radius: 20px 20px 20px 0px;
   overflow: hidden;
+
+  @include for-size(tablet-only) {
+    margin-top: 40px;
+  }
 }
 
 .tableHeader {
@@ -22,4 +25,13 @@
 }
 th {
   font-weight: 400;
+}
+.month {
+  text-transform: uppercase;
+  text-align: left;
+  padding-left: 22px;
+}
+.sum {
+  padding-right: 20px;
+  text-align: center;
 }
