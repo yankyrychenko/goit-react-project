@@ -45,7 +45,7 @@ const BalanceCustom = () => {
           ПОДТВЕРДИТЬ
         </button>
       </form>
-      {newBalance.newBalance && currentBalance == 0 ? <BalanceModal /> : null}
+      {currentBalance == 0 ? <BalanceModal /> : null}
     </div>
   );
 };
