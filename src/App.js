@@ -6,6 +6,7 @@ import { routes, PublicRoute, PrivateRoute } from './routes';
 import * as authSelectors from './redux/selectors/authSelectors';
 import authOperations from './redux/operations/authOperations';
 import authActions from './redux/actions/authActions';
+import ChatBot from './components/ChatBot/Chat';
 
 const AuthorizationView = lazy(() =>
   import(
@@ -52,7 +53,7 @@ export default function App() {
   return (
     <>
       <Header />
-
+<ChatBot/>
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
           <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
