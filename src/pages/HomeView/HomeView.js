@@ -9,6 +9,7 @@ import TransactionTable from '../../components/TransactionTable/TransactionTable
 import BalanceCustom from '../../components/BalanceCustom/BalanceCustom';
 import GoToReport from '../../components/GoToReport/GoToReport';
 import operation from '../../redux/selectors/transactionsSelectors';
+import { handleDelete } from '../../redux/operations/transactionsDeleteOperations';
 import style from './HomeView.module.scss';
 import CustomCalendar from '../../components/CustomCalendar/CustomCalendar';
 
@@ -28,7 +29,7 @@ const HomeView = () => {
           </div>
 
           <TransactionContainer>
-            <TransactionTable costList={costList} />
+            <TransactionTable costList={costList} fnRemove={handleDelete} />
           </TransactionContainer>
         </Container>
       </main>

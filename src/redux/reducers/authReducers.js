@@ -3,6 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
 import balanceActions from '../actions/balanceActions';
 import transactionsActions from '../actions/transactionsActions';
+import transactionActions from '../actions/transactionsActions';
 import actionDelete from '../actions/transactionDeleteActions';
 
 const userInitialState = {};
@@ -13,6 +14,18 @@ const user = createReducer(userInitialState, {
   [balanceActions.addBalanceSuccess]: (state, { payload }) => ({
     ...state,
     balance: payload,
+  }),
+  [transactionActions.incomePostSuccess]: (state, { payload }) => ({
+    ...state,
+    balance: payload.newBalance,
+  }),
+  [transactionActions.expensePostSuccess]: (state, { payload }) => ({
+    ...state,
+    balance: payload.newBalance,
+  }),
+  [actionDelete.transactionDeleteSuccess]: (state, { payload }) => ({
+    ...state,
+    transactions: state.transactions.filter(item => item._id !== payload),
   }),
 });
 

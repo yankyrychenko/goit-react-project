@@ -23,6 +23,10 @@ export default function IncomeView() {
   const category = useSelector(getCategoryIncome);
 
   useEffect(() => {
+    if (costList && category) {
+      return;
+    }
+
     dispatch(transactionsOperations.handleIncomeGet());
     dispatch(categoriesOperations.handleIncomeCategGet());
   }, [dispatch]);

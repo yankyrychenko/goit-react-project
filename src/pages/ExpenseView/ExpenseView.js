@@ -23,9 +23,13 @@ export default function ExpenseView() {
   const category = useSelector(getCategoryExpense);
 
   useEffect(() => {
+    if (costList && category) {
+      return;
+    }
+
     dispatch(transactionsOperations.handleExpenseGet());
     dispatch(categoriesOperations.handleExpenseCategGet());
-  }, [dispatch]);
+  }, [dispatch, costList, category]);
 
   const submitIncomeData = data => {
     const finalData = { ...data, amount: Number(data.amount) };

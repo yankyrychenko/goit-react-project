@@ -1,6 +1,17 @@
 import actions from '../actions/transactionDeleteActions';
 import api from '../../services/kapusta-api';
 
+const handleDelete = id => dispatch => {
+  dispatch(actions.transactionDeleteRequest());
+
+  api
+    .transactionDelete(id)
+    .then(() => {
+      dispatch(actions.transactionDeleteSuccess(id));
+    })
+    .catch(error => dispatch(actions.transactionDeleteError(error.message)));
+};
+
 const handleDeleteIncome = id => dispatch => {
   dispatch(actions.transactionIncomeDeleteRequest());
 
@@ -28,4 +39,4 @@ const handleDeleteExpence = id => dispatch => {
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export { handleDeleteIncome, handleDeleteExpence };
+export { handleDelete, handleDeleteIncome, handleDeleteExpence };
