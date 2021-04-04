@@ -137,20 +137,37 @@
 // -------------------------------------> Корзина
 
 .item__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   position: absolute;
   z-index: 100;
-  top: 17px;
+  top: 0;
+  top: 9px;
   right: 10px; // до центра
 
   @include for-size(tablet) {
     right: 30px; // до центра
-    top: 12px;
+    top: 4px;
   }
 
   @include for-size(desktop) {
     right: 60px; // до центра
   }
+}
+
+.item__remove:hover,
+.item__remove:focus {
+  border-radius: 50%;
+  background-color: $primary-gray-color;
+}
+
+.item__svg {
+  // object-position: 50%;
+  object-fit: fill;
 }
 
 .table__body_container {

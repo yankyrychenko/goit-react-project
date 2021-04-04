@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import sprite from '../../img/sprite.svg'
 import style from './TransactionTable.module.scss';
 
 function CostItem({ desc, amount, date, category, id, fnRemove }) {
@@ -19,7 +20,9 @@ function CostItem({ desc, amount, date, category, id, fnRemove }) {
         <li className={style.table__text}>{amount}</li>
       </ul>
       <span className={style.item__remove} onClick={() => fnDeleteItem(id)}>
-        X
+        <svg className={style.item__svg} width="16" height="16">
+          <use href={sprite + '#icon-delete'}></use>
+        </svg>
       </span>
     </div>
   );
