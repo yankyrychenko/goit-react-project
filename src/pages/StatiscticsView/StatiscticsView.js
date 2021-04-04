@@ -21,7 +21,7 @@ export default function StatisticsView() {
   const [activeCategory, setActiveCategory] = useState('');
 
   return (
-    <main>
+    <main className={style.main}>
       {/* <StatementBar /> */}
       <Container>
         <div className={style.barWrapper}>

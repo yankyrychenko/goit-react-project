@@ -5,7 +5,7 @@ import AuthorizationForm from '../../components/AuthorizationForm/AuthorizationF
 import styles from './AuthorizationView.module.scss';
 
 const AuthorizationView = () => (
-  <main>
+  <main className={styles.main}>
     <Container>
       <div className={styles.authContainer}>
         <PageTitle />

@@ -20,7 +20,7 @@ const HomeView = () => {
   return (
     <>
       {width > 767 && <Redirect to="/expense" />}
-      <main>
+      <main className={style.main}>
         <Container>
           <div className={style.balanceWrap}>
             <BalanceCustom />
@@ -36,5 +36,5 @@ const HomeView = () => {
     </>
   );
 };
-
+ 
 export default HomeView;

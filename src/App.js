@@ -49,33 +49,36 @@ export default function App() {
     //* Комментарии не удаляйте, на будущее будет полезно что б понимать, что тут происходит.
   }, [dispatch, location, token, userEmail]);
 
+  let x = location.pathname === '/authorization';
+  let y = x ? 'main-top-auth' : 'main-top';
   return (
     <>
       <Header />
+      <div className={y}>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Switch>
+            <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
+              <AuthorizationView />
+            </PublicRoute>
 
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Switch>
-          <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
-            <AuthorizationView />
-          </PublicRoute>
+            <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
+              <HomeView />
+            </PrivateRoute>
 
-          <PrivateRoute exact path={routes.home} redirectTo={routes.auth}>
-            <HomeView />
-          </PrivateRoute>
+            <PrivateRoute path={routes.expense} redirectTo={routes.auth}>
+              <ExpenseView />
+            </PrivateRoute>
 
-          <PrivateRoute path={routes.expense} redirectTo={routes.auth}>
-            <ExpenseView />
-          </PrivateRoute>
+            <PrivateRoute path={routes.income} redirectTo={routes.auth}>
+              <IncomeView />
+            </PrivateRoute>
 
-          <PrivateRoute path={routes.income} redirectTo={routes.auth}>
-            <IncomeView />
-          </PrivateRoute>
-
-          <PrivateRoute path={routes.stats} redirectTo={routes.auth}>
-            <StatisticsView />
-          </PrivateRoute>
-        </Switch>
-      </Suspense>
+            <PrivateRoute path={routes.stats} redirectTo={routes.auth}>
+              <StatisticsView />
+            </PrivateRoute>
+          </Switch>
+        </Suspense>
+      </div>
     </>
   );
 }
