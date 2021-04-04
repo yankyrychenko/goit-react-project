@@ -18,14 +18,6 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
     return <div style={{ ...style, ...optionStyle }} {...props} />;
   };
 
-  // const optionScrollMobile = ({ style, ...props }) => {
-  //   const optionStyle = {
-  //     backgroundColor: '##FFFFFF',
-  //     width: 1,
-  //   };
-  //   return <div style={{ ...style, ...optionStyle }} {...props} />;
-  // };
-
   // console.dir(test)
 
   // window.scrollTo({

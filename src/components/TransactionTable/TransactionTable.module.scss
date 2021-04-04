@@ -188,6 +188,14 @@
   font-size: 12px !important;
 }
 
+.item {
+  margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
+  margin-bottom: auto !important;
+  color: #52555f;
+  font-weight: bold;
+  font-size: 12px !important;
+}
+
 // // ---------> Контейнер для скрола
 // .table__body_container {
 //   overflow-y: scroll;
