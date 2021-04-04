@@ -1,12 +1,39 @@
 import React from 'react';
 
 import { useWindowSize } from 'react-use-size';
+import { Scrollbars, scrollToBottom } from 'react-custom-scrollbars';
 import CostItem from './CostItem';
 
 import style from './TransactionTable.module.scss';
 
 export default function TransactionTable({ costList, fnRemove }) {
   const { width } = useWindowSize();
+
+  // ------------------------------------> Настройки Scrollbar:
+  const optionScrollGeneral = ({ style, ...props }) => {
+    const optionStyle = {
+      borderRadius: 2,
+      backgroundColor: '#FF751D',
+    };
+    return <div style={{ ...style, ...optionStyle }} {...props} />;
+  };
+
+  const optionScrollMobile = ({ style, ...props }) => {
+    const optionStyle = {
+      backgroundColor: '##FFFFFF',
+      width: 1,
+    };
+    return <div style={{ ...style, ...optionStyle }} {...props} />;
+  };
+
+  // const test = document.querySelector('#scroll')
+
+  // console.dir(test)
+  
+    // window.scrollTo({
+    //   top: test.scrollHeight,
+    //   behavior: 'smooth',
+    // });
 
   return (
     <div>
@@ -21,71 +48,91 @@ export default function TransactionTable({ costList, fnRemove }) {
           </ul>
         </div>
       ) : null}
-      {/* --------------------------------Затраты-Доходы------------------------- */}
-      <div className={style.table__body_container}>
-        {costList
-          ? costList.map(item => (
-              <CostItem
-                key={item._id}
-                desc={item.description}
-                amount={item.amount}
-                date={item.date}
-                category={item.category}
-                id={item._id}
-                fnRemove={fnRemove}
-              ></CostItem>
-            ))
-          : null}
-        {/* --------------------------------Пустые строки------------------------- */}
-        {costList && costList.length < 3 && width > 767 ? (
-          <div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
+      {/* --------------------------------Затраты-Доходы для Desktop and Tablet------------------------- */}
+      {/* <div className={style.table__body_container}> */}
+      {width > 767 && (
+        <div id="scroll">
+        <Scrollbars
+          renderThumbVertical={optionScrollGeneral}
+          autoHide
+          autoHideTimeout={700}
+          autoHideDuration={500}
+          autoHeight={true}
+          autoHeightMax={360}
+        >
+          {costList
+            ? costList.map(item => (
+                <CostItem
+                  key={item._id}
+                  desc={item.description}
+                  amount={item.amount}
+                  date={item.date}
+                  category={item.category}
+                  id={item._id}
+                  fnRemove={fnRemove}
+                ></CostItem>
+              ))
+            : null}
+          {/* --------------------------------Пустые строки------------------------- */}
+          {costList && costList.length < 3 ? (
+            <div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+            </div>
+          ) : null}
+          {costList && costList.length >= 3 && costList.length < 6 ? (
+            <div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+            </div>
+          ) : null}
+          {costList && costList.length >= 6 && costList.length < 10 ? (
+            <div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+              <div className={style.table__body}></div>
+            </div>
+          ) : null}
+          </Scrollbars>
           </div>
-        ) : null}
-        {costList &&
-        costList.length >= 3 &&
-        costList.length < 6 &&
-        width > 767 ? (
-          <div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-          </div>
-        ) : null}
-        {/* {costList && costList.length < 4 && width > 767 ? (
-          <div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-          </div>
-        ) : null}
-        {costList && costList.length >= 4 && width > 767 ? (
-          <div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-            <div className={style.table__body}></div>
-          </div>
-        ) : null} */}
-      </div>
+      )}
+      {/* --------------------------------Затраты-Доходы для Mobile------------------------- */}
+      {width <= 767 && (
+        <Scrollbars
+          renderThumbVertical={optionScrollMobile}
+          renderThumbHorizontal={optionScrollMobile}
+          autoHide
+          autoHideTimeout={700}
+          autoHideDuration={500}
+          autoHeight={true}
+          autoHeightMax={160}
+        >
+          {costList
+            ? costList.map(item => (
+                <CostItem
+                  key={item._id}
+                  desc={item.description}
+                  amount={item.amount}
+                  date={item.date}
+                  category={item.category}
+                  id={item._id}
+                  fnRemove={fnRemove}
+                ></CostItem>
+              ))
+            : null}
+        </Scrollbars>
+      )}
     </div>
   );
 }

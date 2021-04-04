@@ -4,9 +4,13 @@
 // ----------------------------------------> List
 
 .table__head {
-  //   position: relative;
   margin: 0;
   padding: 0;
+
+  // -------------------------------
+  padding-left: 20px;
+  padding-right: 20px;
+  // -------------------------------
 
   background-color: $primary-gray-color;
   border-top-right-radius: 20px;
@@ -21,20 +25,26 @@
   // для корзины:
   position: relative;
 
+  // width: 294px; //605
+  padding-left: 10px;
+  padding-right: 10px;
   height: 50px;
+
   background-color: #ffffff;
   border-width: 0px 2px 2px 2px;
   border-color: $primary-gray-color;
   border-style: solid;
 
   @include for-size(tablet) {
-    // width: 600px; //605
+    padding-left: 20px;
+    padding-right: 20px;
+
     height: 40px;
   }
 
-  @include for-size(desktop) {
-    width: 760px;
-  }
+  // @include for-size(desktop) {
+  //   width: 760px;
+  // }
 }
 
 .table__title {
@@ -59,20 +69,18 @@
 
   @include for-size(tablet) {
     height: 40px;
-    padding-left: 20px;
   }
 }
 
 .table__box :first-child {
   font-size: 8px;
-  width: 42px;
-  margin-right: 20px;
 
   // ------Позиционирование для мобилки
   margin-bottom: 0;
   margin-top: 33px;
 
   @include for-size(tablet) {
+    margin-right: 20px;
     min-width: 84px;
     font-size: 12px;
     margin-top: auto;
@@ -93,7 +101,7 @@
   }
 
   @include for-size(desktop) {
-    margin-right: 136px;
+    margin-right: 116px;
     margin-left: 20px;
   }
 }
@@ -147,15 +155,15 @@
   z-index: 100;
   top: 0;
   top: 9px;
-  right: 10px; // до центра
+  right: 0px;
 
   @include for-size(tablet) {
-    right: 30px; // до центра
+    right: 15px;
     top: 4px;
   }
 
   @include for-size(desktop) {
-    right: 60px; // до центра
+    right: 30px;
   }
 }
 
@@ -165,25 +173,18 @@
   background-color: $primary-gray-color;
 }
 
-.item__svg {
-  // object-position: 50%;
-  object-fit: fill;
-}
+// // ---------> Контейнер для скрола
+// .table__body_container {
+//   overflow-y: scroll;
+//   overflow-x: hidden;
 
-.table__body_container {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  // scrollbar-color: red;
-  // scrollbar-width: 1px;
-  // scrollbar-color: rebeccapurple green;
+//   @include for-size(tablet) {
+//     height: 360px;
+//     width: 605px;
+//   }
 
-  @include for-size(tablet) {
-    height: 360px;
-    width: 605px;
-  }
-
-  @include for-size(desktop) {
-    height: 360px;
-    width: 760px;
-  }
-}
+//   @include for-size(desktop) {
+//     height: 360px;
+//     width: 760px;
+//   }
+// }

@@ -20,7 +20,7 @@ function CostItem({ desc, amount, date, category, id, fnRemove }) {
         <li className={style.table__text}>{amount}</li>
       </ul>
       <span className={style.item__remove} onClick={() => fnDeleteItem(id)}>
-        <svg className={style.item__svg} width="16" height="16">
+        <svg width="16" height="16">
           <use href={sprite + '#icon-delete'}></use>
         </svg>
       </span>

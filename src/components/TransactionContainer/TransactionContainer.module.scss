@@ -27,11 +27,12 @@
 }
 
 .button__flexbox {
+  // width: 100%;
   display: flex;
   justify-content: space-between;
   position: absolute;
   z-index: 100;
-  top: 550px;
+  top: 430px; //550 если с календарем
 
   @include for-size(tablet) {
     justify-content: flex-start;
