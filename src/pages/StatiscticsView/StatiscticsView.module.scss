@@ -35,20 +35,15 @@
   }
 }
 .main {
-  // @include for-size(tablet) {
-  //   padding-bottom: 90px;
-  //   // background: url(../../img/tablet-bottom.svg);
-  //   background-repeat: no-repeat;
-  //   background-position-y: 60%;
-  //   background-position-x: 90%;
-  //   height: 100vw;
-  // }
+  @include for-size(tablet-only) {
+    padding-bottom: 76px;
+  }
   @include for-size(desktop) {
     padding-bottom: 84px;
-    background: url(../../img/desktop-bottom2.svg);
+    background-image: url(../../img/desktop-bottom2.svg);
     background-repeat: no-repeat;
-    background-position-y: 98%;
+    background-position-y: 100%;
     background-position-x: center;
-    height: 100vw;
+    background-size: contain;
   }
 }
