@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import actions from '../actions/transactionsActions';
 import actionDelete from '../actions/transactionDeleteActions';
+import authActions from '../actions/authActions';
+const initial = {};
 
 const incomes = createReducer(
   {},
@@ -15,6 +17,7 @@ const incomes = createReducer(
       ...state,
       incomes: state.incomes.filter(item => item._id !== payload),
     }),
+    [authActions.logOutSuccess]: (_, { payload }) => initial,
   },
 );
 
@@ -30,6 +33,7 @@ const expenses = createReducer(
       ...state,
       expenses: state.expenses.filter(item => item._id !== payload),
     }),
+    [authActions.logOutSuccess]: (_, { payload }) => initial,
   },
 );
 
