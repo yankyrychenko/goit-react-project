@@ -44,7 +44,7 @@ const BalanceCustom = () => {
           type="text"
           name="newBalance"
           placeholder={currentBalance > 1 ? currentBalance : '00.00 UAH'}
-          // value={currentBalance}
+          value={currentBalance}
         />
         {location.pathname === '/statistics' && width < 767 ? null : (
           <button type="submit" className={style.balanceButton}>
