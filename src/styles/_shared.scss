@@ -29,7 +29,6 @@ body {
     background-size: contain;
   }
   @include for-size(desktop) {
-    // height: 526px;
     background: $primary-gray-color url(../img/desktop-top.svg);
     background-repeat: no-repeat;
     background-position-y: 28px;
