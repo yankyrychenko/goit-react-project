@@ -1,5 +1,5 @@
-import authActions from '../actions/authActions';
 import api from '../../services/kapusta-api';
+import authActions from '../actions/authActions';
 
 const handleLogIn = credentials => dispatch => {
   dispatch(authActions.logInRequest());

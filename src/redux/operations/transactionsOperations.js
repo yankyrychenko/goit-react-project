@@ -1,5 +1,5 @@
-import actions from '../actions/transactionsActions';
 import api from '../../services/kapusta-api';
+import actions from '../actions/transactionsActions';
 
 const handleIncomePost = data => dispatch => {
   dispatch(actions.incomePostRequest());

@@ -3,7 +3,6 @@ import { createReducer } from '@reduxjs/toolkit';
 import authActions from '../actions/authActions';
 import balanceActions from '../actions/balanceActions';
 import transactionsActions from '../actions/transactionsActions';
-import transactionActions from '../actions/transactionsActions';
 import actionDelete from '../actions/transactionDeleteActions';
 
 const userInitialState = {};
@@ -15,15 +14,25 @@ const user = createReducer(userInitialState, {
     ...state,
     balance: payload,
   }),
-  [transactionActions.incomePostSuccess]: (state, { payload }) => ({
+  [transactionsActions.incomePostSuccess]: (state, { payload }) => ({
     ...state,
     balance: payload.newBalance,
+    transactions: [...state.transactions, payload.transaction],
   }),
-  [transactionActions.expensePostSuccess]: (state, { payload }) => ({
+  [transactionsActions.expensePostSuccess]: (state, { payload }) => ({
     ...state,
     balance: payload.newBalance,
+    transactions: [...state.transactions, payload.transaction],
   }),
   [actionDelete.transactionDeleteSuccess]: (state, { payload }) => ({
+    ...state,
+    transactions: state.transactions.filter(item => item._id !== payload),
+  }),
+  [actionDelete.transactionIncomeDeleteRequest]: (state, { payload }) => ({
+    ...state,
+    transactions: state.transactions.filter(item => item._id !== payload),
+  }),
+  [actionDelete.transactionExpenceDeleteRequest]: (state, { payload }) => ({
     ...state,
     transactions: state.transactions.filter(item => item._id !== payload),
   }),
@@ -41,10 +50,13 @@ const isAuthenticated = createReducer(false, {
   [authActions.logOutSuccess]: () => false,
   [authActions.getCurrentUserSuccess]: () => true,
   [authActions.getCurrentUserError]: () => false,
-  [transactionsActions.expenseGetSuccess]: () => true,
-  // [transactionsActions.expenseGetError]: () => false, // ошибки тут не нужно обрабатывать, он и без него false будет
-  [transactionsActions.incomeGetSuccess]: () => true,
-  // [transactionsActions.incomeGetError]: () => false, // ошибки тут не нужно обрабатывать, он и без него false будет
+  [transactionsActions.incomeGetError]: () => false,
+  [transactionsActions.incomePostError]: () => false,
+  [transactionsActions.expenseGetError]: () => false,
+  [transactionsActions.expensePostError]: () => false,
+  [actionDelete.transactionDeleteSuccess]: () => false,
+  [actionDelete.transactionIncomeDeleteRequest]: () => false,
+  [actionDelete.transactionExpenceDeleteRequest]: () => false,
 });
 
 export default combineReducers({
