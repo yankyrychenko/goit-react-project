@@ -37,10 +37,12 @@ export default function StatisticsView() {
         </div>
 
         <div className={style.wrapper}>
-          <ReportExpenseIncomeToggler
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-          />
+          {periodData?.expenses && (
+            <ReportExpenseIncomeToggler
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
+            />
+          )}
         </div>
 
         <div className={style.wrapper}>
