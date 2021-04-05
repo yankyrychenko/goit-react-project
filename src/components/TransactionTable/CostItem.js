@@ -1,17 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import operation from '../../redux/operations/transactionsDeleteOperations';
 import style from './TransactionTable.module.scss';
 
-function CostItem({ desc, amount, date, category, id }) {
+function CostItem({ desc, amount, date, category, id, fnRemove }) {
   const dispatch = useDispatch();
-  
-  const fnDelete = (id) => {
-    dispatch(operation.handleTransactionDelete(id))
-  }
-  
-  // const dateUpdate =
+
+  const fnDeleteItem = id => {
+    dispatch(fnRemove(id));
+  };
+
   return (
     <div className={style.table__body}>
       <ul className={style.table__box}>
@@ -20,10 +18,7 @@ function CostItem({ desc, amount, date, category, id }) {
         <li className={style.table__text}>{category}</li>
         <li className={style.table__text}>{amount}</li>
       </ul>
-      <span
-        className={style.item__remove}
-        onClick={() => fnDelete(id)}
-      >
+      <span className={style.item__remove} onClick={() => fnDeleteItem(id)}>
         X
       </span>
     </div>

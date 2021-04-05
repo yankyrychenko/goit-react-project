@@ -9,7 +9,7 @@ const GoToReport = () => {
     <div className={style.balanceValue}>
       <NavLink className={style.balanceLink} to={routes.stats}>
         Перейти к отчетам
-        <svg className={style.svg}>
+        <svg className={style.svg} width="24" height="24">
           <use href={sprite + '#icon-bar_chart'}></use>
         </svg>
       </NavLink>
