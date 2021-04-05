@@ -26,7 +26,6 @@ export default function ExpenseView() {
     if (costList && category) {
       return;
     }
-
     dispatch(transactionsOperations.handleExpenseGet());
     dispatch(categoriesOperations.handleExpenseCategGet());
   }, [dispatch, costList, category]);

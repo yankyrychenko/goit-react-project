@@ -1,35 +1,32 @@
-import React, { useState } from 'react';
-import {useLocation} from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useWindowSize } from 'react-use-size';
+import { useLocation } from 'react-router';
+
 import style from './BalanceCustom.module.scss';
 import BalanceModal from '../BalanceModal/BalanceModal';
 import { getUserBalance } from '../../redux/selectors/authSelectors';
 import { addBalance } from '../../redux/operations/balanceOperations';
-import { useWindowSize } from 'react-use-size';
-
-const initialState = {
-  newBalance: '',
-};
 
 const BalanceCustom = () => {
-  const [newBalance, setNewBalance] = useState({ ...initialState });
-  const [read, setRead] = useState(false)
-
-  const currentBalance = useSelector(state => getUserBalance(state));
+  const [currentBalance, setCurrentBalance] = useState();
+  // const [read, setRead] = useState(false);
+  const location = useLocation();
   const { width } = useWindowSize();
-  const location = useLocation()
-  const dispatch = useDispatch();
 
+  const newBalance = useSelector(state => getUserBalance(state));
+
+  useEffect(() => setCurrentBalance(newBalance), [newBalance]);
+
+  const dispatch = useDispatch();
   const balanceHandler = ({ target }) => {
     const { name, value } = target;
-    setNewBalance(state => ({ ...state, [name]: value }));
+    setCurrentBalance(value);
   };
   const balanceSubmit = e => {
     e.preventDefault();
-    console.log(newBalance);
-    dispatch(addBalance(newBalance));
+    dispatch(addBalance({ newBalance: currentBalance }));
   };
-
   return (
     <div className={style.balanceWrapper}>
       <form className={style.balanceForm} onSubmit={balanceSubmit}>
@@ -37,24 +34,26 @@ const BalanceCustom = () => {
           Баланс:
         </label>
         <input
-          readOnly={currentBalance ? !read : read}
+          // readOnly={currentBalance ? !read : read}
           maxLength="6"
-          min="1"
-          max="999999"
+          // min={1}
+          // max={12}
           id="balance"
           onChange={balanceHandler}
           className={style.balanceInput}
-          type="number"
+          type="text"
           name="newBalance"
-          placeholder={currentBalance === 0 ? '00.00 UAH' : currentBalance}
-          value={newBalance.newBalance}
+          placeholder={currentBalance > 1 ? currentBalance : '00.00 UAH'}
+          // value={currentBalance}
         />
-       {location.pathname === '/statistics' && width < 767 ? null : (
+        {location.pathname === '/statistics' && width < 767 ? null : (
           <button type="submit" className={style.balanceButton}>
             ПОДТВЕРДИТЬ
           </button>
         )}
-        { currentBalance == 0 && location.pathname !== '/statistics' ?  <BalanceModal/> : null }
+        {currentBalance == 0 && location.pathname !== '/statistics' ? (
+          <BalanceModal />
+        ) : null}
       </form>
     </div>
   );
