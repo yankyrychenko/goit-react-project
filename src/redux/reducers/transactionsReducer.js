@@ -17,7 +17,6 @@ const incomes = createReducer(
       ...state,
       incomes: state.incomes.filter(item => item._id !== payload),
     }),
-    [authActions.logOutSuccess]: (_, { payload }) => initial,
   },
 );
 
@@ -33,7 +32,6 @@ const expenses = createReducer(
       ...state,
       expenses: state.expenses.filter(item => item._id !== payload),
     }),
-    [authActions.logOutSuccess]: (_, { payload }) => initial,
   },
 );
 
