@@ -16,9 +16,11 @@ function CostItem({ desc, amount, date, category, id, fnRemove, styleOption }) {
   // --------------------------------> Преобразование даты в формат 00.00.000 из 0000-00-00
   const parseDate = new Date(date);
   const day = parseDate.getDate().toString().padStart(2, "0");
-  const month = parseDate.getMonth().toString().padStart(2, "0");
+  const monthNumber = parseDate.getMonth();
+  const month = monthNumber + 1;
+  const montStringh = month.toString().padStart(2, "0");
   const year = parseDate.getFullYear().toString();
-  const newDate = `${day}.${1 + month}.${year}`
+  const newDate = `${day}.${montStringh}.${year}`
 
   return (
     <div className={style.table__body}>
@@ -33,7 +35,15 @@ function CostItem({ desc, amount, date, category, id, fnRemove, styleOption }) {
           {!styleOption && width > 767 && (
             <div className={style.item__plus}>+ {amount} грн.</div>
           )}
-          {width <= 767 && <div className={style.item}> {amount} грн.</div>}
+          {/* {width <= 767 && <div className={style.item}> {amount} грн.</div>} */}
+          {/* ------------------------------------------------------ */}
+          {styleOption && width <= 767 && (
+            <div className={style.item__minus}>- {amount} грн.</div>
+          )}
+          {!styleOption && width <= 767 && (
+            <div className={style.item__plus}>+ {amount} грн.</div>
+          )}
+          {/* ------------------------------------------------------ */}
           {/* {styleOption ? (
             <div className={style.item__minus}>- {amount} грн.</div>
           ) : (

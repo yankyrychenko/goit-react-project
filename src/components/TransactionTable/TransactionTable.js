@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { useWindowSize } from 'react-use-size';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -9,7 +9,7 @@ import style from './TransactionTable.module.scss';
 export default function TransactionTable({ costList, fnRemove, styleOption }) {
   const { width } = useWindowSize();
 
-  // ------------------------------------> Настройки Scrollbar:
+  // --------------------------------------------------> Настройки Scrollbar:
   const optionScrollGeneral = ({ style, ...props }) => {
     const optionStyle = {
       borderRadius: 2,
@@ -18,16 +18,26 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
     return <div style={{ ...style, ...optionStyle }} {...props} />;
   };
 
-  // console.dir(test)
-
-  // window.scrollTo({
-  //   top: test.scrollHeight,
-  //   behavior: 'smooth',
-  // });
+  // --------------------------------------------------> Сортировка списка:
+  let costListNew = []
+  if (costList) {
+    const copyList = [...costList];
+    const copyListSort = copyList.sort((item1, item2) => {
+      if (item1.date < item2.date) {
+        return 1;
+      }
+      if (item1.date > item2.date) {
+        return -1;
+      }
+      return 0;
+    }
+    );
+    costListNew = copyListSort
+  }
 
   return (
     <div>
-      {/* --------------------------------Заголовок таблицы------------------------- */}
+      {/* -----------------------------------Заголовок таблицы----------------------------- */}
       {width > 767 ? (
         <div className={style.table__head}>
           <ul className={style.table__box}>
@@ -38,8 +48,50 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
           </ul>
         </div>
       ) : null}
-      {/* --------------------------------Затраты-Доходы для Desktop and Tablet------------------------- */}
-      {/* <div className={style.table__body_container}> */}
+      {/* --------------------------------Затраты-Доходы для Mobile------------------------- */}
+      {width <= 767 && (
+        <Scrollbars
+          renderThumbVertical={optionScrollGeneral}
+          autoHide
+          autoHideTimeout={700}
+          autoHideDuration={500}
+          autoHeight={true}
+          autoHeightMax={160}
+        >
+          {costListNew
+            ? costListNew.map(item => {
+                if (item.category === 'З/П' || item.category === 'Доп. доход') {
+                  return (
+                    <CostItem
+                      key={item._id}
+                      desc={item.description}
+                      amount={item.amount}
+                      date={item.date}
+                      category={item.category}
+                      id={item._id}
+                      fnRemove={fnRemove}
+                      styleOption={false}
+                    ></CostItem>
+                  );
+                } else {
+                  return (
+                    <CostItem
+                      key={item._id}
+                      desc={item.description}
+                      amount={item.amount}
+                      date={item.date}
+                      category={item.category}
+                      id={item._id}
+                      fnRemove={fnRemove}
+                      styleOption={true}
+                    ></CostItem>
+                  );
+                }
+              })
+            : null}
+        </Scrollbars>
+      )}
+      {/* -----------------------Затраты-Доходы для Desktop and Tablet------------------ */}
       {width > 767 && (
         <Scrollbars
           renderThumbVertical={optionScrollGeneral}
@@ -49,8 +101,8 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
           autoHeight={true}
           autoHeightMax={360}
         >
-          {costList
-            ? costList.map(item => (
+          {costListNew
+            ? costListNew.map(item => (
                 <CostItem
                   key={item._id}
                   desc={item.description}
@@ -64,7 +116,7 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
               ))
             : null}
           {/* --------------------------------Пустые строки------------------------- */}
-          {costList && costList.length < 3 ? (
+          {costListNew && costListNew.length < 3 ? (
             <div>
               <div className={style.table__body}></div>
               <div className={style.table__body}></div>
@@ -77,7 +129,7 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
               <div className={style.table__body}></div>
             </div>
           ) : null}
-          {costList && costList.length >= 3 && costList.length < 6 ? (
+          {costListNew && costListNew.length >= 3 && costListNew.length < 6 ? (
             <div>
               <div className={style.table__body}></div>
               <div className={style.table__body}></div>
@@ -87,40 +139,13 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
               <div className={style.table__body}></div>
             </div>
           ) : null}
-          {costList && costList.length >= 6 && costList.length < 10 ? (
+          {costListNew && costListNew.length >= 6 && costListNew.length < 10 ? (
             <div>
               <div className={style.table__body}></div>
               <div className={style.table__body}></div>
               <div className={style.table__body}></div>
             </div>
           ) : null}
-        </Scrollbars>
-      )}
-      {/* --------------------------------Затраты-Доходы для Mobile------------------------- */}
-      {width <= 767 && (
-        <Scrollbars
-          renderThumbVertical={optionScrollGeneral}
-          // renderThumbHorizontal={optionScrollMobile}
-          autoHide
-          autoHideTimeout={700}
-          autoHideDuration={500}
-          autoHeight={true}
-          autoHeightMax={160}
-        >
-          {costList
-            ? costList.map(item => (
-                <CostItem
-                  key={item._id}
-                  desc={item.description}
-                  amount={item.amount}
-                  date={item.date}
-                  category={item.category}
-                  id={item._id}
-                  fnRemove={fnRemove}
-                  styleOption={styleOption}
-                ></CostItem>
-              ))
-            : null}
         </Scrollbars>
       )}
     </div>
