@@ -55,7 +55,6 @@ const MonthCalendar = ({ setActiveCategory }) => {
     return result;
   }
 
-  console.log(date.getMonth(), new Date().getMonth());
   return (
     <div className={styles.wrapper}>
       <p className={styles.currentPeriod}>Текущий период:</p>
