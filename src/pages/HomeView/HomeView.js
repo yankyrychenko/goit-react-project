@@ -12,6 +12,7 @@ import operation from '../../redux/selectors/transactionsSelectors';
 import { handleDelete } from '../../redux/operations/transactionsDeleteOperations';
 import style from './HomeView.module.scss';
 import CustomCalendar from '../../components/CustomCalendar/CustomCalendar';
+import routes from '../../routes/routes';
 
 const HomeView = () => {
   const costList = useSelector(operation.getAllransactions);
@@ -19,7 +20,7 @@ const HomeView = () => {
 
   return (
     <>
-      {width > 767 && <Redirect to="/expense" />}
+      {width > 767 && <Redirect to={routes.expense} />}
       <main className={style.main}>
         <Container>
           <div className={style.balanceWrap}>
@@ -36,5 +37,5 @@ const HomeView = () => {
     </>
   );
 };
- 
+
 export default HomeView;
