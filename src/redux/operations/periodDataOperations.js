@@ -13,4 +13,5 @@ const getPeriodData = date => async dispatch => {
   }
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { getPeriodData };

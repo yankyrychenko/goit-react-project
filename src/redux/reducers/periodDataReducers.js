@@ -33,8 +33,6 @@ const intialState = {
   },
 };
 
-// const intialState = 0;
-
 const periodDataReducers = createReducer(intialState, {
   [actions.periodDataGetSuccess]: (state, { payload }) => payload,
 });

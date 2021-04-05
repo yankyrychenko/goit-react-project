@@ -1,20 +1,20 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const incomePostRequest = createAction('auth/incomePostRequest');
-const incomePostSuccess = createAction('auth/incomePostSuccess');
-const incomePostError = createAction('auth/incomePostError');
+const incomePostRequest = createAction('transactions/incomePostRequest');
+const incomePostSuccess = createAction('transactions/incomePostSuccess');
+const incomePostError = createAction('transactions/incomePostError');
 
-const incomeGetRequest = createAction('auth/incomeGetRequest');
-const incomeGetSuccess = createAction('auth/incomeGetSuccess');
-const incomeGetError = createAction('auth/incomeGetError');
+const incomeGetRequest = createAction('transactions/incomeGetRequest');
+const incomeGetSuccess = createAction('transactions/incomeGetSuccess');
+const incomeGetError = createAction('transactions/incomeGetError');
 
-const expensePostRequest = createAction('auth/expensePostRequest');
-const expensePostSuccess = createAction('auth/expensePostSuccess');
-const expensePostError = createAction('auth/expensePostError');
+const expensePostRequest = createAction('transactions/expensePostRequest');
+const expensePostSuccess = createAction('transactions/expensePostSuccess');
+const expensePostError = createAction('transactions/expensePostError');
 
-const expenseGetRequest = createAction('auth/expenseGetRequest');
-const expenseGetSuccess = createAction('auth/expenseGetSuccess');
-const expenseGetError = createAction('auth/expenseGetError');
+const expenseGetRequest = createAction('transactions/expenseGetRequest');
+const expenseGetSuccess = createAction('transactions/expenseGetSuccess');
+const expenseGetError = createAction('transactions/expenseGetError');
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

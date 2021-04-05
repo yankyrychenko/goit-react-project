@@ -1,5 +1,5 @@
-import authActions from '../actions/authActions';
 import api from '../../services/kapusta-api';
+import authActions from '../actions/authActions';
 
 const handleLogIn = credentials => dispatch => {
   dispatch(authActions.logInRequest());
@@ -59,6 +59,7 @@ const getCurrentUser = () => (dispatch, getState) => {
       .catch(error => dispatch(authActions.getCurrentUserError(error.message)));
   }
 };
+
 // eslint-disable-next-line
 export default {
   handleSignUp,
