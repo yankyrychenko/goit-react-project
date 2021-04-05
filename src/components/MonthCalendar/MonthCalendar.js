@@ -55,6 +55,7 @@ const MonthCalendar = ({ setActiveCategory }) => {
     return result;
   }
 
+  console.log(date.getMonth(), new Date().getMonth());
   return (
     <div className={styles.wrapper}>
       <p className={styles.currentPeriod}>Текущий период:</p>
@@ -69,15 +70,17 @@ const MonthCalendar = ({ setActiveCategory }) => {
           </svg>
         </button>
         <span className={styles.date}>{`${month} ${year}`}</span>
-        <button
-          onClick={setNextMonth}
-          className={`${styles.button}  ${styles.buttonNext}`}
-          type="button"
-        >
-          <svg width="6" height="15">
-            <use href={sprite + '#icon-arrow-right'}></use>
-          </svg>
-        </button>
+        {date.getMonth() !== new Date().getMonth() && (
+          <button
+            onClick={setNextMonth}
+            className={`${styles.button}  ${styles.buttonNext}`}
+            type="button"
+          >
+            <svg width="6" height="15">
+              <use href={sprite + '#icon-arrow-right'}></use>
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   );
