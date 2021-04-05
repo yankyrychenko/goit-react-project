@@ -4,7 +4,7 @@
 .balanceWrap {
   display: flex;
   flex-direction: column;
-  margin: 40px 0;
+  padding: 40px 0;
   // border: 1px solid black;
 
   @include for-size(tablet) {
@@ -37,6 +37,6 @@
     background: url(../../img/desktop-bottom2.svg);
     background-repeat: no-repeat;
     background-position-y: 100%;
-    background-position-x: 90%;
+    background-size: contain;
   }
 }
