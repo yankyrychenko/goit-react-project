@@ -59,6 +59,7 @@ const getCurrentUser = () => (dispatch, getState) => {
       .catch(error => dispatch(authActions.getCurrentUserError(error.message)));
   }
 };
+
 // eslint-disable-next-line
 export default {
   handleSignUp,

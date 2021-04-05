@@ -26,15 +26,18 @@ const user = createReducer(userInitialState, {
   }),
   [actionDelete.transactionDeleteSuccess]: (state, { payload }) => ({
     ...state,
-    transactions: state.transactions.filter(item => item._id !== payload),
+    balance: payload.balance,
+    transactions: state.transactions.filter(item => item._id !== payload.id),
   }),
-  [actionDelete.transactionIncomeDeleteRequest]: (state, { payload }) => ({
+  [actionDelete.transactionIncomeDeleteSuccess]: (state, { payload }) => ({
     ...state,
-    transactions: state.transactions.filter(item => item._id !== payload),
+    balance: payload.balance,
+    transactions: state.transactions.filter(item => item._id !== payload.id),
   }),
-  [actionDelete.transactionExpenceDeleteRequest]: (state, { payload }) => ({
+  [actionDelete.transactionExpenceDeleteSuccess]: (state, { payload }) => ({
     ...state,
-    transactions: state.transactions.filter(item => item._id !== payload),
+    balance: payload.balance,
+    transactions: state.transactions.filter(item => item._id !== payload.id),
   }),
 });
 
@@ -54,9 +57,9 @@ const isAuthenticated = createReducer(false, {
   [transactionsActions.incomePostError]: () => false,
   [transactionsActions.expenseGetError]: () => false,
   [transactionsActions.expensePostError]: () => false,
-  [actionDelete.transactionDeleteSuccess]: () => false,
-  [actionDelete.transactionIncomeDeleteRequest]: () => false,
-  [actionDelete.transactionExpenceDeleteRequest]: () => false,
+  [actionDelete.transactionDeleteError]: () => false,
+  [actionDelete.transactionIncomeDeleteError]: () => false,
+  [actionDelete.transactionExpenceDeleteError]: () => false,
 });
 
 export default combineReducers({

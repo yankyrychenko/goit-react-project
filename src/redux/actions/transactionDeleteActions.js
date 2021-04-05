@@ -1,27 +1,33 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const transactionDeleteRequest = createAction('auth/transactionDeleteRequest');
-const transactionDeleteSuccess = createAction('auth/transactionDeleteSuccess');
-const transactionDeleteError = createAction('auth/transactionDeleteError');
+const transactionDeleteRequest = createAction(
+  'transactions/transactionDeleteRequest',
+);
+const transactionDeleteSuccess = createAction(
+  'transactions/transactionDeleteSuccess',
+);
+const transactionDeleteError = createAction(
+  'transactions/transactionDeleteError',
+);
 
 const transactionIncomeDeleteRequest = createAction(
-  'auth/transactionIncomeDeleteRequest',
+  'transactions/transactionIncomeDeleteRequest',
 );
 const transactionIncomeDeleteSuccess = createAction(
-  'auth/transactionIncomeDeleteSuccess',
+  'transactions/transactionIncomeDeleteSuccess',
 );
 const transactionIncomeDeleteError = createAction(
-  'auth/transactionIncomeDeleteError',
+  'transactions/transactionIncomeDeleteError',
 );
 
 const transactionExpenceDeleteRequest = createAction(
-  'auth/transactionExpenceDeleteRequest',
+  'transactions/transactionExpenceDeleteRequest',
 );
 const transactionExpenceDeleteSuccess = createAction(
-  'auth/transactionExpenceDeleteSuccess',
+  'transactions/transactionExpenceDeleteSuccess',
 );
 const transactionExpenceDeleteError = createAction(
-  'auth/transactionExpenceDeleteError',
+  'transactions/transactionExpenceDeleteError',
 );
 
 // eslint-disable-next-line import/no-anonymous-default-export
