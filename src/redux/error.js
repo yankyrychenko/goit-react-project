@@ -19,6 +19,9 @@ const errorReducer = createReducer(intialState, {
   [transactions.incomePostError]: (_, { payload }) => payload,
   [periodData.periodDataGetError]: (_, { payload }) => payload,
   [transactionDelete.transactionDeleteError]: (_, { payload }) => payload,
+  [transactionDelete.transactionIncomeDeleteError]: (_, { payload }) => payload,
+  [transactionDelete.transactionExpenseDeleteError]: (_, { payload }) =>
+    payload,
   [auth.signUpRequest]: () => intialState,
   [auth.logInRequest]: () => intialState,
   [auth.logOutRequest]: () => intialState,
