@@ -20,6 +20,9 @@
 
 .wrapper {
   margin-bottom: 30px;
+  @include for-size(mobile-only) {
+    margin-top: 30px;
+  }
 }
 .barWrapper {
   // border: 1px solid black;
