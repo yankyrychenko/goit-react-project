@@ -4,8 +4,8 @@
 .balanceModal {
   z-index: 1;
 position: absolute;
-    top: 241px;
-    left: 20px;
+    top: 83px;
+    left: 10px;
 border-radius: 30px;
 padding: 30px 25px;
 background: rgb(3, 22, 52);
@@ -33,7 +33,7 @@ width: 0;
 }
 
 
-@include for-size(tablet-only) {
+@include for-size(tablet) {
 .balanceModal {
   display: none;
 }
@@ -42,10 +42,10 @@ width: 0;
 
 @include for-size(desktop) {
 .balanceModal {
+  display: block;
   z-index: 2;
-top: 154px;
-left: 423px;
+    top: 58px;
+    left: 344px;
 }
-
 }
 
