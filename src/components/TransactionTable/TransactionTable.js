@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import { useWindowSize } from 'react-use-size';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -19,7 +19,7 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
   };
 
   // --------------------------------------------------> Сортировка списка:
-  let costListNew = []
+  let costListNew = [];
   if (costList) {
     const copyList = [...costList];
     const copyListSort = copyList.sort((item1, item2) => {
@@ -30,9 +30,8 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
         return -1;
       }
       return 0;
-    }
-    );
-    costListNew = copyListSort
+    });
+    costListNew = copyListSort;
   }
 
   return (
@@ -56,7 +55,8 @@ export default function TransactionTable({ costList, fnRemove, styleOption }) {
           autoHideTimeout={700}
           autoHideDuration={500}
           autoHeight={true}
-          autoHeightMax={160}
+          // // autoHeightMin={160}
+          // autoHeightMax={700}
         >
           {costListNew
             ? costListNew.map(item => {
