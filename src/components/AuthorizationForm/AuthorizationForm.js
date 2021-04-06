@@ -35,12 +35,25 @@ const AuthorizationForm = () => {
     !password && setPasswordError('это обязательное поле');
 
     if (validateEmail(email) && validatePassword(password)) {
-      if (event.nativeEvent.submitter.textContent === 'Войти') {
-        dispatch(authOperations.handleLogIn({ email, password }));
-      }
-      if (event.nativeEvent.submitter.textContent === 'Регистрация') {
-        dispatch(authOperations.handleSignUp({ email, password }));
-      }
+      dispatch(authOperations.handleLogIn({ email, password }));
+      formReset();
+    }
+  };
+
+  const onRegistration = () => {
+    !validateEmail(email)
+      ? setEmailError('Некорректно введен e-mail.')
+      : setEmailError('');
+
+    !validatePassword(password)
+      ? setPasswordError('Пароль должен быть от 4 до 16 символов.')
+      : setPasswordError('');
+
+    !email && setEmailError('это обязательное поле');
+    !password && setPasswordError('это обязательное поле');
+
+    if (validateEmail(email) && validatePassword(password)) {
+      dispatch(authOperations.handleSignUp({ email, password }));
       formReset();
     }
   };
@@ -138,7 +151,11 @@ const AuthorizationForm = () => {
           <button type="submit" className={styles.loginButton}>
             Войти
           </button>
-          <button type="submit" className={styles.registrationButton}>
+          <button
+            type="button"
+            className={styles.registrationButton}
+            onClick={onRegistration}
+          >
             Регистрация
           </button>
         </div>
