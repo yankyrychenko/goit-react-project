@@ -1,0 +1,11 @@
+#mck-sidebox-launcher {
+  opacity: 0.5;
+}
+#mck-sidebox-launcher:hover {
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  #mck-sidebox-launcher {
+    display: none;
+  }
+}

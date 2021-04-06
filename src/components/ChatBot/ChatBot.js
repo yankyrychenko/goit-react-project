@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getIsAuthenticated } from '../../redux/selectors/authSelectors';
+import './ChatBot.module.scss';
 
 const Chat = () => {
   const isAuthenticated = useSelector(getIsAuthenticated);
@@ -11,6 +12,14 @@ const Chat = () => {
           appId: '3073be601a99694b8f670771db9db0eb3',
           popupWidget: true,
           automaticChatOpenOnNavigation: true,
+          onInit: function () {
+            var css = `#mck-sidebox-launcher{opacity: 0.5;}
+             #mck-sidebox-launcher:hover{opacity: 1;}
+              @media (max-device-width: 768px)
+              {#mck-sidebox-launcher
+                {display:none}}`;
+            window.Kommunicate.customizeWidgetCss(css);
+          },
         };
         var s = document.createElement('script');
         s.type = 'text/javascript';
