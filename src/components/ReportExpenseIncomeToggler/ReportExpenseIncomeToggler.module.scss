@@ -39,7 +39,22 @@
     margin-top: 20px;
     margin-bottom: 30px;
   }
+
+  .Panel {
+    width: 666px;
+
+    background: #ffffff;
+    /* shadow 1 */
+
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+
+    padding: 20px 13px 10px 13px;
+  }
 }
 
 @include for-size(desktop) {
+  .Panel {
+    width: 1060px;
+  }
 }

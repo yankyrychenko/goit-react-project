@@ -9,11 +9,11 @@ const section = {
   INCOME: 'income',
 };
 
-const ReportExpenseIncomeToggler = ({activeCategory,setActiveCategory}) => {
+const ReportExpenseIncomeToggler = ({ activeCategory, setActiveCategory }) => {
   const [currentSection, setCurrentSection] = useState(section.INCOME);
 
   return (
-    <>
+    <div className={styles.Panel}>
       <div className={styles.TogglerWrapper}>
         <button
           type="button"
@@ -39,9 +39,19 @@ const ReportExpenseIncomeToggler = ({activeCategory,setActiveCategory}) => {
           </svg>
         </button>
       </div>
-      {section.EXPENSE === currentSection && <ReportIncome  activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
-      {section.INCOME === currentSection && <ReportExpense  activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
-    </>
+      {section.EXPENSE === currentSection && (
+        <ReportIncome
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
+      )}
+      {section.INCOME === currentSection && (
+        <ReportExpense
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
+      )}
+    </div>
   );
 };
 
