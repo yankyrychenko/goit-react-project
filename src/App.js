@@ -6,6 +6,7 @@ import { routes, PublicRoute, PrivateRoute } from './routes';
 import * as authSelectors from './redux/selectors/authSelectors';
 import authOperations from './redux/operations/authOperations';
 import authActions from './redux/actions/authActions';
+import FallBack from './components/FallBackContainer/FallBackContainer';
 
 const AuthorizationView = lazy(() =>
   import(
@@ -55,7 +56,7 @@ export default function App() {
     <>
       <Header />
       <div className={y}>
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={<FallBack />}>
           <Switch>
             <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
               <AuthorizationView />
