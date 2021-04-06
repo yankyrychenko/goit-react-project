@@ -122,11 +122,9 @@ select:-webkit-autofill:focus {
   }
 }
 
-.headContainer {
+.calendarContainer {
   padding-top: 40px;
   padding-bottom: 40px;
-  // background-color: $primary-gray-color;
-  border-bottom-left-radius: 80px;
   margin-bottom: 40px;
 
   @include for-size(tablet) {
