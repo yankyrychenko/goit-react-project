@@ -40,6 +40,7 @@ const Stats = ({ category }) => {
       }
       setIsMobile(false);
     };
+    handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
