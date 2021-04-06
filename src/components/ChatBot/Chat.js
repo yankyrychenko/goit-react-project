@@ -5,7 +5,6 @@ import { getIsAuthenticated } from '../../redux/selectors/authSelectors';
 const Chat = () => {
   const isAuthenticated = useSelector(getIsAuthenticated);
   useEffect(() => {
-    alert(isAuthenticated);
     if (isAuthenticated) {
       (function (d, m) {
         var kommunicateSettings = {
