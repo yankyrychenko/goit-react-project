@@ -5,6 +5,7 @@
   width: 150px;
   order: 3;
   @include for-size(mobile) {
+    margin-top: 16px;
     order: 1;
   }
   @include for-size(desktop) {
