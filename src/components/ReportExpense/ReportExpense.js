@@ -4,7 +4,7 @@ import styles from '../ReportExpense/ReportExpense.module.scss';
 import expenseSprite from '../../img/expenseSprite.svg';
 import CategoriesName from './CategoriesName';
 
-const ReportExpense = ({setActiveCategory,activeCategory}) => {
+const ReportExpense = ({ setActiveCategory, activeCategory }) => {
   // const [activeCategory, setActiveCategory] = useState('');
 
   const activeCategoryHandler = e => {
@@ -36,14 +36,14 @@ const ReportExpense = ({setActiveCategory,activeCategory}) => {
     });
   }
 
-      useEffect(() => {
-        if (allCategoriesArray.length > 0) {
-        setActiveCategory(allCategoriesArray[0][0])
-      }
-    }, [categoryTotalExpenses]);
+  useEffect(() => {
+    if (allCategoriesArray.length > 0) {
+      setActiveCategory(allCategoriesArray[0][0]);
+    }
+  }, [categoryTotalExpenses]);
 
   return (
-    <>
+    <div>
       <ul className={styles.ReportExpenseList}>
         {allCategoriesArray?.map(category => (
           <li
@@ -82,7 +82,7 @@ const ReportExpense = ({setActiveCategory,activeCategory}) => {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

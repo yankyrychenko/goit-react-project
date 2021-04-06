@@ -4,9 +4,11 @@
 // ----------------------------------------> List
 
 .table__head {
-  //   position: relative;
   margin: 0;
   padding: 0;
+
+  padding-left: 20px;
+  padding-right: 20px;
 
   background-color: $primary-gray-color;
   border-top-right-radius: 20px;
@@ -21,14 +23,20 @@
   // для корзины:
   position: relative;
 
+  // width: 300px; //605
+  padding-left: 10px;
+  padding-right: 10px;
   height: 50px;
+
   background-color: #ffffff;
   border-width: 0px 2px 2px 2px;
   border-color: $primary-gray-color;
   border-style: solid;
 
   @include for-size(tablet) {
-    // width: 600px; //605
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 605px;
     height: 40px;
   }
 
@@ -50,8 +58,10 @@
   margin-bottom: auto;
 }
 
-// --------->
+// ----------------------------------------> Item
 .table__box {
+  animation: scale-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+
   display: flex;
   padding-left: 0px;
 
@@ -59,20 +69,21 @@
 
   @include for-size(tablet) {
     height: 40px;
-    padding-left: 20px;
   }
 }
 
 .table__box :first-child {
+  cursor: default;
+  transition: transform 0.2s ease;
+
   font-size: 8px;
-  width: 42px;
-  margin-right: 20px;
 
   // ------Позиционирование для мобилки
   margin-bottom: 0;
   margin-top: 33px;
 
   @include for-size(tablet) {
+    margin-right: 20px;
     min-width: 84px;
     font-size: 12px;
     margin-top: auto;
@@ -80,25 +91,41 @@
   }
 }
 
-.table__box :last-child {
-  text-align: end;
-  width: 84px;
-  margin-right: 30px;
+.table__box :first-child:hover,
+.table__box :first-child:focus {
+  transform: scale(1.2);
+}
+
+.table__box :nth-child(2) {
+  cursor: default;
+
+  font-weight: bold;
+  position: absolute;
+  margin-top: 10px;
+  width: 280px;
 
   @include for-size(tablet) {
-    margin-right: 84px;
-    margin-left: 0;
-    min-width: 104px;
-    width: 104px;
-  }
+    transition: transform 0.2s ease;
 
-  @include for-size(desktop) {
-    margin-right: 136px;
-    margin-left: 20px;
+    font-weight: normal;
+    position: static;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+  }
+}
+
+.table__box :nth-child(2):hover,
+.table__box :nth-child(2):focus {
+  @include for-size(tablet) {
+    transform: scale(1.2);
   }
 }
 
 .table__box :nth-child(3) {
+  cursor: default;
+  transition: transform 0.2s ease;
+
   text-align: center;
   width: 104px;
   font-size: 8px;
@@ -120,53 +147,119 @@
   // }
 }
 
-.table__box :nth-child(2) {
-  font-weight: bold;
-  position: absolute;
-  margin-top: 10px;
-  width: 100%;
+.table__box :nth-child(3):hover,
+.table__box :nth-child(3):focus {
+  transform: scale(1.2);
+}
+
+.table__box :last-child {
+  cursor: default;
+  transition: transform 0.2s ease;
+
+  text-align: end;
+  width: 84px;
+  margin-right: 30px;
 
   @include for-size(tablet) {
-    font-weight: normal;
-    position: static;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-right: 84px;
+    margin-left: 0;
+    min-width: 104px;
+    width: 104px;
   }
+
+  @include for-size(desktop) {
+    margin-right: 116px;
+    margin-left: 20px;
+  }
+}
+
+.table__box :last-child:hover,
+.table__box :last-child:focus {
+  transform: scale(1.2);
 }
 
 // -------------------------------------> Корзина
 
 .item__remove {
   cursor: pointer;
+  transition: transform 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  z-index: 100;
-  top: 17px;
-  right: 10px; // до центра
+  z-index: 99;
+  // top: 0;
+  top: 9px;
+  right: 0px;
 
   @include for-size(tablet) {
-    right: 30px; // до центра
-    top: 12px;
+    right: 15px;
+    top: 4px;
   }
 
   @include for-size(desktop) {
-    right: 60px; // до центра
+    right: 30px;
   }
 }
 
-.table__body_container {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  // scrollbar-color: red;
-  // scrollbar-width: 1px;
-  // scrollbar-color: rebeccapurple green;
+.item__remove:hover,
+.item__remove:focus {
+  transform: scale(1.2);
+  border-radius: 50%;
+  background-color: $primary-gray-color;
+}
 
-  @include for-size(tablet) {
-    height: 360px;
-    width: 605px;
+// -------------------------------------> Plus and Minus
+.item__minus {
+  margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
+  margin-bottom: auto !important;
+  color: #e7192e;
+  font-weight: bold;
+  font-size: 12px !important;
+}
+
+.item__plus {
+  margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
+  margin-bottom: auto !important;
+  color: #407946;
+  font-weight: bold;
+  font-size: 12px !important;
+}
+
+.item {
+  margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
+  margin-bottom: auto !important;
+  color: #52555f;
+  font-weight: bold;
+  font-size: 12px !important;
+}
+
+// -------------------------------------> Анимация
+
+@keyframes scale-in {
+  from {
+    transform: scale(0);
   }
-
-  @include for-size(desktop) {
-    height: 360px;
-    width: 760px;
+  to {
+    transform: scale(1);
   }
 }
+
+// // ---------> Контейнер для скрола
+// .table__body_container {
+//   overflow-y: scroll;
+//   overflow-x: hidden;
+
+//   @include for-size(tablet) {
+//     height: 360px;
+//     width: 605px;
+//   }
+
+//   @include for-size(desktop) {
+//     height: 360px;
+//     width: 760px;
+//   }
+// }

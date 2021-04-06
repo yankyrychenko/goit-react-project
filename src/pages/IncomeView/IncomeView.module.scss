@@ -4,7 +4,7 @@
 .balanceWrap {
   display: flex;
   flex-direction: column;
-  margin: 40px 0;
+  padding: 40px 0;
   // border: 1px solid black;
 
   @include for-size(tablet) {
@@ -22,5 +22,21 @@
     justify-content: space-between;
 
     margin-top: 70px;
+  }
+}
+.main {
+  @include for-size(tablet) {
+    padding-bottom: 90px;
+    background: url(../../img/tablet-bottom.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: 90%;
+  }
+  @include for-size(desktop) {
+    padding-bottom: 84px;
+    background: url(../../img/desktop-bottom2.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-size: contain;
   }
 }

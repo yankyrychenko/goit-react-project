@@ -17,6 +17,7 @@ const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
 const setGoogleToken = createAction('auth/setGoogleToken');
+
 // eslint-disable-next-line
 export default {
   signUpRequest,

@@ -21,7 +21,7 @@ export default function StatisticsView() {
   const [activeCategory, setActiveCategory] = useState('');
 
   return (
-    <main>
+    <main className={style.main}>
       {/* <StatementBar /> */}
       <Container>
         <div className={style.barWrapper}>
@@ -37,10 +37,12 @@ export default function StatisticsView() {
         </div>
 
         <div className={style.wrapper}>
-          <ReportExpenseIncomeToggler
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-          />
+          {periodData?.expenses && (
+            <ReportExpenseIncomeToggler
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
+            />
+          )}
         </div>
 
         <div className={style.wrapper}>

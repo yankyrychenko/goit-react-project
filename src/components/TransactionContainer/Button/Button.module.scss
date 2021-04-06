@@ -18,10 +18,10 @@
   // margin: 0;
   padding: 0;
 
-  width: 139px;
+  width: 149px;
 
   min-height: 53px;
-  margin-right: 4px;
+  margin-right: 2px;
   border: 0;
   background-color: $primary-gray-color;
   color: $black-color;
@@ -31,6 +31,7 @@
 
   @include for-size(tablet) {
     // min-width: 138px;
+    width: 139px;
     min-height: 40px;
     margin-right: 0px;
     border-top-right-radius: 20px;

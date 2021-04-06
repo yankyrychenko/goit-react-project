@@ -20,14 +20,30 @@
 
 .wrapper {
   margin-bottom: 30px;
+  @include for-size(mobile-only) {
+    margin-top: 30px;
+  }
 }
 .barWrapper {
   // border: 1px solid black;
 
   @include for-size(tablet) {
-    margin: 40px 0;
+    padding: 40px 0;
 
     display: flex;
     align-items: center;
+  }
+}
+.main {
+  @include for-size(tablet-only) {
+    padding-bottom: 76px;
+  }
+  @include for-size(desktop) {
+    padding-bottom: 84px;
+    background-image: url(../../img/desktop-bottom2.svg);
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-position-x: center;
+    background-size: contain;
   }
 }
