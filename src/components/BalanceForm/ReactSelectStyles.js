@@ -42,7 +42,16 @@ const customStyles = {
     cursor: 'pointer',
   }),
 
-  placeholder: styles => ({ ...styles, color: '#c7ccdc', margin: '0' }),
+  placeholder: styles => ({
+    ...styles,
+    color: '#c7ccdc',
+    margin: '0',
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: '12px',
+    lineHeight: 0.85,
+    letterSpacing: '0.02em',
+    paddingBottom: '2px',
+  }),
 };
 
 export default customStyles;
