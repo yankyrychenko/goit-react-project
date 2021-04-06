@@ -25,6 +25,7 @@
 .svg {
   width: 20px;
   height: 20px;
+  fill: #1d2e4a;
   @include for-size(mobile-only) {
     width: 20px;
     height: 17px;
