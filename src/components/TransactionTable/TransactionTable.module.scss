@@ -20,6 +20,7 @@
 }
 
 .table__body {
+  animation: scale-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   // для корзины:
   position: relative;
 
@@ -45,6 +46,11 @@
   }
 }
 
+.table__body_delete {
+  animation: fade-out 0.5s cubic-bezier(0.5, 0.5, 0.5, 0.5) both;
+  background-color: $primary-gray-color;
+}
+
 .table__title {
   font-weight: bold !important; //.table__box :nth-child(2) дальше перебивает
   text-transform: uppercase;
@@ -60,8 +66,6 @@
 
 // ----------------------------------------> Item
 .table__box {
-  animation: scale-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-
   display: flex;
   padding-left: 0px;
 
@@ -74,7 +78,7 @@
 
 .table__box :first-child {
   cursor: default;
-  transition: transform 0.2s ease;
+  // transition: transform 0.2s ease;
 
   font-size: 8px;
 
@@ -91,10 +95,10 @@
   }
 }
 
-.table__box :first-child:hover,
-.table__box :first-child:focus {
-  transform: scale(1.2);
-}
+// .table__box :first-child:hover,
+// .table__box :first-child:focus {
+//   transform: scale(1.2);
+// }
 
 .table__box :nth-child(2) {
   cursor: default;
@@ -105,7 +109,7 @@
   width: 280px;
 
   @include for-size(tablet) {
-    transition: transform 0.2s ease;
+    // transition: transform 0.2s ease;
 
     font-weight: normal;
     position: static;
@@ -115,16 +119,16 @@
   }
 }
 
-.table__box :nth-child(2):hover,
-.table__box :nth-child(2):focus {
-  @include for-size(tablet) {
-    transform: scale(1.2);
-  }
-}
+// .table__box :nth-child(2):hover,
+// .table__box :nth-child(2):focus {
+//   @include for-size(tablet) {
+//     transform: scale(1.2);
+//   }
+// }
 
 .table__box :nth-child(3) {
   cursor: default;
-  transition: transform 0.2s ease;
+  // transition: transform 0.2s ease;
 
   text-align: center;
   width: 104px;
@@ -147,14 +151,14 @@
   // }
 }
 
-.table__box :nth-child(3):hover,
-.table__box :nth-child(3):focus {
-  transform: scale(1.2);
-}
+// .table__box :nth-child(3):hover,
+// .table__box :nth-child(3):focus {
+//   transform: scale(1.2);
+// }
 
 .table__box :last-child {
   cursor: default;
-  transition: transform 0.2s ease;
+  // transition: transform 0.2s ease;
 
   text-align: end;
   width: 84px;
@@ -173,10 +177,10 @@
   }
 }
 
-.table__box :last-child:hover,
-.table__box :last-child:focus {
-  transform: scale(1.2);
-}
+// .table__box :last-child:hover,
+// .table__box :last-child:focus {
+//   transform: scale(1.2);
+// }
 
 // -------------------------------------> Корзина
 
@@ -248,18 +252,11 @@
   }
 }
 
-// // ---------> Контейнер для скрола
-// .table__body_container {
-//   overflow-y: scroll;
-//   overflow-x: hidden;
-
-//   @include for-size(tablet) {
-//     height: 360px;
-//     width: 605px;
-//   }
-
-//   @include for-size(desktop) {
-//     height: 360px;
-//     width: 760px;
-//   }
-// }
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

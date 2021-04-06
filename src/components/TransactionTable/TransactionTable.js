@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { useWindowSize } from 'react-use-size';
 import { Scrollbars } from 'react-custom-scrollbars';
 import CostItem from './CostItem';
-
 import style from './TransactionTable.module.scss';
 
 export default function TransactionTable({ costList, fnRemove, styleOption }) {
