@@ -33,12 +33,6 @@ const Chat = () => {
     }
   }, [isAuthenticated]);
 
-  // useEffect(() => {
-  //   if (window.Kommunicate && isAuthenticated === false) {
-  //     window.Kommunicate.logout();
-  //   }
-  // }, [isAuthenticated, window.Kommunicate]);
-
   return <div></div>;
 };
 
