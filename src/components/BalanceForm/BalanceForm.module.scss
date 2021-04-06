@@ -51,8 +51,6 @@ select:-webkit-autofill:focus {
   letter-spacing: 0.02em;
 
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
 
   border: none;
   outline: none;
@@ -64,6 +62,7 @@ select:-webkit-autofill:focus {
     line-height: 0.85;
     letter-spacing: 0.02em;
     color: $secondaty-text-color;
+    opacity: 1;
   }
 }
 
@@ -93,8 +92,16 @@ select:-webkit-autofill:focus {
 }
 
 .label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-left: 21px;
   padding-right: 21px;
+
+  @include for-size(mobile-only) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 
   @include for-size(tablet) {
     border-right: 2px solid $primary-gray-color;
@@ -114,7 +121,7 @@ select:-webkit-autofill:focus {
   }
 }
 
-.test {
+.headContainer {
   padding-top: 40px;
   padding-bottom: 40px;
   // background-color: $primary-gray-color;
@@ -195,6 +202,7 @@ select:-webkit-autofill:focus {
 
     &::placeholder {
       color: $secondaty-text-color;
+      opacity: 1;
     }
   }
 }

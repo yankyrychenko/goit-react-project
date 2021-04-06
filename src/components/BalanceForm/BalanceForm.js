@@ -69,7 +69,7 @@ const BalanceForm = ({ category, submitIncomeData, size }) => {
   return (
     <>
       <form onSubmit={handleSubmitForm} className={style.form}>
-        <div className={style.test}>
+        <div className={style.headContainer}>
           {size.width < 605 && (
             <div className={style.headContainer}>
               <BackHomeButton />
