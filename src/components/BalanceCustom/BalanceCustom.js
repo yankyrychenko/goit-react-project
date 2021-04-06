@@ -10,7 +10,7 @@ import { addBalance } from '../../redux/operations/balanceOperations';
 
 const BalanceCustom = () => {
   const [currentBalance, setCurrentBalance] = useState();
-  // const [read, setRead] = useState(false);
+  const [read, setRead] = useState(false);
   const location = useLocation();
   const { width } = useWindowSize();
 
@@ -34,13 +34,11 @@ const BalanceCustom = () => {
           Баланс:
         </label>
         <input
-          // readOnly={currentBalance ? !read : read}
+          readOnly={currentBalance ? !read : read}
           maxLength="6"
-          // min={1}
-          // max={12}
           id="balance"
           onChange={balanceHandler}
-          className={style.balanceInput}
+          className={location.pathname === '/statistics' && width < 767 ? style.input : style.balanceInput}
           type="text"
           name="newBalance"
           placeholder={currentBalance > 1 ? currentBalance : '00.00 UAH'}

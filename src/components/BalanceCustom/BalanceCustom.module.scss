@@ -30,7 +30,7 @@
   min-height: 20px;
   margin-bottom: 6px;
   color: inherit;
-  // border: 1px solid green;
+  margin-top: 10px;
   cursor: pointer;
 
   @include for-size(mobile-only) {
@@ -84,6 +84,30 @@
   }
 
   @include for-size(tablet) {
+    border-radius: 16px;
+  }
+}
+
+.input,
+.balanceButton {
+  width: 125px;
+  min-height: 44px;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  margin: 0;
+  padding: 13px 17px;
+}
+
+.input {
+  color: black;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 22px;
+  &::placeholder {
+    color: inherit;
+  }
+  @include for-size(tablet) {
+    margin-right: 15px;
     border-radius: 16px;
   }
 }
