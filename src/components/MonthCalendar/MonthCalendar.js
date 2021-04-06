@@ -16,10 +16,6 @@ const MonthCalendar = ({ setActiveCategory }) => {
   const expenseTotal = useSelector(getExpenseTotal);
 
   useEffect(() => {
-    if (incomeTotal && expenseTotal) {
-      return;
-    }
-
     dispatch(operations.getPeriodData(formatDate(date)));
   }, [dispatch, incomeTotal, expenseTotal, date]);
 
