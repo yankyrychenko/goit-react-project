@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useWindowSize } from 'react-use-size';
 import PropTypes from 'prop-types';
@@ -8,9 +8,11 @@ import style from './TransactionTable.module.scss';
 function CostItem({ desc, amount, date, category, id, fnRemove, styleOption }) {
   const dispatch = useDispatch();
   const { width } = useWindowSize();
+  const [status, setStatus] = useState(true); //переключатель анимаации при удалении
 
   const fnDeleteItem = id => {
     dispatch(fnRemove(id));
+    setStatus(false);
   };
 
   // --------------------------------> Преобразование даты в формат 00.00.000 из 0000-00-00
@@ -23,7 +25,7 @@ function CostItem({ desc, amount, date, category, id, fnRemove, styleOption }) {
   const newDate = `${day}.${montStringh}.${year}`;
 
   return (
-    <div className={style.table__body}>
+    <div className={status ? style.table__body : style.table__body_delete}>
       <ul className={style.table__box}>
         <li className={style.table__text}>{newDate}</li>
         <li className={style.table__text}>{desc}</li>

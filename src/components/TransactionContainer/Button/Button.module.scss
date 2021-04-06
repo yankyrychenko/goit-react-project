@@ -18,7 +18,9 @@
   // margin: 0;
   padding: 0;
 
-  width: 149px;
+  // width: 149px;
+  min-width: 149px;
+  width: 100%; //растянули кнопки
 
   min-height: 53px;
   margin-right: 2px;
@@ -36,7 +38,7 @@
     margin-right: 0px;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
-    background-color: #fefefe;
+    background-color: #fafbfd;
   }
 }
 
