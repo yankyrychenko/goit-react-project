@@ -32,6 +32,8 @@
   z-index: 100;
   // top: 430px;
   bottom: 0;
+  left: 0; //растянули кнопки
+  right: 0; //растянули кнопки
 
   @include for-size(tablet) {
     justify-content: flex-start;
