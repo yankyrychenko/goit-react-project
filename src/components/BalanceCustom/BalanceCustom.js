@@ -9,14 +9,16 @@ import { getUserBalance } from '../../redux/selectors/authSelectors';
 import { addBalance } from '../../redux/operations/balanceOperations';
 
 const BalanceCustom = () => {
-  const [currentBalance, setCurrentBalance] = useState();
+  const [currentBalance, setCurrentBalance] = useState('');
   const [read, setRead] = useState(false);
   const location = useLocation();
   const { width } = useWindowSize();
 
   const newBalance = useSelector(state => getUserBalance(state));
-
-  useEffect(() => setCurrentBalance(newBalance), [newBalance]);
+  useEffect(() => {
+    newBalance > 0 ? setRead(true) : setRead(false);
+    return newBalance !== undefined ? setCurrentBalance(newBalance) : null;
+  }, [newBalance]);
 
   const dispatch = useDispatch();
   const balanceHandler = ({ target }) => {
@@ -26,7 +28,9 @@ const BalanceCustom = () => {
   const balanceSubmit = e => {
     e.preventDefault();
     dispatch(addBalance({ newBalance: currentBalance }));
+    setRead(true);
   };
+  // console.log(currentBalance);
   return (
     <div className={style.balanceWrapper}>
       <form className={style.balanceForm} onSubmit={balanceSubmit}>
@@ -34,15 +38,19 @@ const BalanceCustom = () => {
           Баланс:
         </label>
         <input
-          readOnly={currentBalance ? !read : read}
+          readOnly={currentBalance ? read : false}
           maxLength="6"
           id="balance"
           onChange={balanceHandler}
-          className={location.pathname === '/statistics' && width < 767 ? style.input : style.balanceInput}
+          className={
+            location.pathname === '/statistics' && width < 767
+              ? style.input
+              : style.balanceInput
+          }
           type="text"
           name="newBalance"
           placeholder={currentBalance > 1 ? currentBalance : '00.00 UAH'}
-          value={currentBalance}
+          value={currentBalance > 1 ? currentBalance : ''}
         />
         {location.pathname === '/statistics' && width < 767 ? null : (
           <button type="submit" className={style.balanceButton}>
