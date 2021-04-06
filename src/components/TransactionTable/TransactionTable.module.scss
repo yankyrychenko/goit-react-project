@@ -220,6 +220,7 @@
 .item__minus {
   margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
   margin-bottom: auto !important;
+  margin-left: 0px !important;
   color: #e7192e;
   font-weight: bold;
   font-size: 12px !important;
@@ -228,15 +229,8 @@
 .item__plus {
   margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
   margin-bottom: auto !important;
+  margin-left: 0px !important;
   color: #407946;
-  font-weight: bold;
-  font-size: 12px !important;
-}
-
-.item {
-  margin-top: auto !important; // Перебивает .table__box :nth-child(3) из-за вынесения в абсолют :nth-child(2)
-  margin-bottom: auto !important;
-  color: #52555f;
   font-weight: bold;
   font-size: 12px !important;
 }
