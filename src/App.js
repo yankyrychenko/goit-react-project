@@ -7,6 +7,7 @@ import * as authSelectors from './redux/selectors/authSelectors';
 import authOperations from './redux/operations/authOperations';
 import authActions from './redux/actions/authActions';
 import FallBack from './components/FallBackContainer/FallBackContainer';
+import ChatBot from './components/ChatBot/ChatBot';
 
 const AuthorizationView = lazy(() =>
   import(
@@ -79,6 +80,7 @@ export default function App() {
             </PrivateRoute>
           </Switch>
         </Suspense>
+        <ChatBot />
       </div>
     </>
   );
