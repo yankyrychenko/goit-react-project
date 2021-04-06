@@ -1,5 +1,5 @@
-import actions from '../actions/categoriesActions';
 import api from '../../services/kapusta-api';
+import actions from '../actions/categoriesActions';
 
 const handleIncomeCategGet = () => dispatch => {
   dispatch(actions.incomeCategRequest());

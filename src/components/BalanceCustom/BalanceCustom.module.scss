@@ -1,17 +1,13 @@
 @import '../../styles/_variables.scss';
 @import '../../styles/_mixins.scss';
 
-body {
-  background-color: $primary-gray-color;
-}
-
 .balanceWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   order: 2;
   color: $primary-text-color;
   text-align: center;
-  // border: 1px solid red;
   margin-right: auto;
   width: 100%;
 
@@ -61,7 +57,7 @@ body {
 
 .balanceInput {
   color: black;
-  text-align: right;
+ text-align: center;
   font-weight: 700;
   border-radius: 22px 0 0 22px;
 

@@ -23,6 +23,10 @@ export default function IncomeView() {
   const category = useSelector(getCategoryIncome);
 
   useEffect(() => {
+    if (costList && category) {
+      return;
+    }
+
     dispatch(transactionsOperations.handleIncomeGet());
     dispatch(categoriesOperations.handleIncomeCategGet());
   }, [dispatch]);
@@ -33,12 +37,14 @@ export default function IncomeView() {
   };
 
   return (
-    <main>
+    <main className={style.main}>
       <Container>
-        <div className={style.balanceWrap}>
-          <BalanceCustom />
-          <GoToReport />
-        </div>
+        {width > 767 && (
+          <div className={style.balanceWrap}>
+            <BalanceCustom />
+            <GoToReport />
+          </div>
+        )}
 
         <TransactionContainer>
           <BalanceForm
@@ -46,10 +52,13 @@ export default function IncomeView() {
             submitIncomeData={submitIncomeData}
           />
           <div className={style.wrapper}>
-            <TransactionTable
-              costList={costList}
-              fnRemove={handleDeleteIncome}
-            />
+            {width > 767 && (
+              <TransactionTable
+                costList={costList}
+                fnRemove={handleDeleteIncome}
+                styleOption={false}
+              />
+            )}
             {width > 767 && <Summary />}
           </div>
         </TransactionContainer>
