@@ -15,7 +15,7 @@ const Chat = () => {
         };
         var s = document.createElement('script');
         s.type = 'text/javascript';
-        s.async =  false;
+        s.async = true;
         s.src = 'https://widget.kommunicate.io/v2/kommunicate.app';
         var h = document.getElementsByTagName('head')[0];
         h.appendChild(s);
@@ -24,8 +24,20 @@ const Chat = () => {
       })(document, window.kommunicate || {});
     } else if (window.Kommunicate) {
       window.Kommunicate.logout();
+    } else {
+      setTimeout(() => {
+        if (window.Kommunicate) {
+          window.Kommunicate.logout();
+        }
+      }, 1000);
     }
   }, [isAuthenticated]);
+
+  // useEffect(() => {
+  //   if (window.Kommunicate && isAuthenticated === false) {
+  //     window.Kommunicate.logout();
+  //   }
+  // }, [isAuthenticated, window.Kommunicate]);
 
   return <div></div>;
 };
