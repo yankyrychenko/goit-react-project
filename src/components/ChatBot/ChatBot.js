@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getIsAuthenticated } from '../../redux/selectors/authSelectors';
-import './ChatBot.module.scss';
 
 const Chat = () => {
   const isAuthenticated = useSelector(getIsAuthenticated);
