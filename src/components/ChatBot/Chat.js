@@ -5,6 +5,7 @@ import { getIsAuthenticated } from '../../redux/selectors/authSelectors';
 const Chat = () => {
   const isAuthenticated = useSelector(getIsAuthenticated);
   useEffect(() => {
+    alert(isAuthenticated);
     if (isAuthenticated) {
       (function (d, m) {
         var kommunicateSettings = {
@@ -14,7 +15,7 @@ const Chat = () => {
         };
         var s = document.createElement('script');
         s.type = 'text/javascript';
-        s.async = true;
+        s.async =  false;
         s.src = 'https://widget.kommunicate.io/v2/kommunicate.app';
         var h = document.getElementsByTagName('head')[0];
         h.appendChild(s);

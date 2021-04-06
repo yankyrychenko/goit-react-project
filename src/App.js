@@ -53,7 +53,6 @@ export default function App() {
   return (
     <>
       <Header />
-      <ChatBot />
       <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
           <PublicRoute path={routes.auth} restricted redirectTo={routes.home}>
@@ -77,6 +76,7 @@ export default function App() {
           </PrivateRoute>
         </Switch>
       </Suspense>
+      <ChatBot />
     </>
   );
 }
