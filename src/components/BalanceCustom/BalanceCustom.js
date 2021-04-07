@@ -49,15 +49,15 @@ const BalanceCustom = () => {
           }
           type="text"
           name="newBalance"
-          // placeholder={currentBalance > 1 ? currentBalance : '00.00 UAH'}
-          value={currentBalance > 1 ? currentBalance : '00.00 UAH'}
+          placeholder={currentBalance > 0 ? currentBalance : '00.00 UAH'}
+          value={currentBalance > 0 ? currentBalance : ''}
         />
         {location.pathname === '/statistics' && width < 767 ? null : (
           <button type="submit" className={style.balanceButton}>
             ПОДТВЕРДИТЬ
           </button>
         )}
-        {currentBalance == 0 && location.pathname !== '/statistics' ? (
+        {currentBalance === 0 && location.pathname !== '/statistics' ? (
           <BalanceModal />
         ) : null}
       </form>
