@@ -8,7 +8,7 @@ import {
   getExpenseTotal,
 } from '../../redux/selectors/periodDataSelectors';
 
-const MonthCalendar = ({ setActiveCategory }) => {
+const MonthCalendar = () => {
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
 
@@ -29,14 +29,12 @@ const MonthCalendar = ({ setActiveCategory }) => {
     referenceDate.setMonth(referenceDate.getMonth() + 1);
     setDate(new Date(referenceDate));
     dispatch(operations.getPeriodData(formatDate(date)));
-    setActiveCategory('');
   };
 
   const setPrevMonth = () => {
     referenceDate.setMonth(referenceDate.getMonth() - 1);
     setDate(new Date(referenceDate));
     dispatch(operations.getPeriodData(formatDate(date)));
-    setActiveCategory('');
   };
 
   function formatDate(date) {

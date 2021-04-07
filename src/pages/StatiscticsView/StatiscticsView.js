@@ -46,7 +46,7 @@ export default function StatisticsView() {
         </div>
 
         <div className={style.wrapper}>
-          {activeCategory && <Stats category={activeCategory} />}
+           <Stats/>
         </div>
       </Container>
     </main>

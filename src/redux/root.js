@@ -7,7 +7,7 @@ import categoriesReducer from './reducers/categoriesReducers';
 import periodDataReducer from './reducers/periodDataReducers';
 import error from './error';
 import loadingReducer from './isLoading';
-
+import activeCategoryReducer from './reducers/activeCategoryReducer';
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -21,4 +21,5 @@ export default combineReducers({
   periodData: periodDataReducer,
   error,
   isLoading: loadingReducer,
+  activeCategory:activeCategoryReducer,
 });
