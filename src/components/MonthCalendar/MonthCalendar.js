@@ -28,14 +28,14 @@ const MonthCalendar = ({ setActiveCategory }) => {
   const setNextMonth = () => {
     referenceDate.setMonth(referenceDate.getMonth() + 1);
     setDate(new Date(referenceDate));
-    dispatch(operations.getPeriodData(formatDate(date)));
+    // dispatch(operations.getPeriodData(formatDate(date)));
     setActiveCategory('');
   };
 
   const setPrevMonth = () => {
     referenceDate.setMonth(referenceDate.getMonth() - 1);
     setDate(new Date(referenceDate));
-    dispatch(operations.getPeriodData(formatDate(date)));
+    // dispatch(operations.getPeriodData(formatDate(date)));
     setActiveCategory('');
   };
 
