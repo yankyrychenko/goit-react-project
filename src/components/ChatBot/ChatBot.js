@@ -1,34 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getIsAuthenticated } from '../../redux/selectors/authSelectors';
-
-import "./ChatBot.module.scss"
+import './ChatBot.module.scss';
 
 const Chat = () => {
   const isAuthenticated = useSelector(getIsAuthenticated);
   const [timeoutIndex, setTimeoutIndex] = useState();
-
-  // useEffect(() => {
-  //   const callback = () => {
-  //     if (!window.Kommunicate) {
-  //       return;
-  //     }
-  //     const visible = window.innerWidth > 768;
-  //     var css = `#mck-sidebox-launcher{opacity: 0.5;}
-  //            #mck-sidebox-launcher:hover{opacity: 1;}
-  //              #mck-sidebox-launcher
-  //               {display:${visible ? 'initial' : 'none'};pointer-events:${
-  //       visible ? 'initial' : 'none'
-  //     }}`;
-  //     console.log(css);
-  //     window.Kommunicate.customizeWidgetCss(css);
-  //   };
-
-  //   window.addEventListener('resize', callback, true);
-
-  //   return () => window.removeEventListener('resize', callback);
-  // });
-
   useEffect(() => {
     timeoutIndex && clearTimeout(timeoutIndex);
     if (isAuthenticated && !window.Kommunicate) {
