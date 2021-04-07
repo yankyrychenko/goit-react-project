@@ -9,7 +9,9 @@ import { getUserBalance } from '../../redux/selectors/authSelectors';
 import { addBalance } from '../../redux/operations/balanceOperations';
 
 const BalanceCustom = () => {
-  const [currentBalance, setCurrentBalance] = useState('');
+  const [currentBalance, setCurrentBalance] = useState(
+    localStorage.getItem('Balance'),
+  );
   const [read, setRead] = useState(false);
   const location = useLocation();
   const { width } = useWindowSize();
@@ -28,6 +30,7 @@ const BalanceCustom = () => {
   const balanceSubmit = e => {
     e.preventDefault();
     dispatch(addBalance({ newBalance: currentBalance }));
+    localStorage.setItem('Balance', currentBalance);
     setRead(true);
   };
   // console.log(currentBalance);
