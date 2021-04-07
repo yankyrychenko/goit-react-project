@@ -58,7 +58,6 @@ const Chat = () => {
   const isAuthenticated = useSelector(getIsAuthenticated);
 
   useEffect(() => {
-    setTimeout(() => {
       if (isAuthenticated) {
         (function (d, m) {
           var kommunicateSettings = {
@@ -68,7 +67,7 @@ const Chat = () => {
             onInit: function () {
               var css = `#mck-sidebox-launcher{opacity: 0.5;}
              #mck-sidebox-launcher:hover{opacity: 1;}
-              @media (max-device-width: 768px)
+              @media screen and (max-device-width: 768px)
               {#mck-sidebox-launcher
                 {display:none}}`;
               window.Kommunicate.customizeWidgetCss(css);
@@ -86,7 +85,6 @@ const Chat = () => {
       } else if (window.Kommunicate) {
         window.Kommunicate.logout();
       }
-    }, 5000);
   }, [isAuthenticated]);
 
   return <div></div>;
