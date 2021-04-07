@@ -1,0 +1,7 @@
+@import '../../styles/mixins';
+
+@include for-size(mobile-only) {
+  :global(#kommunicate-widget-iframe) {
+    display: none !important;
+  }
+}
