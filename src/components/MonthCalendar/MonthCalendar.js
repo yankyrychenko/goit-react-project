@@ -18,7 +18,10 @@ const MonthCalendar = () => {
 
   useEffect(() => {
     dispatch(operations.getPeriodData(formatDate(date)));
+
+
     return () => dispatch(dataPeriodActions.periodDataClear());
+
   }, [dispatch]);
 
   const referenceDate = date;
