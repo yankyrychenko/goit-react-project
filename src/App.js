@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, useLocation } from 'react-router-dom';
+import { useBreakpoint } from 'react-use-size';
 import Header from './components/Header/Header';
 import { routes, PublicRoute, PrivateRoute } from './routes';
 import * as authSelectors from './redux/selectors/authSelectors';
@@ -32,6 +33,8 @@ export default function App() {
   const token = useSelector(authSelectors.getToken);
   const dispatch = useDispatch();
   const location = useLocation();
+
+  const width = useBreakpoint(768);
 
   useEffect(() => {
     // При логинизации через Google в момент маунта App (componentDidMount) в адресной строке есть токен пользователя.
@@ -80,7 +83,7 @@ export default function App() {
             </PrivateRoute>
           </Switch>
         </Suspense>
-        <ChatBot />
+        {!width && <ChatBot />}
       </div>
     </>
   );
