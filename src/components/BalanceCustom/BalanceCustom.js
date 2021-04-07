@@ -9,27 +9,19 @@ import { getUserBalance } from '../../redux/selectors/authSelectors';
 import { addBalance } from '../../redux/operations/balanceOperations';
 
 const BalanceCustom = () => {
-  const [currentBalance, setCurrentBalance] = useState(
-    useSelector(state =>
-      getUserBalance(state) !== undefined ? getUserBalance(state) : null,
-    ),
-  );
-  console.log(useSelector(state => getUserBalance(state)));
-  const [read, setRead] = useState(false);
-  const location = useLocation();
-  const { width } = useWindowSize();
   const newBalance = useSelector(state =>
     getUserBalance(state) !== undefined ? getUserBalance(state) : null,
   );
+
+  const [currentBalance, setCurrentBalance] = useState(newBalance);
+  const [read, setRead] = useState(false);
+  const location = useLocation();
+  const { width } = useWindowSize();
+
   useEffect(() => {
     currentBalance !== null ? setRead(true) : setRead(false);
-
     setCurrentBalance(newBalance);
-  }, [currentBalance]);
-
-  // useEffect(() => {
-  //   return setCurrentBalance(newBalance);
-  // }, []);
+  }, [currentBalance, newBalance]);
 
   const dispatch = useDispatch();
   const balanceHandler = ({ target }) => {
