@@ -38,6 +38,7 @@ const intialState = {};
 
 const periodDataReducers = createReducer(intialState, {
   [actions.periodDataGetSuccess]: (state, { payload }) => payload,
+  [actions.periodDataClear]:() => intialState,
 });
 
 export default periodDataReducers;

@@ -8,6 +8,9 @@
     margin-top: 16px;
     order: 1;
   }
+  @include for-size(tablet) {
+    margin-bottom: 15px;
+  }
   @include for-size(desktop) {
     margin-left: 220px;
   }

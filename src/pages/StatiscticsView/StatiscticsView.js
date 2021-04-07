@@ -18,7 +18,6 @@ export default function StatisticsView() {
   }, [dispatch]); */
 
   const periodData = useSelector(state => state.periodData);
-  const [activeCategory, setActiveCategory] = useState('');
 
   return (
     <main className={style.main}>
@@ -28,7 +27,7 @@ export default function StatisticsView() {
           <BackHomeButton />
           <div className={style.balanceWrap}>
             <BalanceCustom />
-            <MonthCalendar setActiveCategory={setActiveCategory} />
+            <MonthCalendar />
           </div>
         </div>
 
@@ -37,16 +36,11 @@ export default function StatisticsView() {
         </div>
 
         <div className={style.wrapper}>
-          {periodData?.expenses && (
-            <ReportExpenseIncomeToggler
-              activeCategory={activeCategory}
-              setActiveCategory={setActiveCategory}
-            />
-          )}
+          {periodData?.expenses && <ReportExpenseIncomeToggler />}
         </div>
 
         <div className={style.wrapper}>
-          {activeCategory && <Stats category={activeCategory} />}
+          <Stats />
         </div>
       </Container>
     </main>
