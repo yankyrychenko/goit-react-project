@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './MonthCalendar.module.scss';
 import sprite from '../../img/sprite.svg';
 import operations from '../../redux/operations/periodDataOperations';
+import dataPeriodActions from '../../redux/actions/periodDataActions'
 import {
   getIncomeTotal,
   getExpenseTotal,
@@ -17,7 +18,8 @@ const MonthCalendar = () => {
 
   useEffect(() => {
     dispatch(operations.getPeriodData(formatDate(date)));
-  }, [dispatch, date]);
+    return () => dispatch(dataPeriodActions.periodDataClear());
+  }, [dispatch]);
 
   const referenceDate = date;
 
