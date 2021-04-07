@@ -1,0 +1,1 @@
+export const getActiveCategory = state => state.activeCategory;

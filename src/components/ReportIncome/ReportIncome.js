@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import styles from '../ReportIncome/ReportIncome.module.scss';
 import incomeSprite from '../../img/incomeSprite.svg';
 import CategoriesName from './CategoriesName';
-
-const ReportIncome = ({ setActiveCategory, activeCategory }) => {
+import { getActiveCategory } from '../../redux/selectors/activeCategorySelector';
+import categoryActions from '../../redux/actions/activeCategoryActions'
+const ReportIncome = () => {
   // const [activeCategory, setActiveCategory] = useState('');
-
+  const activeCategory = useSelector(getActiveCategory);
+  const dispatch = useDispatch();
+  const setActiveCategory = activeCategory => dispatch(categoryActions.changeActiveCategory(activeCategory));
   const activeCategoryHandler = e => {
     const { name } = e.target;
     if (activeCategory !== name) {

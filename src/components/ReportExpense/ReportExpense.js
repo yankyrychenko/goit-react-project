@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch  } from 'react-redux';
 import styles from '../ReportExpense/ReportExpense.module.scss';
 import expenseSprite from '../../img/expenseSprite.svg';
 import CategoriesName from './CategoriesName';
-
-const ReportExpense = ({ setActiveCategory, activeCategory }) => {
+import { getActiveCategory } from '../../redux/selectors/activeCategorySelector';
+import categoryActions from '../../redux/actions/activeCategoryActions'
+const ReportExpense = () => {
   // const [activeCategory, setActiveCategory] = useState('');
-
+  const activeCategory = useSelector(getActiveCategory);
+  const dispatch = useDispatch();
+  const setActiveCategory = activeCategory => dispatch(categoryActions.changeActiveCategory(activeCategory));
   const activeCategoryHandler = e => {
     const { name } = e.target;
     if (activeCategory !== name) {
