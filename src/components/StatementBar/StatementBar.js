@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import periodDate from '../../redux/operations/periodDataOperations';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   getIncomeTotal,
   getExpenseTotal,
@@ -18,15 +17,6 @@ Number.prototype.format = function (n, x, s, c) {
 };
 
 const StatementBar = () => {
-  // const dispatch = useDispatch();
-
-  //Имитация запроса на бек. Завернуто в setTimeout потому-что запрос выполняется раньше, чем приходит токен
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     dispatch(periodDate.getPeriodData('2020-04'));
-  //   }, 3000);
-  // }, []);
-
   const incomeTotal = useSelector(getIncomeTotal);
 
   const expenseTotal = useSelector(getExpenseTotal);
