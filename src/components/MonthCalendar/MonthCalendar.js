@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './MonthCalendar.module.scss';
 import sprite from '../../img/sprite.svg';
 import operations from '../../redux/operations/periodDataOperations';
-import dataPeriodActions from '../../redux/actions/periodDataActions'
+import dataPeriodActions from '../../redux/actions/periodDataActions';
 import {
   getIncomeTotal,
   getExpenseTotal,
@@ -19,9 +19,7 @@ const MonthCalendar = () => {
   useEffect(() => {
     dispatch(operations.getPeriodData(formatDate(date)));
 
-
     return () => dispatch(dataPeriodActions.periodDataClear());
-
   }, [dispatch]);
 
   const referenceDate = date;
@@ -68,17 +66,17 @@ const MonthCalendar = () => {
           </svg>
         </button>
         <span className={styles.date}>{`${month} ${year}`}</span>
-        {date.getMonth() !== new Date().getMonth() && (
-          <button
-            onClick={setNextMonth}
-            className={`${styles.button}  ${styles.buttonNext}`}
-            type="button"
-          >
-            <svg width="6" height="15">
-              <use href={sprite + '#icon-arrow-right'}></use>
-            </svg>
-          </button>
-        )}
+
+        <button
+          disabled={date.getMonth() === new Date().getMonth()}
+          onClick={setNextMonth}
+          className={`${styles.button}  ${styles.buttonNext}`}
+          type="button"
+        >
+          <svg width="6" height="15">
+            <use href={sprite + '#icon-arrow-right'}></use>
+          </svg>
+        </button>
       </div>
     </div>
   );
