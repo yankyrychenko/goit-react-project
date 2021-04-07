@@ -17,7 +17,7 @@ const MonthCalendar = ({ setActiveCategory }) => {
 
   useEffect(() => {
     dispatch(operations.getPeriodData(formatDate(date)));
-  }, [dispatch, incomeTotal, expenseTotal, date]);
+  }, [dispatch, date]);
 
   const referenceDate = date;
 
