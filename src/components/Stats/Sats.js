@@ -11,27 +11,14 @@ import {
   Rectangle,
   LabelList,
 } from 'recharts';
-import { getPeriodData } from '../../redux/selectors/periodDataSelectors';
+import {  getDataForDiagram } from '../../redux/selectors/periodDataSelectors';
 import styles from './Stats.module.scss';
 
-const Stats = ({ category }) => {
-  const getDataForDiagram = (category, periodData) => {
-    const categoryData = periodData?.incomes?.incomesData[category]
-      ? periodData.incomes.incomesData[category]
-      : periodData?.expenses?.expensesData[category];
-    if (categoryData) {
-      const categoryDataKeys = Object.keys(categoryData).slice(1);
-      const formatedCategoryData = categoryDataKeys.map(category => ({
-        name: category,
-        data: categoryData[category],
-      }));
-      return formatedCategoryData.sort((a, b) => b.data - a.data);
-    }
-  };
+const Stats = () => {
 
   const [isMobile, setIsMobile] = useState(false);
-  const periodData = useSelector(getPeriodData);
-  const diagramData = getDataForDiagram(category, periodData);
+  const diagramData = useSelector(getDataForDiagram);
+
   useEffect(() => {
     const handleWindowResize = () => {
       if (window.innerWidth <= 768) {
@@ -40,6 +27,7 @@ const Stats = ({ category }) => {
       }
       setIsMobile(false);
     };
+    handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
