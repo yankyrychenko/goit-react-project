@@ -9,19 +9,18 @@ import { getUserBalance } from '../../redux/selectors/authSelectors';
 import { addBalance } from '../../redux/operations/balanceOperations';
 
 const BalanceCustom = () => {
-  const newBalance = useSelector(state =>
-    getUserBalance(state) !== undefined ? getUserBalance(state) : null,
+  const [currentBalance, setCurrentBalance] = useState(
+    localStorage.getItem('Balance'),
   );
-
-  const [currentBalance, setCurrentBalance] = useState(newBalance);
   const [read, setRead] = useState(false);
   const location = useLocation();
   const { width } = useWindowSize();
 
+  const newBalance = useSelector(state => getUserBalance(state));
   useEffect(() => {
-    currentBalance !== null ? setRead(true) : setRead(false);
-    setCurrentBalance(newBalance);
-  }, [currentBalance, newBalance]);
+    newBalance > 0 ? setRead(true) : setRead(false);
+    return newBalance !== undefined ? setCurrentBalance(newBalance) : null;
+  }, [newBalance]);
 
   const dispatch = useDispatch();
   const balanceHandler = ({ target }) => {
@@ -31,6 +30,7 @@ const BalanceCustom = () => {
   const balanceSubmit = e => {
     e.preventDefault();
     dispatch(addBalance({ newBalance: currentBalance }));
+    localStorage.setItem('Balance', currentBalance);
     setRead(true);
   };
   // console.log(currentBalance);
@@ -41,7 +41,7 @@ const BalanceCustom = () => {
           Баланс:
         </label>
         <input
-          readOnly={currentBalance ? read : false}
+          // readOnly={currentBalance ? read : false}
           maxLength="6"
           id="balance"
           onChange={balanceHandler}
