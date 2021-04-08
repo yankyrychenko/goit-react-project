@@ -41,7 +41,7 @@ const BalanceCustom = () => {
           Баланс:
         </label>
         <input
-          // readOnly={currentBalance ? read : false}
+          readOnly={currentBalance ? read : false}
           maxLength="6"
           id="balance"
           onChange={balanceHandler}
