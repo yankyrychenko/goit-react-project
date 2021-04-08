@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getIsAuthenticated } from '../../redux/selectors/authSelectors';
 
-import "./ChatBot.module.scss"
+import './ChatBot.module.scss';
 
 const Chat = () => {
   const isAuthenticated = useSelector(getIsAuthenticated);
@@ -55,7 +55,7 @@ const Chat = () => {
             window.kommunicate = m;
             m._globals = kommunicateSettings;
           })(document, window.kommunicate || {});
-        }, 2000),
+        }, 3000),
       );
     }
 
